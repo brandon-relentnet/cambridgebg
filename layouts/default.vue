@@ -2,7 +2,7 @@
   <div>
     <Navbar />
     <main>
-      <div class="bg-slate-200">
+      <div class="bg-slate-400">
         <slot />
       </div>
     </main>

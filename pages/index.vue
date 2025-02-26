@@ -21,7 +21,7 @@ const parallaxStyle = computed(() => {
 <template>
   <section>
     <div
-      class="relative h-[92vh] flex items-center justify-center text-slate-900 bg-linear-to-b from-slate-200 to-90% to-slate-300"
+      class="relative h-[92vh] flex items-center justify-center text-slate-900"
     >
       <!-- Nashville Skyline SVG -->
        <div
@@ -37,35 +37,30 @@ const parallaxStyle = computed(() => {
         <NuxtImg
           src="/nashville-skyline.svg"
           alt="Nashville Skyline"
-          class="w-full h-full opacity-70"
+          class="w-full h-auto opacity-70"
           quality="100"
           @load="handleImageLoad"
         />
       </div>
       
       <!-- Hero Content -->
-      <div class="relative z-2 text-center px-6 md:px-12 p-6">
-        <h1 class="text-4xl md:text-6xl font-bold uppercase animate-fade-in">
-          Cambridge Building Group
-        </h1>
-        <p
-          class="mt-4 text-lg md:text-xl max-w-2xl mx-auto animate-fade-in delay-200"
-        >
-          Building with precision, quality, and excellence. Trusted for
-          commercial and residential projects.
-        </p>
-        <div class="mt-6">
+      <div class="relative flex flex-col justify-center items-center gap-y-4 z-2 text-center px-6 md:px-12 pb-50 p-6">
+        <NuxtImg
+          src="/cbg-logo-transparent.png"
+          alt="Logo"
+          class="w-128 h-auto animate-fade-in"
+          quality="100"
+        />
           <NuxtLink
             to="/contact"
-            class="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition duration-300 animate-fade-in"
+            class="border-2 border-navy text-navy font-semibold px-6 py-3 shadow-lg transition duration-300 animate-fade-in hover:scale-115"
           >
             Get a Free Quote
           </NuxtLink>
-        </div>
       </div>
     </div>
-    <div class="bg-[#3b3f43] p-20 relative">
-      <p class="text-center text-5xl text-slate-100 container mx-auto">
+    <div class="p-20 relative">
+      <p class="text-center text-5xl text-navy container mx-auto">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, vel
         minus? Dicta quod, quibusdam debitis ipsa consectetur nemo neque
         provident! Non, distinctio quo laboriosam ad eos omnis officiis

@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+    --color-navy: #0b1b25;
+}
+
 html {
     background-color: var(--color-slate-200);
 }
