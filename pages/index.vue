@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useWindowScroll } from "@vueuse/core";
+import { DocumentCheckIcon, ChevronRightIcon } from "@heroicons/vue/24/solid";
 
 const { y } = useWindowScroll();
 const imageVisible = ref(false);
@@ -9,9 +10,13 @@ function handleImageLoad() {
   imageVisible.value = true;
 }
 
-const parallaxStyle = computed(() => {
-  return { transform: `translateY(-${y.value * 0.3}px)` }
+const scrollToNextSection = () => {
+  const nextSectionEl = document.getElementById("next-section");
+  nextSectionEl?.scrollIntoView({ behavior: "smooth" });
+};
 
+const parallaxStyle = computed(() => {
+  return { transform: `translateY(-${y.value * 0.3}px)` };
 });
 </script>
 
@@ -21,15 +26,15 @@ const parallaxStyle = computed(() => {
       class="relative h-[92vh] flex items-center justify-center text-slate-900"
     >
       <!-- Nashville Skyline SVG -->
-       <div
-       ref="imageRef"
-       class="absolute inset-0 transition-transform duration-700 z-0 ease-out"
-       :class="{
+      <div
+        ref="imageRef"
+        class="absolute inset-0 transition-transform duration-700 z-0 ease-out"
+        :class="{
           'translate-y-[100vh] opacity-0': !imageVisible,
           'translate-y-[50vh] opacity-100': imageVisible,
         }"
-       :style="parallaxStyle"
-       >
+        :style="parallaxStyle"
+      >
         <NuxtImg
           src="/nashville-skyline.svg"
           alt="Nashville Skyline"
@@ -38,24 +43,39 @@ const parallaxStyle = computed(() => {
           @load="handleImageLoad"
         />
       </div>
-      
+
       <!-- Hero Content -->
-      <div class="relative flex flex-col justify-center items-center gap-y-4 z-2 text-center px-6 md:px-12 pb-50 p-6 animate-fade-in">
+      <div
+        class="relative flex flex-col justify-center items-center gap-y-4 z-2 text-center px-6 md:px-12 pb-50 p-6 animate-fade-in"
+      >
         <NuxtImg
           src="/cbg-logo-transparent.png"
           alt="Logo"
-          class="w-128 h-auto "
+          class="w-128 h-auto"
           quality="100"
         />
+        <div class="flex justify-center items-center gap-x-4">
+          <button
+            @click="scrollToNextSection"
+            class="bg-navy group text-slate-300 font-semibold w-50 h-12 shadow-lg transition duration-200 hover:scale-115 cursor-pointer"
+          >
+            Learn More
+            <ChevronRightIcon class="size-5 -mt-0.5 group-hover:rotate-90 inline-block transition duration-200" />
+          </button>
           <NuxtLink
             to="/contact"
-            class="border-2 border-navy text-navy font-semibold px-6 py-3 shadow-lg transition duration-300 hover:scale-115"
+            class="border-2 border-navy group text-navy font-semibold w-50 h-12 shadow-lg transition duration-200 hover:scale-115 flex items-center justify-center"
           >
             Get a Free Quote
+            <DocumentCheckIcon class="size-5 ml-2 inline-block transition duration-200" />
           </NuxtLink>
+        </div>
       </div>
     </div>
-    <div class="relative -mt-20 sm:-mt-5 md:mt-20 lg:mt-40 xl:mt-60 2xl:mt-100 3xl:mt-120 4xl:mt-200">
+    <div
+      class="relative -mt-20 sm:-mt-5 md:mt-20 lg:mt-40 xl:mt-60 2xl:mt-100 3xl:mt-120 4xl:mt-200 p-20"
+      id="next-section"
+    >
       <p class="text-center text-5xl text-navy container mx-auto">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, vel
         minus? Dicta quod, quibusdam debitis ipsa consectetur nemo neque
