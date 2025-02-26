@@ -25,7 +25,7 @@ const navItems = {
 
 <template>
     <nav class="w-full h-20">
-        <ul class="flex gap-x-4 justify-center items-center fixed top-0 left-0 w-full h-20 bg-white z-10">
+        <ul class="flex gap-x-4 justify-center items-center fixed top-0 left-0 w-full h-20 bg-slate-300 z-10">
             <li v-for="item in Object.values(navItems)" :key="item.title">
                 <NuxtLink :to="item.link">{{ item.title }}</NuxtLink>
             </li>
