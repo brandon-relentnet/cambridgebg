@@ -1,10 +1,57 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useWindowScroll } from "@vueuse/core";
-import { DocumentCheckIcon, ChevronRightIcon } from "@heroicons/vue/24/solid";
+import {
+  DocumentCheckIcon,
+  ChevronRightIcon,
+  CalendarDateRangeIcon,
+} from "@heroicons/vue/24/solid";
 
 const { y } = useWindowScroll();
 const imageVisible = ref(false);
+
+const milestones = ref([
+  {
+    id: 1,
+    year: "2000",
+    title: "Founded",
+    description:
+      "In 2000, our company was established by a group of visionary builders who recognized the need for integrity and craftsmanship in construction. Their passion for quality laid the cornerstone of our success.",
+    link: "/about/founded",
+  },
+  {
+    id: 2,
+    year: "2005",
+    title: "First Major Project",
+    description:
+      "In 2005, we transformed an outdated office complex into a state-of-the-art, energy-efficient workspace. This breakthrough project marked our entry into large-scale developments and set the stage for innovative design.",
+    link: "/portfolio/first-major-project",
+  },
+  {
+    id: 3,
+    year: "2010",
+    title: "Expanded Nationally",
+    description:
+      "By 2010, our reputation had grown to national prominence. We expanded our operations across the country, launching regional offices and tailoring our services to meet the diverse needs of different markets.",
+    link: "/about/expansion",
+  },
+  {
+    id: 4,
+    year: "2015",
+    title: "Award Winning",
+    description:
+      "In 2015, our unwavering commitment to excellence was recognized with a prestigious industry award. This honor validated our innovative design and superior construction methods, cementing our leadership in the field.",
+    link: "/awards",
+  },
+  {
+    id: 5,
+    year: "2020",
+    title: "Global Reach",
+    description:
+      "By 2020, we had extended our expertise beyond national borders. Our international projects showcased our adaptability and set new benchmarks in quality, proving that our vision truly knows no limits.",
+    link: "/global",
+  },
+]);
 
 function handleImageLoad() {
   imageVisible.value = true;
@@ -21,76 +68,118 @@ const parallaxStyle = computed(() => {
 </script>
 
 <template>
-  <section>
-    <div
-      class="relative h-[92vh] flex items-center justify-center text-slate-900"
-    >
-      <!-- Nashville Skyline SVG -->
-      <div
-        ref="imageRef"
-        class="absolute inset-0 transition-transform duration-700 z-0 ease-out"
-        :class="{
-          'translate-y-[100vh] opacity-0': !imageVisible,
-          'translate-y-[50vh] opacity-100': imageVisible,
-        }"
-        :style="parallaxStyle"
-      >
-        <NuxtImg
-          src="/nashville-skyline.svg"
-          alt="Nashville Skyline"
-          class="w-full h-auto opacity-70"
-          quality="100"
-          @load="handleImageLoad"
-        />
-      </div>
+  <div>
+    <section>
+      <div class="relative h-[92vh] flex items-center justify-center text-navy">
+        <!-- Nashville Skyline SVG -->
+        <div
+          ref="imageRef"
+          class="absolute inset-0 transition-transform duration-700 z-0 ease-out"
+          :class="{
+            'translate-y-[100vh] opacity-0': !imageVisible,
+            'translate-y-[50vh] opacity-100': imageVisible,
+          }"
+          :style="parallaxStyle"
+        >
+          <NuxtImg
+            src="/nashville-skyline.svg"
+            alt="Nashville Skyline"
+            class="w-full h-auto opacity-70"
+            quality="100"
+            @load="handleImageLoad"
+          />
+        </div>
 
-      <!-- Hero Content -->
-      <div
-        class="relative flex flex-col justify-center items-center gap-y-4 z-2 text-center px-6 md:px-12 pb-50 p-6 animate-fade-in"
-      >
-        <NuxtImg
-          src="/cbg-logo-transparent.png"
-          alt="Logo"
-          class="w-128 h-auto"
-          quality="100"
-        />
-        <div class="flex justify-center items-center gap-x-4">
-          <button
-            @click="scrollToNextSection"
-            class="bg-navy group text-slate-300 font-semibold w-50 h-12 shadow-lg transition duration-200 hover:scale-115 cursor-pointer"
-          >
-            Learn More
-            <ChevronRightIcon class="size-5 -mt-0.5 group-hover:rotate-90 inline-block transition duration-200" />
-          </button>
-          <NuxtLink
-            to="/contact"
-            class="border-2 border-navy group text-navy font-semibold w-50 h-12 shadow-lg transition duration-200 hover:scale-115 flex items-center justify-center"
-          >
-            Get a Free Quote
-            <DocumentCheckIcon class="size-5 ml-2 inline-block transition duration-200" />
-          </NuxtLink>
+        <!-- Hero Content -->
+        <div
+          class="relative flex flex-col justify-center items-center gap-y-4 z-2 text-center px-6 md:px-12 pb-50 p-6 animate-fade-in"
+        >
+          <NuxtImg
+            src="/cbg-logo-transparent.png"
+            alt="Logo"
+            class="w-128 h-auto"
+            quality="100"
+          />
+          <div class="flex justify-center items-center gap-x-4">
+            <button
+              @click="scrollToNextSection"
+              class="bg-navy group text-slate-300 font-semibold w-50 h-12 shadow-lg transition duration-200 hover:scale-115 cursor-pointer"
+            >
+              Learn More
+              <ChevronRightIcon
+                class="size-5 -mt-0.5 group-hover:rotate-90 inline-block transition duration-200"
+              />
+            </button>
+            <NuxtLink
+              to="/contact"
+              class="border-2 border-navy group text-navy font-semibold w-50 h-12 shadow-lg transition duration-200 hover:scale-115 flex items-center justify-center"
+            >
+              Get a Free Quote
+              <DocumentCheckIcon
+                class="size-5 ml-2 inline-block transition duration-200"
+              />
+            </NuxtLink>
+          </div>
         </div>
       </div>
-    </div>
-    <div
-      class="relative -mt-20 sm:-mt-5 md:mt-20 lg:mt-40 xl:mt-60 2xl:mt-100 3xl:mt-120 4xl:mt-200 p-20"
-      id="next-section"
-    >
-      <p class="text-center text-5xl text-navy container mx-auto">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, vel
-        minus? Dicta quod, quibusdam debitis ipsa consectetur nemo neque
-        provident! Non, distinctio quo laboriosam ad eos omnis officiis
-        molestias, esse voluptate porro culpa? Voluptas ipsum quod, labore
-        numquam facere eos! Facere ab enim natus libero voluptate dolorem
-        cupiditate doloribus. Enim dolorum culpa eos et illum porro accusantium
-        dolorem quo ut. Provident totam porro delectus vel similique. Tenetur,
-        ratione maxime at quidem accusamus architecto autem sed sit, quam quos
-        cupiditate assumenda? Est sunt amet, natus voluptas cumque temporibus
-        atque blanditiis esse repellendus impedit inventore nesciunt quo sint
-        explicabo fugit reprehenderit soluta?
-      </p>
-    </div>
-  </section>
+    </section>
+    <section>
+      <div
+        class="relative -mt-40 sm:-mt-25 md:mt-0 lg:mt-20 xl:mt-40 2xl:mt-80 3xl:mt-100 4xl:mt-180 p-20 mb-[6vw]"
+        id="next-section"
+      >
+        <div class="container mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-navy">Our Building Blocks</h2>
+            <p class="text-lg text-slate-700">
+              Discover the milestones that have shaped our journey and built the
+              foundation of our success.
+            </p>
+          </div>
+          <ol
+            class="items-start lg:flex border-s-2 lg:border-none border-slate-700"
+          >
+            <li
+              v-for="milestone in milestones"
+              :key="milestone.id"
+              class="relative mb-6 lg:mb-0 group cursor-pointer"
+            >
+              <NuxtLink :to="milestone.link" class="flex items-center lg:block">
+                <div class="flex items-center -ml-5 mr-2 lg:mr-0 lg:ml-0">
+                  <div
+                    class="z-10 flex items-center justify-center size-10 rounded-full bg-slate-400 group-hover:bg-navy border-2 border-navy shrink-0 transition duration-200 ring-8 ring-slate-400"
+                  >
+                    <CalendarDateRangeIcon
+                      class="size-5 text-navy group-hover:text-slate-300 transition duration-200"
+                    />
+                  </div>
+                  <div class="hidden lg:flex w-full h-0.5 bg-slate-700"></div>
+                </div>
+                <div
+                  class="mt-3 lg:pe-2 border-2 group-hover:border-slate-700 p-4 border-transparent transition duration-200 mr-2"
+                >
+                  <ChevronRightIcon
+                    class="size-5 hidden group-hover:block text-navy transition duration-200 absolute lg:top-18 top-8 right-6"
+                  />
+                  <h3 class="text-lg font-semibold text-navy">
+                    {{ milestone.title }}
+                  </h3>
+                  <time
+                    class="block mb-2 text-md font-normal italic leading-none text-slate-500"
+                  >
+                    {{ milestone.year }}
+                  </time>
+                  <p class="text-base font-normal text-slate-700">
+                    {{ milestone.description }}
+                  </p>
+                </div>
+              </NuxtLink>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
 
 <style>
