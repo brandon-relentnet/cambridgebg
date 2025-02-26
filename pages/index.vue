@@ -1,20 +1,17 @@
 <script setup>
 import { ref, computed } from "vue";
-import { useWindowScroll, useWindowSize } from "@vueuse/core";
+import { useWindowScroll } from "@vueuse/core";
 
 const { y } = useWindowScroll();
 const imageVisible = ref(false);
-const { width } = useWindowSize();
-const isMobile = computed(() => width.value < 768);
 
 function handleImageLoad() {
   imageVisible.value = true;
 }
 
 const parallaxStyle = computed(() => {
-  return !isMobile.value
-    ? { transform: `translateY(-${y.value * 0.3}px)` }
-    : {};
+  return { transform: `translateY(-${y.value * 0.3}px)` }
+
 });
 </script>
 
@@ -25,12 +22,11 @@ const parallaxStyle = computed(() => {
     >
       <!-- Nashville Skyline SVG -->
        <div
-       v-if="!isMobile"
        ref="imageRef"
        class="absolute inset-0 transition-transform duration-700 z-0 ease-out"
        :class="{
           'translate-y-[100vh] opacity-0': !imageVisible,
-          'translate-y-[40vh] opacity-100': imageVisible,
+          'translate-y-[50vh] opacity-100': imageVisible,
         }"
        :style="parallaxStyle"
        >
@@ -44,22 +40,22 @@ const parallaxStyle = computed(() => {
       </div>
       
       <!-- Hero Content -->
-      <div class="relative flex flex-col justify-center items-center gap-y-4 z-2 text-center px-6 md:px-12 pb-50 p-6">
+      <div class="relative flex flex-col justify-center items-center gap-y-4 z-2 text-center px-6 md:px-12 pb-50 p-6 animate-fade-in">
         <NuxtImg
           src="/cbg-logo-transparent.png"
           alt="Logo"
-          class="w-128 h-auto animate-fade-in"
+          class="w-128 h-auto "
           quality="100"
         />
           <NuxtLink
             to="/contact"
-            class="border-2 border-navy text-navy font-semibold px-6 py-3 shadow-lg transition duration-300 animate-fade-in hover:scale-115"
+            class="border-2 border-navy text-navy font-semibold px-6 py-3 shadow-lg transition duration-300 hover:scale-115"
           >
             Get a Free Quote
           </NuxtLink>
       </div>
     </div>
-    <div class="p-20 relative">
+    <div class="relative -mt-20 sm:-mt-5 md:mt-20 lg:mt-40 xl:mt-60 2xl:mt-100 3xl:mt-120 4xl:mt-200">
       <p class="text-center text-5xl text-navy container mx-auto">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, vel
         minus? Dicta quod, quibusdam debitis ipsa consectetur nemo neque
