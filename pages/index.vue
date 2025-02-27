@@ -58,7 +58,9 @@ function handleImageLoad() {
 }
 
 const scrollToNextSection = () => {
-  const nextSectionEl = document.getElementById("next-section");
+  const nextSectionEl = document.getElementById(
+    "who-is-cambridge-construction"
+  );
   nextSectionEl?.scrollIntoView({ behavior: "smooth" });
 };
 
@@ -146,16 +148,49 @@ const parallaxStyle = computed(() => {
     <section
       class="relative mt-15 sm:mt-25 md:mt-10 lg:mt-15 xl:mt-20 2xl:mt-40 3xl:mt-60 4xl:mt-100 p-8 md:p-20 mb-[6vw]"
       id="who-is-cambridge-construction"
-    ></section>
-
-    <section>
+    >
       <div
-        class="relative p-8 md:p-20 my-[6vw]"
-        id="milestones"
+        class="container mx-auto px-6 md:px-54 flex flex-col md:flex-row items-center gap-12"
       >
+        <div class="w-full md:w-1/2">
+          <NuxtImg
+            src="/cambridge-team.jpg"
+            alt="Cambridge Construction Team"
+            class="w-full shadow-left rounded-sm"
+            quality="100"
+          />
+        </div>
+        <div class="w-full md:w-1/2">
+          <h2 class="text-5xl font-bold text-navy mb-4">
+            <span class="italic">Who is</span> Cambridge Construction?
+          </h2>
+          <div class="border-l-2 border-slate-700 pl-4">
+            <p class="text-lg text-slate-700 mb-4">
+              Cambridge Construction is a premier building company renowned for
+              its innovative designs and unwavering commitment to quality. With
+              decades of combined experience, our team of experts transforms
+              visions into structures that inspire and endure.
+            </p>
+            <p class="text-lg text-slate-700">
+              From modern commercial developments to timeless residential
+              masterpieces, we prioritize safety, sustainability, and community
+              enrichment. Our approach blends cutting‑edge technology with
+              traditional craftsmanship to deliver projects that not only meet
+              but exceed expectations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Milestones -->
+    <section>
+      <div class="relative p-8 md:p-20 my-[6vw]" id="milestones">
         <div class="container mx-auto">
           <div class="text-left md:text-center mb-12">
-            <h2 class="text-3xl font-bold text-navy">Our Building Blocks</h2>
+            <h2 class="text-5xl mb-4 font-bold text-navy">
+              Our Building Blocks
+            </h2>
             <p class="text-lg text-slate-700">
               Discover the milestones that have shaped our journey and built the
               foundation of our success.
