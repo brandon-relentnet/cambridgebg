@@ -5,7 +5,12 @@ import {
   DocumentCheckIcon,
   ChevronRightIcon,
   CalendarDateRangeIcon,
+  ShieldCheckIcon,
+  LightBulbIcon,
+  StarIcon,
+  ChevronDownIcon,
 } from "@heroicons/vue/24/solid";
+import { vAutoAnimate } from "@formkit/auto-animate";
 
 const { y } = useWindowScroll();
 const imageVisible = ref(false);
@@ -52,6 +57,39 @@ const milestones = ref([
     link: "/global",
   },
 ]);
+
+const coreValues = ref([
+  {
+    id: 1,
+    title: "Integrity",
+    tagline: "Honesty is our foundation",
+    icon: ShieldCheckIcon,
+    description:
+      "We uphold honesty and transparency in every project. Our work stands as a testament to our ethical practices and unwavering commitment to excellence. We believe in doing the right thing even when no one is watching, ensuring lasting trust with our clients and partners.",
+  },
+  {
+    id: 2,
+    title: "Innovation",
+    tagline: "Building tomorrow, today",
+    icon: LightBulbIcon,
+    description:
+      "By embracing creative solutions and leveraging cutting‑edge technology, we continuously redefine industry standards and pioneer new approaches in construction. We never stop evolving, ensuring that our designs remain at the forefront of modern architecture.",
+  },
+  {
+    id: 3,
+    title: "Excellence",
+    tagline: "Perfection in every detail",
+    icon: StarIcon,
+    description:
+      "We strive for perfection in every project, blending advanced technology with artisanal craftsmanship to deliver results that exceed expectations. Our pursuit of excellence is reflected in every brick we lay and every structure we create.",
+  },
+]);
+
+const currentCard = ref(null);
+
+function toggleCard(id) {
+  currentCard.value = currentCard.value === id ? null : id;
+}
 
 function handleImageLoad() {
   imageVisible.value = true;
@@ -146,13 +184,13 @@ const parallaxStyle = computed(() => {
 
     <!-- 1. Who is Cambridge Construction? -->
     <section
-      class="relative mt-15 sm:mt-25 md:mt-10 lg:mt-15 xl:mt-20 2xl:mt-40 3xl:mt-60 4xl:mt-100 p-8 md:p-20 mb-[6vw]"
+      class="relative mt-15 sm:mt-25 md:mt-10 lg:mt-15 xl:mt-20 2xl:mt-20 3xl:mt-30 4xl:mt-100 p-8 md:p-20 pb-section"
       id="who-is-cambridge-construction"
     >
       <div
-        class="container mx-auto px-6 md:px-54 flex flex-col md:flex-row items-center gap-12"
+        class="container mx-auto px-6 2xl:px-54 flex flex-col lg:flex-row items-center gap-12 py-block"
       >
-        <div class="w-full md:w-1/2">
+        <div class="w-full lg:w-1/2">
           <NuxtImg
             src="/cambridge-team.jpg"
             alt="Cambridge Construction Team"
@@ -160,7 +198,7 @@ const parallaxStyle = computed(() => {
             quality="100"
           />
         </div>
-        <div class="w-full md:w-1/2">
+        <div class="w-full lg:w-1/2">
           <h2 class="text-5xl font-bold text-navy mb-4">
             <span class="italic">Who is</span> Cambridge Construction?
           </h2>
@@ -183,60 +221,103 @@ const parallaxStyle = computed(() => {
       </div>
     </section>
 
-    <!-- 3. Milestones -->
-    <section>
-      <div class="relative p-8 md:p-20 my-[6vw]" id="milestones">
-        <div class="container mx-auto">
-          <div class="text-left md:text-center mb-12">
-            <h2 class="text-5xl mb-4 font-bold text-navy">
-              Our Building Blocks
-            </h2>
-            <p class="text-lg text-slate-700">
-              Discover the milestones that have shaped our journey and built the
-              foundation of our success.
-            </p>
-          </div>
-          <ol
-            class="items-start lg:flex border-s-2 lg:border-none border-slate-700"
-          >
-            <li
-              v-for="milestone in milestones"
-              :key="milestone.id"
-              class="relative mb-6 lg:mb-0 group cursor-pointer"
-            >
-              <NuxtLink :to="milestone.link" class="flex items-center lg:block">
-                <div class="flex items-center -ml-5 mr-2 lg:mr-0 lg:ml-0">
-                  <div
-                    class="z-10 flex items-center justify-center size-10 rounded-full bg-slate-400 group-hover:bg-navy border-2 border-navy shrink-0 transition duration-200 ring-8 ring-slate-400"
-                  >
-                    <CalendarDateRangeIcon
-                      class="size-5 text-navy group-hover:text-slate-300 transition duration-200"
-                    />
-                  </div>
-                  <div class="hidden lg:flex w-full h-0.5 bg-slate-700"></div>
-                </div>
-                <div
-                  class="mt-3 lg:pe-2 border-2 group-hover:border-slate-700 p-4 border-transparent transition duration-200 mr-2"
-                >
-                  <ChevronRightIcon
-                    class="size-5 hidden group-hover:block text-navy transition duration-200 absolute lg:top-18 top-8 right-6"
-                  />
-                  <h3 class="text-lg font-semibold text-navy">
-                    {{ milestone.title }}
-                  </h3>
-                  <time
-                    class="block mb-2 text-md font-normal italic leading-none text-slate-500"
-                  >
-                    {{ milestone.year }}
-                  </time>
-                  <p class="text-base font-normal text-slate-700">
-                    {{ milestone.description }}
-                  </p>
-                </div>
-              </NuxtLink>
-            </li>
-          </ol>
+    <!-- 2. Core Values -->
+    <section id="core-values" class="relative px-8 2xl:px-60 py-section bg-slate-300 border-t-4 border-b-4 border-slate-400">
+      <div class="container mx-auto py-block">
+        <div class="w-full md:w-1/3 text-left md:text-center mx-auto mb-12">
+          <h2 class="text-5xl font-bold text-navy mb-4">Our Core Values</h2>
+          <p class="text-lg text-slate-800">
+            The guiding principles that shape our work and define our legacy.
+          </p>
         </div>
+        <ul class="list-style-none m-0 p-0 max-w-200 mx-auto">
+          <li
+            class="border-2 border-navy block overflow-hidden mb-2 cursor-pointer"
+            v-for="value in coreValues"
+            :key="value.id"
+            v-auto-animate
+          >
+            <div
+              class="question text-navy text-3xl font-semibold p-4"
+              @click="toggleCard(value.id)"
+            >
+              <component
+                :is="value.icon"
+                class="size-6 inline-block mr-2 text-navy"
+              />
+              <h3 class="text-2xl font-semibold text-navy inline-block">
+                {{ value.title }}
+              </h3>
+              <p class="text-lg text-slate-700 italic mt-2">
+                {{ value.tagline }}
+              </p>
+              <ChevronDownIcon
+                class="size-5 absolute top-11 right-4 ml-2 transition-transform duration-200"
+                :class="{
+                  'rotate-180': value.id === currentCard,
+                }"
+              />
+            </div>
+            <p
+              class="text-lg pb-6 px-6 text-slate-800"
+              v-if="value.id === currentCard"
+              v-html="value.description"
+            />
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. Milestones -->
+    <section class="relative p-8 md:p-20 py-[6vw]" id="milestones">
+      <div class="container mx-auto">
+        <div class="text-left md:text-center mb-12">
+          <h2 class="text-5xl mb-4 font-bold text-navy">The Building Blocks</h2>
+          <p class="text-lg text-slate-700">
+            Discover the milestones that have shaped our journey and built the
+            foundation of our success.
+          </p>
+        </div>
+        <ol
+          class="items-start lg:flex border-s-2 lg:border-none border-slate-700"
+        >
+          <li
+            v-for="milestone in milestones"
+            :key="milestone.id"
+            class="relative mb-6 lg:mb-0 group cursor-pointer"
+          >
+            <NuxtLink :to="milestone.link" class="flex items-center lg:block">
+              <div class="flex items-center -ml-5 mr-2 lg:mr-0 lg:ml-0">
+                <div
+                  class="z-10 flex items-center justify-center size-10 rounded-full bg-slate-300 group-hover:bg-navy border-2 border-navy shrink-0 transition duration-200 ring-8 ring-slate-300"
+                >
+                  <CalendarDateRangeIcon
+                    class="size-5 text-navy group-hover:text-slate-300 transition duration-200"
+                  />
+                </div>
+                <div class="hidden lg:flex w-full h-0.5 bg-slate-700"></div>
+              </div>
+              <div
+                class="mt-3 lg:pe-2 border-2 group-hover:border-slate-700 p-4 border-transparent transition duration-200 mr-2"
+              >
+                <ChevronRightIcon
+                  class="size-5 hidden group-hover:block text-navy transition duration-200 absolute lg:top-18 top-8 right-6"
+                />
+                <h3 class="text-lg font-semibold text-navy">
+                  {{ milestone.title }}
+                </h3>
+                <time
+                  class="block mb-2 text-md font-normal italic leading-none text-slate-500"
+                >
+                  {{ milestone.year }}
+                </time>
+                <p class="text-base font-normal text-slate-700">
+                  {{ milestone.description }}
+                </p>
+              </div>
+            </NuxtLink>
+          </li>
+        </ol>
       </div>
     </section>
   </div>
@@ -255,5 +336,9 @@ const parallaxStyle = computed(() => {
 }
 .animate-fade-in {
   animation: fade-in 0.8s ease-out forwards;
+}
+
+[data-dark-mode="true"] li {
+  background-color: var(--purple-d);
 }
 </style>
