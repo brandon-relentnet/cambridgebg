@@ -68,16 +68,35 @@ const parallaxStyle = computed(() => {
 </script>
 
 <template>
+  <!-- *Planned sections layout* -->
+  <!-- 0. Hero Section -->
+  <!-- 1. Who is Cambridge Construction? -->
+  <!-- 2. Core Values -->
+  <!-- 3. Milestones Section -->
+  <!-- 4. Combined Experience Section -->
+  <!-- 5. Services Provided -->
+  <!-- 6. Markets We Serve -->
+  <!-- 7. Competitive Advantage -->
+  <!-- 8. Safety on the Job Site -->
+  <!-- 9. Industry Awards -->
+  <!-- 10. Case Studies -->
+  <!-- 11. Past Clients -->
+  <!-- 12. Trade Partners -->
+  <!-- 13. Company History -->
+  <!-- 14. Leadership Bios -->
+  <!-- 15. Board of Directors -->
+  <!-- 16. Community Outreach -->
   <div>
+    <!-- 0. Hero Section -->
     <section>
       <div class="relative h-[92vh] flex items-center justify-center text-navy">
-        <!-- Nashville Skyline SVG -->
         <div
           ref="imageRef"
           class="absolute inset-0 transition-transform duration-700 z-0 ease-out"
           :class="{
             'translate-y-[100vh] opacity-0': !imageVisible,
-            'translate-y-[50vh] opacity-100': imageVisible,
+            'translate-y-[76vh] sm:translate-y-[66vh] md:translate-y-[59vh] lg:translate-y-[49vh] xl:translate-y-[39vh] 2xl:translate-y-[29vh] opacity-100':
+              imageVisible,
           }"
           :style="parallaxStyle"
         >
@@ -89,21 +108,20 @@ const parallaxStyle = computed(() => {
             @load="handleImageLoad"
           />
         </div>
-
-        <!-- Hero Content -->
         <div
-          class="relative flex flex-col justify-center items-center gap-y-4 z-2 text-center px-6 md:px-12 pb-50 p-6 animate-fade-in"
+          class="relative flex flex-col justify-center items-center gap-y-4 z-2 text-center px-6 md:px-12 pb-50 p-6 animate-fade-in container mx-auto"
         >
           <NuxtImg
             src="/cbg-logo-transparent.png"
             alt="Logo"
-            class="w-128 h-auto"
             quality="100"
+            sizes="md:400px lg:600px 275px"
+            format="webp"
           />
-          <div class="flex justify-center items-center gap-x-4">
+          <div class="grid grid-cols-2 gap-x-4">
             <button
               @click="scrollToNextSection"
-              class="bg-navy group text-slate-300 font-semibold w-50 h-12 shadow-lg transition duration-200 hover:scale-115 cursor-pointer"
+              class="bg-navy group text-slate-300 font-semibold px-4 py-2 border-2 border-navy shadow-lg transition duration-200 hover:scale-115 cursor-pointer"
             >
               Learn More
               <ChevronRightIcon
@@ -112,9 +130,9 @@ const parallaxStyle = computed(() => {
             </button>
             <NuxtLink
               to="/contact"
-              class="border-2 border-navy group text-navy font-semibold w-50 h-12 shadow-lg transition duration-200 hover:scale-115 flex items-center justify-center"
+              class="border-2 border-navy group text-navy font-semibold px-4 py-2 shadow-lg transition duration-200 hover:scale-115 flex items-center justify-center"
             >
-              Get a Free Quote
+              Free Quote
               <DocumentCheckIcon
                 class="size-5 ml-2 inline-block transition duration-200"
               />
@@ -123,13 +141,20 @@ const parallaxStyle = computed(() => {
         </div>
       </div>
     </section>
+
+    <!-- 1. Who is Cambridge Construction? -->
+    <section
+      class="relative mt-15 sm:mt-25 md:mt-10 lg:mt-15 xl:mt-20 2xl:mt-40 3xl:mt-60 4xl:mt-100 p-8 md:p-20 mb-[6vw]"
+      id="who-is-cambridge-construction"
+    ></section>
+
     <section>
       <div
-        class="relative -mt-40 sm:-mt-25 md:mt-0 lg:mt-20 xl:mt-40 2xl:mt-80 3xl:mt-100 4xl:mt-180 p-20 mb-[6vw]"
-        id="next-section"
+        class="relative p-8 md:p-20 my-[6vw]"
+        id="milestones"
       >
         <div class="container mx-auto">
-          <div class="text-center mb-12">
+          <div class="text-left md:text-center mb-12">
             <h2 class="text-3xl font-bold text-navy">Our Building Blocks</h2>
             <p class="text-lg text-slate-700">
               Discover the milestones that have shaped our journey and built the
