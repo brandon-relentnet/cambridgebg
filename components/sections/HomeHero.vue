@@ -5,6 +5,7 @@ import {
   DocumentCheckIcon,
   ChevronRightIcon,
 } from "@heroicons/vue/24/solid";
+import { scrollToNextSection } from "~/utils/autoScroll";
 
 const { y } = useWindowScroll();
 const imageVisible = ref(false);
@@ -12,13 +13,6 @@ const imageVisible = ref(false);
 function handleImageLoad() {
   imageVisible.value = true;
 }
-
-const scrollToNextSection = () => {
-  const nextSectionEl = document.getElementById(
-    "who-is-cambridge-construction"
-  );
-  nextSectionEl?.scrollIntoView({ behavior: "smooth" });
-};
 
 const parallaxStyle = computed(() => {
   return { transform: `translateY(-${y.value * 0.3}px)` };
@@ -58,7 +52,7 @@ const parallaxStyle = computed(() => {
           />
           <div class="grid grid-cols-2 gap-x-4">
             <button
-              @click="scrollToNextSection"
+              @click="scrollToNextSection('who-is-cambridge-construction')"
               class="bg-navy group text-slate-300 font-semibold px-4 py-2 border-2 border-navy shadow-lg transition duration-200 hover:scale-115 cursor-pointer"
             >
               Learn More

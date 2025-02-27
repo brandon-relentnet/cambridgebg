@@ -4,8 +4,8 @@ import { milestones } from "~/data/siteData";
 </script>
 
 <template>
-    <section class="relative p-8 md:p-20 py-[6vw]" id="milestones">
-      <div class="container mx-auto">
+    <section class="relative px-8 md:px-20 py-section" id="milestones">
+      <div class="container mx-auto py-block">
         <div class="text-left md:text-center mb-12">
           <h2 class="text-5xl mb-4 font-bold text-navy">The Building Blocks</h2>
           <p class="text-lg text-slate-700">
