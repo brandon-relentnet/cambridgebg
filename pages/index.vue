@@ -13,6 +13,8 @@
     <SectionsMilestones />
 
     <!-- 4. Combined Experience Section -->
+    <SectionsCombinedExperience />
+    
     <!-- 5. Services Provided -->
     <!-- 6. Markets We Serve -->
     <!-- 7. Competitive Advantage -->
