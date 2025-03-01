@@ -35,8 +35,10 @@
 
     <!-- 11. Past Clients -->
     <SectionsPastClients />
-    
+
     <!-- 12. Trade Partners -->
+    <SectionsTradePartners />
+    
     <!-- 13. Company History -->
     <!-- 14. Leadership Bios -->
     <!-- 15. Board of Directors -->
