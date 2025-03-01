@@ -24,7 +24,7 @@ import { milestones } from "~/data/siteData";
             <NuxtLink :to="milestone.link" class="flex items-center lg:block">
               <div class="flex items-center -ml-5 mr-2 lg:mr-0 lg:ml-0">
                 <div
-                  class="z-10 flex items-center justify-center size-10 rounded-full bg-slate-200 group-hover:bg-navy border-2 border-navy shrink-0 transition duration-200 ring-8 ring-slate-200"
+                  class="z-10 flex items-center justify-center size-10 rounded-full bg-slate-100 group-hover:bg-navy border-2 border-navy shrink-0 transition duration-200 ring-8 ring-slate-100"
                 >
                   <CalendarDateRangeIcon
                     class="size-5 text-navy group-hover:text-slate-300 transition duration-200"

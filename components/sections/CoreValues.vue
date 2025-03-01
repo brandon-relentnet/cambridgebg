@@ -1,15 +1,18 @@
 <script setup>
-import { vAutoAnimate } from "@formkit/auto-animate";
-import { ChevronDownIcon, ChevronRightIcon } from "@heroicons/vue/24/solid";
-import { ref } from "vue";
-import { coreValues } from "~/data/siteData";
+import { ref, computed } from "vue";
+import { ChevronRightIcon } from "@heroicons/vue/24/solid";
 import { scrollToNextSection } from "~/utils/autoScroll";
+import { coreValues } from "~/data/siteData";
 
-const currentCard = ref(null);
+const activeValue = ref(coreValues[0].id);
 
-function toggleCard(id) {
-  currentCard.value = currentCard.value === id ? null : id;
+function setActiveValue(id) {
+  activeValue.value = id;
 }
+
+const getActiveValue = computed(() => {
+  return coreValues.find(val => val.id === activeValue.value);
+});
 </script>
 
 <template>
@@ -24,39 +27,76 @@ function toggleCard(id) {
           The guiding principles that shape our work and define our legacy.
         </p>
       </div>
-      <ul class="list-style-none m-0 p-0 max-w-200 mx-auto mb-10">
-        <li
-          class="border-l-4 border-slate-400 block overflow-hidden mb-2 cursor-pointer bg-navy"
-          v-for="value in coreValues"
-          :key="value.id"
-          v-auto-animate
-        >
-          <div
-            class="question text-3xl font-semibold p-6"
-            @click="toggleCard(value.id)"
+
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+        <!-- Values Navigation - Sidebar -->
+        <div class="lg:col-span-1 flex flex-col space-y-2">
+          <button
+            v-for="value in coreValues"
+            :key="`nav-${value.id}`"
+            @click="setActiveValue(value.id)"
+            class="flex items-center p-4 text-left transition-all duration-200 border-l-4"
+            :class="activeValue === value.id 
+              ? 'bg-navy border-slate-300 shadow-md' 
+              : 'bg-transparent border-transparent hover:border-slate-600 hover:bg-slate-700'"
           >
-            <component :is="value.icon" class="size-6 inline-block mr-2" />
-            <h3 class="text-2xl font-semibold inline-block">
-              {{ value.title }}
-            </h3>
-            <p class="text-lg text-slate-400 italic mt-2">
-              {{ value.tagline }}
-            </p>
-            <ChevronDownIcon
-              class="size-5 absolute top-11 right-4 ml-2 transition-transform duration-200"
-              :class="{
-                'rotate-180': value.id === currentCard,
-              }"
+            <component
+              :is="value.icon"
+              class="size-5 mr-3"
+              :class="activeValue === value.id ? 'text-slate-300' : 'text-slate-400'"
             />
+            <span 
+              class="font-semibold"
+              :class="activeValue === value.id ? 'text-slate-300' : 'text-slate-400'"
+            >
+              {{ value.title }}
+            </span>
+          </button>
+        </div>
+        
+        <!-- Active Value Content - Main Content -->
+        <div class="lg:col-span-4">
+          <div class="bg-navy shadow-lg border-l-4 border-slate-400 p-8 h-full relative overflow-hidden">
+            <!-- Background Icon -->
+            <component
+              :is="getActiveValue.icon"
+              class="absolute -bottom-10 -right-10 size-60 text-slate-800 opacity-10"
+            />
+            
+            <!-- Content -->
+            <div class="relative z-10">
+              <div class="flex items-center mb-6">
+                <component
+                  :is="getActiveValue.icon"
+                  class="size-10 text-slate-300 mr-4"
+                />
+                <div>
+                  <h3 class="text-3xl font-bold">{{ getActiveValue.title }}</h3>
+                  <p class="text-xl text-slate-400 italic">{{ getActiveValue.tagline }}</p>
+                </div>
+              </div>
+              
+              <div 
+                class="text-lg leading-relaxed"
+                v-html="getActiveValue.description"
+              ></div>
+              
+              <!-- Example of how the value is applied -->
+              <div class="mt-8 pt-6 border-t border-slate-700">
+                <h4 class="text-xl font-semibold mb-3">How We Apply This Value:</h4>
+                <div class="flex items-start">
+                  <span class="bg-slate-700 p-1 rounded-full mr-3">
+                    <ChevronRightIcon class="size-4 text-slate-300" />
+                  </span>
+                  <p>{{ getActiveValue.application || 'This core value guides our approach to every project, influencing how we interact with clients, collaborate with partners, and deliver our services.' }}</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <p
-            class="text-lg pb-6 px-6"
-            v-if="value.id === currentCard"
-            v-html="value.description"
-          />
-        </li>
-      </ul>
-      <div class="flex justify-center items-center">
+        </div>
+      </div>
+
+      <div class="flex justify-center items-center mt-12">
         <button
           @click="scrollToNextSection('milestones')"
           class="bg-slate-300 group text-navy font-semibold px-4 py-2 border-2 border-slate-300 shadow-lg transition duration-200 hover:scale-115 cursor-pointer"

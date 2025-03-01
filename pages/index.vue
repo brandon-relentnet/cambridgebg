@@ -44,7 +44,8 @@
 
     <!-- 14. Board of Directors -->
     <SectionsBoardOfDirectors />
-    
+
     <!-- 15. Community Outreach -->
+    <SectionsCommunityOutreach />
   </div>
 </template>
