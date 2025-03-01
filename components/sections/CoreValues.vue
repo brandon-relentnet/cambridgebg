@@ -20,7 +20,7 @@ function toggleCard(id) {
     <div class="container mx-auto py-block">
       <div class="w-full md:w-1/3 text-left md:text-center mx-auto mb-12">
         <h2 class="text-5xl font-bold mb-4">Our Core Values</h2>
-        <p class="text-lg ">
+        <p class="text-lg">
           The guiding principles that shape our work and define our legacy.
         </p>
       </div>
@@ -32,14 +32,11 @@ function toggleCard(id) {
           v-auto-animate
         >
           <div
-            class="question  text-3xl font-semibold p-6"
+            class="question text-3xl font-semibold p-6"
             @click="toggleCard(value.id)"
           >
-            <component
-              :is="value.icon"
-              class="size-6 inline-block mr-2 "
-            />
-            <h3 class="text-2xl font-semibold  inline-block">
+            <component :is="value.icon" class="size-6 inline-block mr-2" />
+            <h3 class="text-2xl font-semibold inline-block">
               {{ value.title }}
             </h3>
             <p class="text-lg text-slate-400 italic mt-2">

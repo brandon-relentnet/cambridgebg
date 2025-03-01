@@ -38,10 +38,13 @@
 
     <!-- 12. Trade Partners -->
     <SectionsTradePartners />
+
+    <!-- 13. Leadership Bios -->
+    <SectionsLeadershipBios />
+
+    <!-- 14. Board of Directors -->
+    <SectionsBoardOfDirectors />
     
-    <!-- 13. Company History -->
-    <!-- 14. Leadership Bios -->
-    <!-- 15. Board of Directors -->
-    <!-- 16. Community Outreach -->
+    <!-- 15. Community Outreach -->
   </div>
 </template>
