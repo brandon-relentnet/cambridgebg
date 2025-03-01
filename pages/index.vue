@@ -32,8 +32,10 @@
 
     <!-- 10. Case Studies -->
     <SectionsCaseStudies />
-    
+
     <!-- 11. Past Clients -->
+    <SectionsPastClients />
+    
     <!-- 12. Trade Partners -->
     <!-- 13. Company History -->
     <!-- 14. Leadership Bios -->
