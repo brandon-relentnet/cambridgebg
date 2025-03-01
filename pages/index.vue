@@ -22,7 +22,11 @@
     <SectionsMarketsWeServe />
 
     <!-- 7. Competitive Advantage -->
+    <SectionsCompetitiveAdvantage />
+
     <!-- 8. Safety on the Job Site -->
+    <SectionsSafetyOnTheJob />
+    
     <!-- 9. Industry Awards -->
     <!-- 10. Case Studies -->
     <!-- 11. Past Clients -->

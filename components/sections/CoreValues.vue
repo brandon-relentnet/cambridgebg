@@ -15,7 +15,7 @@ function toggleCard(id) {
 <template>
   <section
     id="core-values"
-    class="relative px-8 2xl:px-60 py-section bg-navy text-slate-300"
+    class="relative px-8 2xl:px-60 py-section bg-slate-800 text-slate-300"
   >
     <div class="container mx-auto py-block">
       <div class="w-full md:w-1/3 text-left md:text-center mx-auto mb-12">
@@ -26,7 +26,7 @@ function toggleCard(id) {
       </div>
       <ul class="list-style-none m-0 p-0 max-w-200 mx-auto mb-10">
         <li
-          class="border-l-4 border-slate-400 block overflow-hidden mb-2 cursor-pointer bg-slate-800"
+          class="border-l-4 border-slate-400 block overflow-hidden mb-2 cursor-pointer bg-navy"
           v-for="value in coreValues"
           :key="value.id"
           v-auto-animate

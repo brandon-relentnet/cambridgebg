@@ -81,7 +81,7 @@ function setActiveMarket(id) {
 <template>
   <section
     id="markets-we-serve"
-    class="relative px-8 2xl:px-60 py-section bg-navy text-slate-300"
+    class="relative px-8 2xl:px-60 py-section bg-slate-800 text-slate-300"
   >
     <div class="container mx-auto py-block">
       <div

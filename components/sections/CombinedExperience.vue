@@ -34,7 +34,7 @@ onMounted(() => {
 <template>
   <section
     id="combined-experience"
-    class="relative px-8 2xl:px-60 py-section bg-navy text-slate-300"
+    class="relative px-8 2xl:px-60 py-section bg-slate-800 text-slate-300"
   >
     <div class="container mx-auto py-block">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -69,7 +69,7 @@ onMounted(() => {
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div
-            class="bg-slate-800 p-8 shadow-lg border-l-4 border-slate-400 relative overflow-hidden"
+            class="bg-navy p-8 shadow-lg border-l-4 border-slate-500 relative overflow-hidden"
           >
             <ChartPieIcon
               class="size-20 text-slate-600 absolute -bottom-2 -right-2 opacity-30"
@@ -79,7 +79,7 @@ onMounted(() => {
             <p class="text-slate-400">Combined industry expertise</p>
           </div>
           <div
-            class="bg-slate-800 p-8 shadow-lg border-l-4 border-slate-400 relative overflow-hidden"
+            class="bg-navy p-8 shadow-lg border-l-4 border-slate-500 relative overflow-hidden"
           >
             <ChartPieIcon
               class="size-20 text-slate-600 absolute -bottom-2 -right-2 opacity-30"
@@ -88,7 +88,7 @@ onMounted(() => {
             <p class="text-6xl font-bold mb-2">{{ Math.floor(projects) }}+</p>
             <p class="text-slate-400">Successful builds nationwide</p>
           </div>
-          <div class="bg-slate-800 p-8 shadow-lg border-l-4 border-slate-400">
+          <div class="bg-navy p-8 shadow-lg border-l-4 border-slate-500">
             <h3 class="text-2xl font-bold mb-2">Certifications</h3>
             <ul class="list-disc list-inside">
               <li>LEED Certified Professionals</li>
@@ -96,7 +96,7 @@ onMounted(() => {
               <li>Certified Project Managers</li>
             </ul>
           </div>
-          <div class="bg-slate-800 p-8 shadow-lg border-l-4 border-slate-400">
+          <div class="bg-navy p-8 shadow-lg border-l-4 border-slate-500">
             <h3 class="text-2xl font-bold mb-2">Industry Expertise</h3>
             <ul class="list-disc list-inside">
               <li>Commercial Construction</li>
