@@ -26,9 +26,13 @@
 
     <!-- 8. Safety on the Job Site -->
     <SectionsSafetyOnTheJob />
-    
+
     <!-- 9. Industry Awards -->
+    <SectionsIndustryAwards />
+
     <!-- 10. Case Studies -->
+    <SectionsCaseStudies />
+    
     <!-- 11. Past Clients -->
     <!-- 12. Trade Partners -->
     <!-- 13. Company History -->
