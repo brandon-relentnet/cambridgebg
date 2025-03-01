@@ -83,7 +83,10 @@ function setActiveCategory(id) {
 
 // Computed property to get the active category
 const currentCategory = computed(() => {
-  return tradeCategories.find(category => category.id === activeCategory.value) || tradeCategories[0];
+  return (
+    tradeCategories.find((category) => category.id === activeCategory.value) ||
+    tradeCategories[0]
+  );
 });
 </script>
 

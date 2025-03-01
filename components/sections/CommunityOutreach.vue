@@ -62,7 +62,7 @@ onMounted(() => {
     const interval = setInterval(() => {
       // With reactive, direct property changes should be detected
       stat.value += increment;
-      
+
       if (stat.value >= stat.target) {
         stat.value = stat.target;
         clearInterval(interval);

@@ -11,7 +11,7 @@ function setActiveValue(id) {
 }
 
 const getActiveValue = computed(() => {
-  return coreValues.find(val => val.id === activeValue.value);
+  return coreValues.find((val) => val.id === activeValue.value);
 });
 </script>
 
@@ -36,33 +36,41 @@ const getActiveValue = computed(() => {
             :key="`nav-${value.id}`"
             @click="setActiveValue(value.id)"
             class="flex items-center p-4 text-left transition-all duration-200 border-l-4"
-            :class="activeValue === value.id 
-              ? 'bg-navy border-slate-300 shadow-md' 
-              : 'bg-transparent border-transparent hover:border-slate-600 hover:bg-slate-700'"
+            :class="
+              activeValue === value.id
+                ? 'bg-navy border-slate-300 shadow-md'
+                : 'bg-transparent border-transparent hover:border-slate-600 hover:bg-slate-700'
+            "
           >
             <component
               :is="value.icon"
               class="size-5 mr-3"
-              :class="activeValue === value.id ? 'text-slate-300' : 'text-slate-400'"
+              :class="
+                activeValue === value.id ? 'text-slate-300' : 'text-slate-400'
+              "
             />
-            <span 
+            <span
               class="font-semibold"
-              :class="activeValue === value.id ? 'text-slate-300' : 'text-slate-400'"
+              :class="
+                activeValue === value.id ? 'text-slate-300' : 'text-slate-400'
+              "
             >
               {{ value.title }}
             </span>
           </button>
         </div>
-        
+
         <!-- Active Value Content - Main Content -->
         <div class="lg:col-span-4">
-          <div class="bg-navy shadow-lg border-l-4 border-slate-400 p-8 h-full relative overflow-hidden">
+          <div
+            class="bg-navy shadow-lg border-l-4 border-slate-400 p-8 h-full relative overflow-hidden"
+          >
             <!-- Background Icon -->
             <component
               :is="getActiveValue.icon"
               class="absolute -bottom-10 -right-10 size-60 text-slate-800 opacity-10"
             />
-            
+
             <!-- Content -->
             <div class="relative z-10">
               <div class="flex items-center mb-6">
@@ -72,23 +80,32 @@ const getActiveValue = computed(() => {
                 />
                 <div>
                   <h3 class="text-3xl font-bold">{{ getActiveValue.title }}</h3>
-                  <p class="text-xl text-slate-400 italic">{{ getActiveValue.tagline }}</p>
+                  <p class="text-xl text-slate-400 italic">
+                    {{ getActiveValue.tagline }}
+                  </p>
                 </div>
               </div>
-              
-              <div 
+
+              <div
                 class="text-lg leading-relaxed"
                 v-html="getActiveValue.description"
               ></div>
-              
+
               <!-- Example of how the value is applied -->
               <div class="mt-8 pt-6 border-t border-slate-700">
-                <h4 class="text-xl font-semibold mb-3">How We Apply This Value:</h4>
+                <h4 class="text-xl font-semibold mb-3">
+                  How We Apply This Value:
+                </h4>
                 <div class="flex items-start">
                   <span class="bg-slate-700 p-1 rounded-full mr-3">
                     <ChevronRightIcon class="size-4 text-slate-300" />
                   </span>
-                  <p>{{ getActiveValue.application || 'This core value guides our approach to every project, influencing how we interact with clients, collaborate with partners, and deliver our services.' }}</p>
+                  <p>
+                    {{
+                      getActiveValue.application ||
+                      "This core value guides our approach to every project, influencing how we interact with clients, collaborate with partners, and deliver our services."
+                    }}
+                  </p>
                 </div>
               </div>
             </div>
