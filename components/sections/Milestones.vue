@@ -53,6 +53,17 @@ import { milestones } from "~/data/siteData";
             </NuxtLink>
           </li>
         </ol>
+        <div class="flex justify-center items-center">
+        <button
+          @click="scrollToNextSection('combined-experience')"
+          class="bg-navy group text-slate-300 font-semibold px-4 py-2 border-2 border-navy shadow-lg transition duration-200 hover:scale-115 cursor-pointer"
+        >
+          Milestones
+          <ChevronRightIcon
+            class="size-5 -mt-0.5 group-hover:rotate-90 inline-block transition duration-200"
+          />
+        </button>
+      </div>
       </div>
     </section>
 </template>

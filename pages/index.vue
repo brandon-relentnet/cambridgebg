@@ -14,9 +14,13 @@
 
     <!-- 4. Combined Experience Section -->
     <SectionsCombinedExperience />
-    
+
     <!-- 5. Services Provided -->
+    <SectionsServicesProvided />
+
     <!-- 6. Markets We Serve -->
+    <SectionsMarketsWeServe />
+
     <!-- 7. Competitive Advantage -->
     <!-- 8. Safety on the Job Site -->
     <!-- 9. Industry Awards -->
