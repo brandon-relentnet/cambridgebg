@@ -47,5 +47,8 @@
 
     <!-- 15. Community Outreach -->
     <SectionsCommunityOutreach />
+
+    <!-- 16. Contact Us -->
+    <SectionsContactCTA />
   </div>
 </template>
