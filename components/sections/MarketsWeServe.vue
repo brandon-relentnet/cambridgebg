@@ -5,6 +5,13 @@ import { vAutoAnimate } from "@formkit/auto-animate";
 import { scrollToNextSection } from "~/utils/autoScroll";
 import { markets } from "~/data/siteData";
 
+const props = defineProps({
+  showButton: {
+    type: Boolean,
+    default: false
+  }
+});
+
 const activeMarket = ref(null);
 
 function setActiveMarket(id) {
@@ -30,6 +37,7 @@ function setActiveMarket(id) {
           </p>
         </div>
         <button
+          v-if="showButton"
           @click="scrollToNextSection('competitive-advantage')"
           class="bg-slate-300 group text-navy font-semibold px-4 py-2 border-2 border-slate-300 shadow-lg transition duration-200 hover:scale-115 cursor-pointer"
         >

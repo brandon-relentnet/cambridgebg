@@ -4,6 +4,13 @@ import { ChevronRightIcon } from "@heroicons/vue/24/solid";
 import { scrollToNextSection } from "~/utils/autoScroll";
 import { advantages } from "~/data/siteData";
 
+const props = defineProps({
+  showButton: {
+    type: Boolean,
+    default: false
+  }
+});
+
 const activeAdvantage = ref(1);
 
 function setActiveAdvantage(id) {
@@ -39,6 +46,7 @@ const getActiveAdvantage = () => {
             </p>
           </div>
           <button
+            v-if="showButton"
             @click="scrollToNextSection('safety-on-the-job')"
             class="bg-navy group text-slate-300 font-semibold px-4 py-2 border-2 border-navy shadow-lg transition duration-200 hover:scale-115 cursor-pointer mt-4"
           >

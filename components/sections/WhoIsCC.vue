@@ -1,6 +1,13 @@
 <script setup>
 import { scrollToNextSection } from "~/utils/autoScroll";
 import { ChevronRightIcon } from "@heroicons/vue/24/solid";
+
+const props = defineProps({
+  showButton: {
+    type: Boolean,
+    default: false
+  }
+});
 </script>
 
 <template>
@@ -38,6 +45,7 @@ import { ChevronRightIcon } from "@heroicons/vue/24/solid";
             exceed expectations.
           </p>
           <button
+            v-if="showButton"
             @click="scrollToNextSection('core-values')"
             class="bg-navy group text-slate-300 font-semibold px-4 py-2 border-2 border-navy shadow-lg transition duration-200 hover:scale-115 cursor-pointer"
           >

@@ -4,6 +4,13 @@ import { ChevronRightIcon, UserCircleIcon } from "@heroicons/vue/24/solid";
 import { scrollToNextSection } from "~/utils/autoScroll";
 import { leadershipTeam } from "~/data/siteData";
 
+const props = defineProps({
+  showButton: {
+    type: Boolean,
+    default: false
+  }
+});
+
 // Filter featured leaders for top row
 const featuredLeaders = computed(() =>
   leadershipTeam.filter((leader) => leader.featured)
@@ -42,6 +49,7 @@ function setActiveLeader(id) {
           </p>
         </div>
         <button
+          v-if="showButton"
           @click="scrollToNextSection('board-of-directors')"
           class="bg-navy group text-slate-300 font-semibold px-4 py-2 border-2 border-navy shadow-lg transition duration-200 hover:scale-115 cursor-pointer"
         >

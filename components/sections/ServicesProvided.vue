@@ -4,6 +4,13 @@ import { ChevronRightIcon } from "@heroicons/vue/24/solid";
 import { scrollToNextSection } from "~/utils/autoScroll";
 import { services } from "~/data/siteData";
 
+const props = defineProps({
+  showButton: {
+    type: Boolean,
+    default: false
+  }
+});
+
 const hoveredService = ref(null);
 
 function setHoveredService(id) {
@@ -31,6 +38,7 @@ function clearHoveredService() {
         </p>
         <div class="flex">
           <button
+            v-if="showButton"
             @click="scrollToNextSection('markets-we-serve')"
             class="bg-navy group text-slate-300 font-semibold px-4 py-2 border-2 border-navy shadow-lg transition duration-200 hover:scale-115 cursor-pointer"
           >

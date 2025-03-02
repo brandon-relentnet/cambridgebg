@@ -1,10 +1,15 @@
 <script setup>
-import { ref, reactive, onMounted } from "vue";
+import { reactive, onMounted } from "vue";
 import { HeartIcon, ChevronRightIcon } from "@heroicons/vue/24/solid";
 import { initiatives, impactStats } from "~/data/siteData";
 
-// Use reactive instead of ref for the stats array
-const stats = reactive(JSON.parse(JSON.stringify(impactStats)));
+// Initialize the value property for each stat
+const stats = reactive(
+  impactStats.map((stat) => ({
+    ...stat,
+    value: 0, // Initialize value to 0 for animation
+  }))
+);
 
 onMounted(() => {
   // Animate stats

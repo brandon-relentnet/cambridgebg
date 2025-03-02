@@ -5,6 +5,13 @@ import { scrollToNextSection } from "~/utils/autoScroll";
 import { vAutoAnimate } from "@formkit/auto-animate";
 import { directors } from "~/data/siteData";
 
+const props = defineProps({
+  showButton: {
+    type: Boolean,
+    default: false
+  }
+});
+
 const expandedDirector = ref(null);
 
 function toggleDirector(id) {
@@ -31,6 +38,7 @@ function toggleDirector(id) {
           </p>
         </div>
         <button
+          v-if="showButton"
           @click="scrollToNextSection('community-outreach')"
           class="bg-slate-300 group text-navy font-semibold px-4 py-2 border-2 border-slate-300 shadow-lg transition duration-200 hover:scale-115 cursor-pointer"
         >

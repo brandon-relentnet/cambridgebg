@@ -4,6 +4,13 @@ import { ChevronRightIcon, ArrowRightIcon } from "@heroicons/vue/24/solid";
 import { scrollToNextSection } from "~/utils/autoScroll";
 import { caseStudies } from "~/data/siteData";
 
+const props = defineProps({
+  showButton: {
+    type: Boolean,
+    default: false
+  }
+});
+
 const activeStudy = ref(caseStudies[0].id);
 
 function setActiveStudy(id) {
@@ -36,6 +43,7 @@ const getActiveStudy = computed(() => {
           </p>
         </div>
         <button
+          v-if="showButton"
           @click="scrollToNextSection('past-clients')"
           class="bg-slate-300 group text-navy font-semibold px-4 py-2 border-2 border-slate-300 shadow-lg transition duration-200 hover:scale-115 cursor-pointer"
         >

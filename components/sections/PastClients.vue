@@ -4,6 +4,13 @@ import { ChevronRightIcon } from "@heroicons/vue/24/solid";
 import { scrollToNextSection } from "~/utils/autoScroll";
 import { clients, testimonials } from "~/data/siteData";
 
+const props = defineProps({
+  showButton: {
+    type: Boolean,
+    default: false
+  }
+});
+
 const keenSlider = ref(null);
 
 onMounted(async () => {
@@ -77,6 +84,7 @@ onMounted(async () => {
           </p>
         </div>
         <button
+          v-if="showButton"
           @click="scrollToNextSection('trade-partners')"
           class="bg-navy group text-slate-300 font-semibold px-4 py-2 border-2 border-navy shadow-lg transition duration-200 hover:scale-115 cursor-pointer"
         >

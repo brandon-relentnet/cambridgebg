@@ -359,9 +359,9 @@ export const initiatives = [
 
 // Community Impact Stats
 export const impactStats = [
-    { id: 1, value: 1250, label: "Volunteer Hours Annually" },
-    { id: 2, value: 15, label: "Community Partners" },
-    { id: 3, value: 350000, label: "Annual Charitable Contributions ($)" },
+    { id: 1, value: 0, target: 1250, label: "Volunteer Hours Annually" },
+    { id: 2, value: 0, target: 15, label: "Community Partners" },
+    { id: 3, value: 0, target: 350000, label: "Annual Charitable Contributions ($)" }
 ];
 
 // Markets We Serve

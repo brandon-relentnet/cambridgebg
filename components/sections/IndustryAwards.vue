@@ -3,6 +3,13 @@ import { ChevronRightIcon } from "@heroicons/vue/24/solid";
 import { scrollToNextSection } from "~/utils/autoScroll";
 import { awards } from "~/data/siteData";
 
+const props = defineProps({
+  showButton: {
+    type: Boolean,
+    default: false
+  }
+});
+
 // Filter featured awards
 const featuredAwards = awards.filter((award) => award.featured);
 // Filter non-featured awards
@@ -29,6 +36,7 @@ const otherAwards = awards.filter((award) => !award.featured);
           </p>
         </div>
         <button
+          v-if="showButton"
           @click="scrollToNextSection('case-studies')"
           class="bg-navy group text-slate-300 font-semibold px-4 py-2 border-2 border-navy shadow-lg transition duration-200 hover:scale-115 cursor-pointer"
         >

@@ -4,6 +4,13 @@ import {
   CalendarDateRangeIcon,
 } from "@heroicons/vue/24/solid";
 import { milestones } from "~/data/siteData";
+
+const props = defineProps({
+  showButton: {
+    type: Boolean,
+    default: false
+  }
+});
 </script>
 
 <template>
@@ -58,6 +65,7 @@ import { milestones } from "~/data/siteData";
       </ol>
       <div class="flex justify-center items-center">
         <button
+          v-if="showButton"
           @click="scrollToNextSection('combined-experience')"
           class="bg-navy group text-slate-300 font-semibold px-4 py-2 border-2 border-navy shadow-lg transition duration-200 hover:scale-115 cursor-pointer"
         >

@@ -3,6 +3,13 @@ import { ref, onMounted } from "vue";
 import { ChartPieIcon, ChevronRightIcon } from "@heroicons/vue/24/solid";
 import { scrollToNextSection } from "~/utils/autoScroll";
 
+const props = defineProps({
+  showButton: {
+    type: Boolean,
+    default: false
+  }
+});
+
 const years = ref(0);
 const target = 120; // Total years of combined experience
 const projects = ref(0);
@@ -58,6 +65,7 @@ onMounted(() => {
             </p>
           </div>
           <button
+            v-if="showButton"
             @click="scrollToNextSection('services-provided')"
             class="bg-slate-300 group text-navy font-semibold px-4 py-2 border-2 border-slate-300 shadow-lg transition duration-200 hover:scale-115 cursor-pointer mt-8"
           >

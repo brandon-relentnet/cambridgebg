@@ -4,46 +4,46 @@
     <SectionsHomeHero />
 
     <!-- 1. Who is Cambridge Construction? -->
-    <SectionsWhoIsCC />
+    <SectionsWhoIsCC :showButton="true" />
 
     <!-- 2. Core Values -->
-    <SectionsCoreValues />
+    <SectionsCoreValues :showButton="true" />
 
     <!-- 3. Milestones -->
-    <SectionsMilestones />
+    <SectionsMilestones :showButton="true" />
 
     <!-- 4. Combined Experience Section -->
-    <SectionsCombinedExperience />
+    <SectionsCombinedExperience :showButton="true" />
 
     <!-- 5. Services Provided -->
-    <SectionsServicesProvided />
+    <SectionsServicesProvided :showButton="true" />
 
     <!-- 6. Markets We Serve -->
-    <SectionsMarketsWeServe />
+    <SectionsMarketsWeServe :showButton="true" />
 
     <!-- 7. Competitive Advantage -->
-    <SectionsCompetitiveAdvantage />
+    <SectionsCompetitiveAdvantage :showButton="true" />
 
     <!-- 8. Safety on the Job Site -->
-    <SectionsSafetyOnTheJob />
+    <SectionsSafetyOnTheJob :showButton="true" />
 
     <!-- 9. Industry Awards -->
-    <SectionsIndustryAwards />
+    <SectionsIndustryAwards :showButton="true" />
 
     <!-- 10. Case Studies -->
-    <SectionsCaseStudies />
+    <SectionsCaseStudies :showButton="true" />
 
     <!-- 11. Past Clients -->
-    <SectionsPastClients />
+    <SectionsPastClients :showButton="true" />
 
     <!-- 12. Trade Partners -->
-    <SectionsTradePartners />
+    <SectionsTradePartners :showButton="true" />
 
     <!-- 13. Leadership Bios -->
-    <SectionsLeadershipBios />
+    <SectionsLeadershipBios :showButton="true" />
 
     <!-- 14. Board of Directors -->
-    <SectionsBoardOfDirectors />
+    <SectionsBoardOfDirectors :showButton="true" />
 
     <!-- 15. Community Outreach -->
     <SectionsCommunityOutreach />

@@ -4,6 +4,13 @@ import { ChevronRightIcon } from "@heroicons/vue/24/solid";
 import { scrollToNextSection } from "~/utils/autoScroll";
 import { coreValues } from "~/data/siteData";
 
+const props = defineProps({
+  showButton: {
+    type: Boolean,
+    default: false
+  }
+});
+
 const activeValue = ref(coreValues[0].id);
 
 function setActiveValue(id) {
@@ -115,6 +122,7 @@ const getActiveValue = computed(() => {
 
       <div class="flex justify-center items-center mt-12">
         <button
+          v-if="showButton"
           @click="scrollToNextSection('milestones')"
           class="bg-slate-300 group text-navy font-semibold px-4 py-2 border-2 border-slate-300 shadow-lg transition duration-200 hover:scale-115 cursor-pointer"
         >
