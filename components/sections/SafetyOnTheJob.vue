@@ -1,68 +1,7 @@
 <script setup>
-import { ref } from "vue";
 import { ChevronRightIcon, ShieldCheckIcon } from "@heroicons/vue/24/solid";
 import { scrollToNextSection } from "~/utils/autoScroll";
-
-const safetyMetrics = [
-  { id: 1, label: "Incident Free Days", value: "850+", icon: "CalendarIcon" },
-  {
-    id: 2,
-    label: "Safety Training Hours",
-    value: "8,500+",
-    icon: "AcademicCapIcon",
-  },
-  {
-    id: 3,
-    label: "Safety Certifications",
-    value: "100%",
-    icon: "DocumentCheckIcon",
-  },
-  {
-    id: 4,
-    label: "Industry Safety Rating",
-    value: "Top 5%",
-    icon: "ChartBarIcon",
-  },
-];
-
-const safetyPractices = [
-  {
-    id: 1,
-    title: "Comprehensive Training",
-    description:
-      "Every team member completes extensive safety training before entering any job site, with regular refresher courses to keep safety knowledge current.",
-  },
-  {
-    id: 2,
-    title: "Daily Safety Briefings",
-    description:
-      "Each workday begins with a detailed safety briefing addressing site-specific risks and hazard mitigation strategies.",
-  },
-  {
-    id: 3,
-    title: "Regular Safety Audits",
-    description:
-      "Our dedicated safety officers conduct weekly inspections across all projects to identify and address potential safety concerns.",
-  },
-  {
-    id: 4,
-    title: "Advanced Equipment",
-    description:
-      "We invest in the latest safety equipment and personal protective gear to ensure optimal protection for our workforce.",
-  },
-  {
-    id: 5,
-    title: "Incident Response Protocol",
-    description:
-      "In the rare event of an incident, our comprehensive response protocols ensure immediate action and thorough investigation to prevent recurrence.",
-  },
-  {
-    id: 6,
-    title: "Subcontractor Vetting",
-    description:
-      "We partner only with subcontractors who demonstrate the same unwavering commitment to safety excellence.",
-  },
-];
+import { safetyMetrics, safetyPractices } from "~/data/siteData";
 </script>
 
 <template>

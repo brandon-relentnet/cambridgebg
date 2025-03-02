@@ -3,69 +3,7 @@ import { ref } from "vue";
 import { ChevronRightIcon } from "@heroicons/vue/24/solid";
 import { scrollToNextSection } from "~/utils/autoScroll";
 import { vAutoAnimate } from "@formkit/auto-animate";
-
-const directors = [
-  {
-    id: 1,
-    name: "James Cambridge",
-    title: "Founder & Chairman",
-    expertise: "Construction Management, Business Development",
-    background:
-      "Founded Cambridge Construction in 1985 after 15 years working in various roles within the construction industry. Under James's leadership, Cambridge grew from a small local contractor to a regional leader in commercial construction.",
-    highlights:
-      "Recipient of the Lifetime Achievement Award from the National Association of General Contractors",
-  },
-  {
-    id: 2,
-    name: "Robert Cambridge",
-    title: "Chief Executive Officer",
-    expertise: "Strategic Planning, Architectural Engineering",
-    background:
-      "Son of founder James Cambridge, Robert assumed the role of CEO in 2018 after serving in various leadership positions within the company. His dual expertise in business management and architectural engineering has been instrumental in the company's continued growth and innovation.",
-    highlights:
-      "Named among 'Top 40 Under 40' in Construction Executive magazine",
-  },
-  {
-    id: 3,
-    name: "Eleanor Winters",
-    title: "Independent Director",
-    expertise: "Finance, Real Estate Development",
-    background:
-      "Former CFO of Landmark Properties, a national real estate development firm. Eleanor brings extensive financial expertise and industry knowledge to the board, with particular focus on fiscal responsibility and strategic expansion opportunities.",
-    highlights:
-      "Certified Public Accountant with over 25 years of experience in financial leadership",
-  },
-  {
-    id: 4,
-    name: "Dr. Thomas Wright",
-    title: "Independent Director",
-    expertise: "Sustainable Construction, Academic Research",
-    background:
-      "Professor of Sustainable Construction Practices at the University of Michigan and author of several influential books on green building technologies. Dr. Wright provides valuable insight on sustainability initiatives and emerging construction technologies.",
-    highlights:
-      "Lead researcher on multiple National Science Foundation grants focused on sustainable building materials",
-  },
-  {
-    id: 5,
-    name: "Patricia Lopez",
-    title: "Independent Director",
-    expertise: "Legal, Corporate Governance",
-    background:
-      "Partner at Hayes & Lopez Law Firm, specializing in construction law and corporate governance. Patricia's legal expertise helps ensure Cambridge Construction maintains compliance with industry regulations while minimizing risk exposure.",
-    highlights:
-      "Named to 'Best Lawyers in America' for Construction Law for five consecutive years",
-  },
-  {
-    id: 6,
-    name: "Marcus Johnson",
-    title: "Independent Director",
-    expertise: "Technology Integration, Digital Transformation",
-    background:
-      "Former CTO of BuildTech Solutions, a construction technology firm. Marcus provides guidance on technology adoption and digital transformation strategies that keep Cambridge at the forefront of industry innovation.",
-    highlights:
-      "Pioneer in implementing AI and machine learning applications in construction management",
-  },
-];
+import { directors } from "~/data/siteData";
 
 const expandedDirector = ref(null);
 
@@ -86,7 +24,7 @@ function toggleDirector(id) {
         <div class="w-full md:w-1/2 mb-6 md:mb-0">
           <h2 class="text-5xl font-bold mb-4">Board of Directors</h2>
           <p class="text-lg">
-            Cambridge Construction is guided by a diverse board of directors
+            Cambridge Building Group is guided by a diverse board of directors
             with extensive experience in construction, business management,
             finance, and innovation—ensuring strong governance and strategic
             direction.
@@ -107,7 +45,7 @@ function toggleDirector(id) {
       <div class="bg-navy p-6 shadow-lg mb-10 border-l-4 border-slate-400">
         <h3 class="text-2xl font-bold mb-4">Board Structure</h3>
         <p class="mb-4">
-          Cambridge Construction maintains a balanced board composition with
+          Cambridge Building Group maintains a balanced board composition with
           both company leadership and independent directors, ensuring effective
           oversight and diverse perspectives. The board operates through the
           following committees:

@@ -1,29 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
 import { Bars3Icon, XMarkIcon, PhoneIcon } from "@heroicons/vue/24/solid";
-
-const navItems = {
-  home: {
-    title: "Home",
-    link: "/",
-  },
-  about: {
-    title: "About",
-    link: "/about",
-  },
-  services: {
-    title: "Services",
-    link: "/services",
-  },
-  portfolio: {
-    title: "Portfolio",
-    link: "/portfolio",
-  },
-  contact: {
-    title: "Contact",
-    link: "/contact",
-  },
-};
+import { navItems } from "~/data/siteData";
 
 // State for mobile menu
 const isMobileMenuOpen = ref(false);
@@ -66,11 +44,11 @@ onUnmounted(() => {
   <header>
     <!-- Main Navigation Bar -->
     <nav
-      class="w-full h-20 fixed top-0 left-0 z-50 transition-all duration-300"
+      class="w-full h-20 fixed top-0 left-0 z-50 transition-all bg-slate-100 duration-300"
       :class="[
         isScrolled
-          ? 'bg-slate-100 shadow-md'
-          : 'bg-slate-100 md:bg-transparent',
+          ? 'shadow-md'
+          : 'shadow-none',
         isMobileMenuOpen ? 'bg-slate-100' : '',
       ]"
     >
@@ -81,7 +59,7 @@ onUnmounted(() => {
         <NuxtLink to="/" class="flex items-center" @click="closeMobileMenu">
           <NuxtImg
             src="/cbg-logo-transparent.png"
-            alt="Cambridge Construction Logo"
+            alt="Cambridge Building Group Logo"
             class="h-14 w-auto"
             quality="100"
           />

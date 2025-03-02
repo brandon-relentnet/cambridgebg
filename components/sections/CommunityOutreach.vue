@@ -1,57 +1,10 @@
 <script setup>
 import { ref, reactive, onMounted } from "vue";
-import {
-  HeartIcon,
-  ChevronRightIcon,
-  HomeIcon,
-  AcademicCapIcon,
-  BuildingLibraryIcon,
-} from "@heroicons/vue/24/solid";
-
-const initiatives = [
-  {
-    id: 1,
-    title: "Homes for Heroes",
-    category: "Housing",
-    description:
-      "Cambridge Construction partners with local veterans' organizations to provide home renovations and repairs for military veterans in need. Our team volunteers time, expertise, and materials to ensure veterans have safe, accessible living environments.",
-    impact:
-      "Completed renovations for 35 veterans' homes over the past five years.",
-    icon: HomeIcon,
-  },
-  {
-    id: 2,
-    title: "Building Tomorrow Scholarship",
-    category: "Education",
-    description:
-      "Our annual scholarship program provides financial support to students pursuing degrees in construction management, engineering, and architectural fields, with a focus on increasing diversity within the industry. Recipients also receive mentoring and internship opportunities.",
-    impact:
-      "Awarded $500,000 in scholarships to 50 students since program inception.",
-    icon: AcademicCapIcon,
-  },
-  {
-    id: 3,
-    title: "Community Infrastructure Grants",
-    category: "Public Spaces",
-    description:
-      "Cambridge provides pro-bono construction services and matching grants for community infrastructure projects, including playgrounds, community centers, and public spaces in underserved neighborhoods. These projects create gathering spaces that foster community connections.",
-    impact:
-      "Contributed to 12 community projects with a combined value of over $2 million.",
-    icon: BuildingLibraryIcon,
-  },
-];
+import { HeartIcon, ChevronRightIcon } from "@heroicons/vue/24/solid";
+import { initiatives, impactStats } from "~/data/siteData";
 
 // Use reactive instead of ref for the stats array
-const stats = reactive([
-  { id: 1, value: 0, target: 1250, label: "Volunteer Hours Annually" },
-  { id: 2, value: 0, target: 15, label: "Community Partners" },
-  {
-    id: 3,
-    value: 0,
-    target: 350000,
-    label: "Annual Charitable Contributions ($)",
-  },
-]);
+const stats = reactive(JSON.parse(JSON.stringify(impactStats)));
 
 onMounted(() => {
   // Animate stats
@@ -92,7 +45,7 @@ const formatValue = (value, index) => {
           <h2 class="text-5xl font-bold text-navy">Community Impact</h2>
         </div>
         <p class="text-xl text-slate-700">
-          At Cambridge Construction, we believe in building more than
+          At Cambridge Building Group, we believe in building more than
           structures—we build communities. Our commitment to social
           responsibility drives us to give back to the communities where we live
           and work.

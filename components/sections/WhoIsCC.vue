@@ -14,18 +14,18 @@ import { ChevronRightIcon } from "@heroicons/vue/24/solid";
       <div class="w-full lg:w-1/2">
         <NuxtImg
           src="/cambridge-team.jpg"
-          alt="Cambridge Construction Team"
+          alt="Cambridge Building Group Team"
           class="w-full shadow-left rounded-sm"
           quality="100"
         />
       </div>
       <div class="w-full lg:w-1/2">
         <h2 class="text-5xl font-bold text-navy mb-4">
-          <span class="italic">Who is</span> Cambridge Construction?
+          <span class="italic">Who is</span> Cambridge Building Group?
         </h2>
         <div class="border-l-2 border-slate-700 pl-4">
           <p class="text-lg text-slate-700 mb-4">
-            Cambridge Construction is a premier building company renowned for
+            Cambridge Building Group is a premier building company renowned for
             its innovative designs and unwavering commitment to quality. With
             decades of combined experience, our team of experts transforms
             visions into structures that inspire and endure.

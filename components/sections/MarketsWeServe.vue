@@ -3,73 +3,7 @@ import { ref } from "vue";
 import { ChevronRightIcon } from "@heroicons/vue/24/solid";
 import { vAutoAnimate } from "@formkit/auto-animate";
 import { scrollToNextSection } from "~/utils/autoScroll";
-
-const markets = [
-  {
-    id: 1,
-    title: "Healthcare",
-    description:
-      "Specialized facilities designed with precision for optimal patient care and medical efficiency.",
-    projects: 45,
-    bgClass: "bg-blue-100",
-  },
-  {
-    id: 2,
-    title: "Education",
-    description:
-      "Modern learning environments that inspire creativity and support educational excellence.",
-    projects: 38,
-    bgClass: "bg-green-100",
-  },
-  {
-    id: 3,
-    title: "Hospitality",
-    description:
-      "Luxurious spaces that enhance guest experiences through thoughtful design and craftsmanship.",
-    projects: 62,
-    bgClass: "bg-yellow-100",
-  },
-  {
-    id: 4,
-    title: "Industrial",
-    description:
-      "Functional facilities engineered for operational efficiency and productivity.",
-    projects: 53,
-    bgClass: "bg-orange-100",
-  },
-  {
-    id: 5,
-    title: "Corporate",
-    description:
-      "Innovative workspaces that foster collaboration and reflect corporate identity.",
-    projects: 93,
-    bgClass: "bg-purple-100",
-  },
-  {
-    id: 6,
-    title: "Retail",
-    description:
-      "Engaging environments that enhance customer experiences and drive business success.",
-    projects: 64,
-    bgClass: "bg-red-100",
-  },
-  {
-    id: 7,
-    title: "Residential",
-    description:
-      "Custom homes and multi-family complexes built with attention to detail and quality.",
-    projects: 92,
-    bgClass: "bg-indigo-100",
-  },
-  {
-    id: 8,
-    title: "Government",
-    description:
-      "Secure and efficient facilities that serve the public and institutional needs.",
-    projects: 41,
-    bgClass: "bg-teal-100",
-  },
-];
+import { markets } from "~/data/siteData";
 
 const activeMarket = ref(null);
 

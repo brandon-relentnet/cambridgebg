@@ -1,168 +1,22 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import {
   MagnifyingGlassIcon,
   ArrowsPointingOutIcon,
 } from "@heroicons/vue/24/solid";
+import { projects, categories } from "~/data/portfolioData";
+import { companyInfo } from "~/data/siteData";
 
 // Page metadata
 useHead({
-  title: "Portfolio | Cambridge Construction",
+  title: `Portfolio | ${companyInfo.name}`,
   meta: [
     {
       name: "description",
-      content:
-        "Explore Cambridge Construction's portfolio of commercial, residential, and renovation projects that showcase our expertise and craftsmanship.",
+      content: `Explore ${companyInfo.name}'s portfolio of commercial, residential, and renovation projects that showcase our expertise and craftsmanship.`,
     },
   ],
 });
-
-// Project categories
-const categories = [
-  { id: "all", name: "All Projects" },
-  { id: "commercial", name: "Commercial" },
-  { id: "residential", name: "Residential" },
-  { id: "renovation", name: "Historic Renovation" },
-  { id: "healthcare", name: "Healthcare" },
-  { id: "corporate", name: "Corporate" },
-  { id: "hospitality", name: "Hospitality" },
-];
-
-// Portfolio projects
-const projects = [
-  {
-    id: 1,
-    title: "Riverfront Commercial Plaza",
-    description:
-      "A 250,000 sq ft mixed-use development featuring innovative sustainable design elements and LEED Platinum certification.",
-    category: "commercial",
-    image: "/riverfront-plaza.jpg",
-    location: "Nashville, TN",
-    year: "2023",
-    featured: true,
-  },
-  {
-    id: 2,
-    title: "Madison Opera House Restoration",
-    description:
-      "Meticulous restoration of a 1920s landmark theater, preserving historical elements while implementing modern amenities and safety features.",
-    category: "renovation",
-    image: "/opera-house.jpg",
-    location: "Madison, WI",
-    year: "2022",
-    featured: true,
-  },
-  {
-    id: 3,
-    title: "Hawthorne Medical Center",
-    description:
-      "State-of-the-art medical facility featuring advanced technology infrastructure and patient-centered design principles.",
-    category: "healthcare",
-    image: "/medical-center.jpg",
-    location: "Chicago, IL",
-    year: "2021",
-    featured: true,
-  },
-  {
-    id: 4,
-    title: "Oakridge Corporate Center",
-    description:
-      "Modern office complex designed for flexibility, collaboration, and employee wellness with sustainable features throughout.",
-    category: "corporate",
-    image: "/corporate-center.jpg",
-    location: "Dallas, TX",
-    year: "2022",
-    featured: false,
-  },
-  {
-    id: 5,
-    title: "The Wellington Residence",
-    description:
-      "Luxury custom home featuring contemporary design, smart home technology, and indoor-outdoor living spaces.",
-    category: "residential",
-    image: "/wellington-residence.jpg",
-    location: "Aspen, CO",
-    year: "2023",
-    featured: false,
-  },
-  {
-    id: 6,
-    title: "Harborview Hotel & Spa",
-    description:
-      "Upscale waterfront hospitality property with 180 rooms, conference facilities, and a signature restaurant.",
-    category: "hospitality",
-    image: "/harborview-hotel.jpg",
-    location: "Seattle, WA",
-    year: "2021",
-    featured: false,
-  },
-  {
-    id: 7,
-    title: "Parkside Residences",
-    description:
-      "Multi-family luxury condominium development with 48 units, featuring premium amenities and park views.",
-    category: "residential",
-    image: "/parkside-residences.jpg",
-    location: "Boston, MA",
-    year: "2022",
-    featured: false,
-  },
-  {
-    id: 8,
-    title: "Heritage Bank Headquarters",
-    description:
-      "Corporate headquarters with traditional architecture and cutting-edge technology infrastructure.",
-    category: "corporate",
-    image: "/heritage-bank.jpg",
-    location: "Charlotte, NC",
-    year: "2020",
-    featured: false,
-  },
-  {
-    id: 9,
-    title: "Westside Medical Plaza",
-    description:
-      "Outpatient medical complex with specialty clinics, diagnostic imaging center, and pharmacy services.",
-    category: "healthcare",
-    image: "/westside-medical.jpg",
-    location: "Phoenix, AZ",
-    year: "2023",
-    featured: false,
-  },
-  {
-    id: 10,
-    title: "Victorian Theater Renovation",
-    description:
-      "Historic restoration of an 1890s theater, preserving ornate architectural details while updating systems.",
-    category: "renovation",
-    image: "/victorian-theater.jpg",
-    location: "San Francisco, CA",
-    year: "2021",
-    featured: false,
-  },
-  {
-    id: 11,
-    title: "Lakeview Shopping Center",
-    description:
-      "Modern retail development with 28 store locations, restaurant spaces, and community gathering areas.",
-    category: "commercial",
-    image: "/lakeview-shopping.jpg",
-    location: "Minneapolis, MN",
-    year: "2022",
-    featured: false,
-  },
-  {
-    id: 12,
-    title: "The Grand Hotel Restoration",
-    description:
-      "Renovation of a historic 1930s hotel, preserving art deco elements while adding modern luxury amenities.",
-    category: "hospitality",
-    image: "/grand-hotel.jpg",
-    location: "Miami, FL",
-    year: "2020",
-    featured: false,
-  },
-];
 
 // Active filter
 const activeCategory = ref("all");
@@ -204,7 +58,7 @@ const sortedProjects = computed(() => {
     if (!a.featured && b.featured) return 1;
 
     // Then sort by year (newest first)
-    return b.year - a.year;
+    return parseInt(b.year) - parseInt(a.year);
   });
 });
 

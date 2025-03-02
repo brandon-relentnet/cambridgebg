@@ -5,43 +5,9 @@ import {
   EnvelopeIcon,
   ClockIcon,
 } from "@heroicons/vue/24/solid";
+import { footerLinks, socialLinks, companyInfo } from "~/data/siteData";
 
 const currentYear = new Date().getFullYear();
-const footerLinks = {
-  about: [
-    { name: "Our Story", url: "/about" },
-    { name: "Core Values", url: "/#core-values" },
-    { name: "Leadership Team", url: "/#leadership-bios" },
-    { name: "Board of Directors", url: "/#board-of-directors" },
-    { name: "Careers", url: "/careers" },
-  ],
-  services: [
-    { name: "Commercial Construction", url: "/services/commercial" },
-    { name: "Luxury Residential", url: "/services/residential" },
-    { name: "Historic Renovation", url: "/services/renovation" },
-    { name: "Design-Build Solutions", url: "/services/design-build" },
-    { name: "Pre-Construction Services", url: "/services/pre-construction" },
-  ],
-  projects: [
-    { name: "Case Studies", url: "/#case-studies" },
-    { name: "Portfolio", url: "/portfolio" },
-    { name: "Testimonials", url: "/#past-clients" },
-    { name: "Markets We Serve", url: "/#markets-we-serve" },
-  ],
-  connect: [
-    { name: "Contact Us", url: "/contact" },
-    { name: "Community Outreach", url: "/#community-outreach" },
-    { name: "Trade Partners", url: "/#trade-partners" },
-    { name: "News & Events", url: "/news" },
-  ],
-};
-
-const socialLinks = [
-  { name: "LinkedIn", url: "https://linkedin.com", icon: "i-mdi-linkedin" },
-  { name: "Twitter", url: "https://twitter.com", icon: "i-mdi-twitter" },
-  { name: "Facebook", url: "https://facebook.com", icon: "i-mdi-facebook" },
-  { name: "Instagram", url: "https://instagram.com", icon: "i-mdi-instagram" },
-];
 </script>
 
 <template>
@@ -54,38 +20,37 @@ const socialLinks = [
           <div class="lg:col-span-2">
             <NuxtImg
               src="/cbg-logo-transparent-inverted.png"
-              alt="Cambridge Construction Logo"
+              alt="Cambridge Building Group Logo"
               class="h-16 w-auto mb-6"
               quality="100"
             />
             <p class="mb-6">
-              Building excellence through innovation, integrity, and dedicated
-              craftsmanship since 1985.
+              {{ companyInfo.tagline }}
             </p>
             <div class="space-y-4">
               <div class="flex items-start">
                 <MapPinIcon
                   class="size-5 mr-3 text-slate-300 flex-shrink-0 mt-1"
                 />
-                <p>1234 Construction Way, Nashville, TN 37203</p>
+                <p>{{ companyInfo.address }}</p>
               </div>
               <div class="flex items-start">
                 <PhoneIcon
                   class="size-5 mr-3 text-slate-300 flex-shrink-0 mt-1"
                 />
-                <p>(615) 555-7890</p>
+                <p>{{ companyInfo.phone }}</p>
               </div>
               <div class="flex items-start">
                 <EnvelopeIcon
                   class="size-5 mr-3 text-slate-300 flex-shrink-0 mt-1"
                 />
-                <p>info@cambridgeconstruction.com</p>
+                <p>{{ companyInfo.email }}</p>
               </div>
               <div class="flex items-start">
                 <ClockIcon
                   class="size-5 mr-3 text-slate-300 flex-shrink-0 mt-1"
                 />
-                <p>Monday-Friday: 8am-5pm CST</p>
+                <p>{{ companyInfo.hours }}</p>
               </div>
             </div>
           </div>
@@ -162,7 +127,7 @@ const socialLinks = [
         class="container mx-auto flex flex-col md:flex-row justify-between items-center"
       >
         <p class="mb-4 md:mb-0">
-          &copy; {{ currentYear }} Cambridge Building Group LLC
+          &copy; {{ currentYear }} {{ companyInfo.name }}
           <span class="italic ml-2">All rights reserved.</span>
         </p>
         <div class="flex space-x-6">

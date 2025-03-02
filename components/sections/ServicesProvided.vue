@@ -1,60 +1,8 @@
 <script setup>
 import { ref } from "vue";
-import {
-  ChevronRightIcon,
-  CogIcon,
-  BuildingOfficeIcon,
-  HomeModernIcon,
-  BuildingLibraryIcon,
-  WrenchScrewdriverIcon,
-  BuildingStorefrontIcon,
-} from "@heroicons/vue/24/solid";
+import { ChevronRightIcon } from "@heroicons/vue/24/solid";
 import { scrollToNextSection } from "~/utils/autoScroll";
-
-const services = [
-  {
-    id: 1,
-    icon: BuildingOfficeIcon,
-    title: "Commercial Construction",
-    description:
-      "From office buildings to retail spaces, we deliver commercial properties that balance functionality, aesthetics, and long-term value. Our approach encompasses everything from ground-up construction to tenant improvements.",
-  },
-  {
-    id: 2,
-    icon: HomeModernIcon,
-    title: "Luxury Residential",
-    description:
-      "We create distinctive homes that reflect the unique vision and lifestyle of each client. Our attention to detail and commitment to quality craftsmanship ensures residential spaces that are both beautiful and enduring.",
-  },
-  {
-    id: 3,
-    icon: BuildingLibraryIcon,
-    title: "Historic Renovation",
-    description:
-      "Our specialized team expertly blends preservation techniques with modern functionality to breathe new life into historic structures while maintaining their architectural integrity and cultural significance.",
-  },
-  {
-    id: 4,
-    icon: WrenchScrewdriverIcon,
-    title: "Design-Build Solutions",
-    description:
-      "Our integrated design-build approach streamlines the construction process, reducing costs and timelines while maintaining superior quality through collaborative problem-solving and unified vision.",
-  },
-  {
-    id: 5,
-    icon: BuildingStorefrontIcon,
-    title: "Tenant Improvements",
-    description:
-      "We transform existing commercial spaces to meet the unique needs of businesses, creating environments that enhance productivity, reflect brand identity, and optimize operational efficiency.",
-  },
-  {
-    id: 6,
-    icon: CogIcon,
-    title: "Pre-Construction Services",
-    description:
-      "Our comprehensive pre-construction services include budgeting, scheduling, value engineering, and constructability reviews to identify potential challenges early and establish a solid foundation for project success.",
-  },
-];
+import { services } from "~/data/siteData";
 
 const hoveredService = ref(null);
 

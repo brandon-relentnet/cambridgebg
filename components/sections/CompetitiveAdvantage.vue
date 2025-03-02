@@ -1,60 +1,8 @@
 <script setup>
 import { ref } from "vue";
-import {
-  ChevronRightIcon,
-  TrophyIcon,
-  BoltIcon,
-  ClockIcon,
-  SparklesIcon,
-  CurrencyDollarIcon,
-  UserGroupIcon,
-} from "@heroicons/vue/24/solid";
+import { ChevronRightIcon } from "@heroicons/vue/24/solid";
 import { scrollToNextSection } from "~/utils/autoScroll";
-
-const advantages = [
-  {
-    id: 1,
-    title: "Excellence in Execution",
-    description:
-      "Our proven construction methodologies and rigorous quality control processes ensure every project is completed to the highest standards, on time and within budget.",
-    icon: TrophyIcon,
-  },
-  {
-    id: 2,
-    title: "Innovative Solutions",
-    description:
-      "We employ cutting-edge technologies and creative approaches to overcome complex challenges, delivering innovative solutions that set industry benchmarks.",
-    icon: BoltIcon,
-  },
-  {
-    id: 3,
-    title: "Efficiency & Timeliness",
-    description:
-      "Our streamlined processes and dedicated project management ensure optimal resource utilization and adherence to schedules, minimizing disruptions and maximizing value.",
-    icon: ClockIcon,
-  },
-  {
-    id: 4,
-    title: "Superior Craftsmanship",
-    description:
-      "Our skilled craftsmen bring generations of expertise to every project, combining traditional techniques with modern methods to achieve exceptional results.",
-    icon: SparklesIcon,
-  },
-  {
-    id: 5,
-    title: "Value Engineering",
-    description:
-      "We identify opportunities to enhance project value while maintaining quality and performance, optimizing budgets without compromising on excellence.",
-    icon: CurrencyDollarIcon,
-  },
-  {
-    id: 6,
-    title: "Collaborative Approach",
-    description:
-      "Our transparent communication and partnership-focused relationships with clients, designers, and subcontractors create a cohesive team dedicated to project success.",
-    icon: UserGroupIcon,
-  },
-];
+import { advantages } from "~/data/siteData";
 
 const activeAdvantage = ref(1);
 

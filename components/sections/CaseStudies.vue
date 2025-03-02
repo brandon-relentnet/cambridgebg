@@ -2,65 +2,7 @@
 import { ref, computed } from "vue";
 import { ChevronRightIcon, ArrowRightIcon } from "@heroicons/vue/24/solid";
 import { scrollToNextSection } from "~/utils/autoScroll";
-
-const caseStudies = [
-  {
-    id: 1,
-    title: "Riverfront Commercial Plaza",
-    category: "Commercial",
-    description:
-      "A 250,000 sq ft mixed-use development featuring innovative sustainable design elements and LEED Platinum certification.",
-    image: "/riverfront-plaza.jpg",
-    highlights: [
-      "30% reduction in energy consumption compared to similar buildings",
-      "Rainwater harvesting system for irrigation and non-potable uses",
-      "Completed 2 months ahead of schedule despite supply chain challenges",
-    ],
-    featured: true,
-  },
-  {
-    id: 2,
-    title: "Madison Opera House Restoration",
-    category: "Historic Renovation",
-    description:
-      "Meticulous restoration of a 1920s landmark theater, preserving historical elements while implementing modern amenities and safety features.",
-    image: "/opera-house.jpg",
-    highlights: [
-      "Preserved 90% of original ornate plasterwork and decorative elements",
-      "Modern acoustics and lighting systems integrated without compromising historic integrity",
-      "Seismic retrofitting to ensure long-term structural stability",
-    ],
-    featured: true,
-  },
-  {
-    id: 3,
-    title: "Hawthorne Medical Center",
-    category: "Healthcare",
-    description:
-      "State-of-the-art medical facility featuring advanced technology infrastructure and patient-centered design principles.",
-    image: "/medical-center.jpg",
-    highlights: [
-      "120,000 sq ft facility completed in just 14 months through innovative prefabrication",
-      "Specialized isolation and containment systems for infectious disease management",
-      "Healing garden and natural light integration for improved patient outcomes",
-    ],
-    featured: true,
-  },
-  {
-    id: 4,
-    title: "Oakridge Corporate Center",
-    category: "Corporate",
-    description:
-      "Modern office complex designed for flexibility, collaboration, and employee wellness with sustainable features throughout.",
-    image: "/corporate-center.jpg",
-    highlights: [
-      "Open concept design with modular spaces adaptable to changing business needs",
-      "Geothermal heating and cooling system reducing energy costs by 45%",
-      "On-site amenities including fitness center, dining options, and outdoor workspaces",
-    ],
-    featured: false,
-  },
-];
+import { caseStudies } from "~/data/siteData";
 
 const activeStudy = ref(caseStudies[0].id);
 
@@ -88,7 +30,7 @@ const getActiveStudy = computed(() => {
         <div class="w-full md:w-1/2 mb-6 md:mb-0">
           <h2 class="text-5xl font-bold mb-4">Case Studies</h2>
           <p class="text-lg">
-            Explore our featured projects to see how Cambridge Construction
+            Explore our featured projects to see how Cambridge Building Group
             transforms challenges into successful outcomes through expertise,
             innovation, and dedication to excellence.
           </p>

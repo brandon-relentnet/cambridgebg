@@ -5,75 +5,7 @@ import {
   BuildingStorefrontIcon,
 } from "@heroicons/vue/24/solid";
 import { scrollToNextSection } from "~/utils/autoScroll";
-
-const tradeCategories = [
-  {
-    id: 1,
-    name: "Architectural & Engineering",
-    partners: [
-      "Summit Architectural Group",
-      "Precision Engineering Associates",
-      "Westfield Structural Engineers",
-      "Mason & Associates Architectural Firm",
-      "Integrated Building Systems Design",
-    ],
-  },
-  {
-    id: 2,
-    name: "Mechanical & Electrical",
-    partners: [
-      "Elite Mechanical Systems",
-      "PowerGrid Electrical Contractors",
-      "Climate Control Solutions",
-      "Advanced Electrical Technologies",
-      "Metropolitan HVAC Specialists",
-    ],
-  },
-  {
-    id: 3,
-    name: "Specialty Contractors",
-    partners: [
-      "Premier Glass & Glazing",
-      "Cornerstone Masonry",
-      "Heritage Woodworking & Millwork",
-      "AlphaSteel Fabricators",
-      "Innovative Roofing Systems",
-    ],
-  },
-  {
-    id: 4,
-    name: "Interior Finishes",
-    partners: [
-      "Designer Drywall & Acoustics",
-      "Elite Flooring Solutions",
-      "Spectrum Paint & Coatings",
-      "Custom Cabinetry Craftsmen",
-      "Prestige Interior Specialties",
-    ],
-  },
-  {
-    id: 5,
-    name: "Site Work & Foundation",
-    partners: [
-      "Groundworks Excavation",
-      "Concrete Foundations Plus",
-      "Terra Landscaping & Hardscapes",
-      "Precision Paving Contractors",
-      "Environmental Site Services",
-    ],
-  },
-  {
-    id: 6,
-    name: "Technology Integration",
-    partners: [
-      "Smart Building Systems",
-      "Security Solutions Integrators",
-      "DataComm Network Specialists",
-      "Automated Controls Technology",
-      "Audio-Visual Design Experts",
-    ],
-  },
-];
+import { tradeCategories } from "~/data/siteData";
 
 const activeCategory = ref(tradeCategories[0].id);
 
