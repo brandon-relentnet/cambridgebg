@@ -6,8 +6,8 @@ import { awards } from "~/data/siteData";
 const props = defineProps({
   showButton: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 
 // Filter featured awards
@@ -30,7 +30,7 @@ const otherAwards = awards.filter((award) => !award.featured);
             Industry Recognition
           </h2>
           <p class="text-lg text-slate-700">
-            Cambridge Construction's commitment to excellence has been
+            Cambridge Building Group's commitment to excellence has been
             recognized through numerous prestigious industry awards, reflecting
             our dedication to quality, innovation, and client satisfaction.
           </p>

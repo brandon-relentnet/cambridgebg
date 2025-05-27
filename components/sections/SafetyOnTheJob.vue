@@ -6,8 +6,8 @@ import { safetyMetrics, safetyPractices } from "~/data/siteData";
 const props = defineProps({
   showButton: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 </script>
 
@@ -24,9 +24,9 @@ const props = defineProps({
             <h2 class="text-5xl font-bold">Safety on the Job Site</h2>
           </div>
           <p class="text-xl">
-            At Cambridge Construction, safety isn't just a priority—it's a core
-            value ingrained in every aspect of our operations. We maintain an
-            unwavering commitment to creating and maintaining safe work
+            At Cambridge Building Group, safety isn't just a priority—it's a
+            core value ingrained in every aspect of our operations. We maintain
+            an unwavering commitment to creating and maintaining safe work
             environments for our team members, clients, and communities.
           </p>
         </div>
@@ -77,7 +77,7 @@ const props = defineProps({
           team member is empowered to prioritize safety above all else."
         </blockquote>
         <p class="text-right mt-4 text-slate-400">
-          — Jason Hall, Director of Safety Operations
+          — Terry Gilly, Director of Safety Operations
         </p>
       </div>
     </div>

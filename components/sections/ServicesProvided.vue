@@ -7,8 +7,8 @@ import { services } from "~/data/siteData";
 const props = defineProps({
   showButton: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 
 const hoveredService = ref(null);
@@ -31,7 +31,7 @@ function clearHoveredService() {
       <div class="w-full md:w-1/2 mb-12">
         <h2 class="text-5xl font-bold text-navy mb-4">Services Provided</h2>
         <p class="text-lg text-slate-700 mb-6">
-          Cambridge Construction offers a comprehensive suite of construction
+          Cambridge Building Group offers a comprehensive suite of construction
           services tailored to meet the diverse needs of our clients. From
           concept to completion, we apply our expertise at every stage of the
           building process.

@@ -8,8 +8,8 @@ import { markets } from "~/data/siteData";
 const props = defineProps({
   showButton: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 
 const activeMarket = ref(null);
@@ -31,8 +31,8 @@ function setActiveMarket(id) {
         <div class="w-full md:w-1/2 mb-6 md:mb-0">
           <h2 class="text-5xl font-bold mb-4">Markets We Serve</h2>
           <p class="text-lg">
-            Cambridge Construction delivers specialized expertise across diverse
-            industry sectors, understanding the unique challenges and
+            Cambridge Building Group delivers specialized expertise across
+            diverse industry sectors, understanding the unique challenges and
             requirements of each market.
           </p>
         </div>

@@ -3,12 +3,12 @@ import { BoltIcon, HandRaisedIcon, UsersIcon } from "@heroicons/vue/24/solid";
 
 // Page metadata
 useHead({
-  title: "About Us | Cambridge Construction",
+  title: "About Us | Cambridge Building Group",
   meta: [
     {
       name: "description",
       content:
-        "Learn about Cambridge Construction - our history, values, leadership team, and commitment to excellence in the construction industry.",
+        "Learn about Cambridge Building Group - our history, values, leadership team, and commitment to excellence in the construction industry.",
     },
   ],
 });
@@ -97,7 +97,7 @@ const companyStats = [
       </div>
     </section>
 
-    <!-- Who is Cambridge Construction -->
+    <!-- Who is Cambridge Building Group -->
     <SectionsWhoIsCC />
 
     <!-- Core Values -->
@@ -122,10 +122,10 @@ const companyStats = [
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
             <p class="text-lg text-slate-700 mb-6">
-              At Cambridge Construction, our culture is built on collaboration,
-              respect, and a passion for excellence. We believe that our people
-              are our greatest asset, and we invest in their growth and
-              well-being.
+              At Cambridge Building Group, our culture is built on
+              collaboration, respect, and a passion for excellence. We believe
+              that our people are our greatest asset, and we invest in their
+              growth and well-being.
             </p>
             <p class="text-lg text-slate-700 mb-6">
               We foster an environment where innovation thrives, ideas are

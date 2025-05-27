@@ -7,8 +7,8 @@ import { clients, testimonials } from "~/data/siteData";
 const props = defineProps({
   showButton: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 
 const keenSlider = ref(null);
@@ -78,9 +78,9 @@ onMounted(async () => {
         <div class="w-full md:w-1/2 mb-6 md:mb-0">
           <h2 class="text-5xl font-bold text-navy mb-4">Our Valued Clients</h2>
           <p class="text-lg text-slate-700">
-            Cambridge Construction has built lasting partnerships with industry
-            leaders across diverse sectors. We take pride in our clients'
-            satisfaction and their continued trust in our services.
+            Cambridge Building Group has built lasting partnerships with
+            industry leaders across diverse sectors. We take pride in our
+            clients' satisfaction and their continued trust in our services.
           </p>
         </div>
         <button

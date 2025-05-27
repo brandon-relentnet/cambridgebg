@@ -6,8 +6,8 @@ import { scrollToNextSection } from "~/utils/autoScroll";
 const props = defineProps({
   showButton: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 
 const years = ref(0);
@@ -48,7 +48,7 @@ onMounted(() => {
         <div>
           <h2 class="text-5xl font-bold mb-4">Combined Experience</h2>
           <p class="text-lg mb-6">
-            At Cambridge Construction, our team brings decades of expertise to
+            At Cambridge Building Group, our team brings decades of expertise to
             every project. Our combined knowledge and experience ensure each
             build benefits from time-tested wisdom and innovative approaches.
           </p>

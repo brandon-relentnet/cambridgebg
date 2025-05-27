@@ -16,12 +16,12 @@ import {
 
 // Page metadata
 useHead({
-  title: "Services | Cambridge Construction",
+  title: "Services | Cambridge Building Group",
   meta: [
     {
       name: "description",
       content:
-        "Explore Cambridge Construction's comprehensive services including commercial construction, luxury residential, historic renovation, design-build, and more.",
+        "Explore Cambridge Building Group's comprehensive services including commercial construction, luxury residential, historic renovation, design-build, and more.",
     },
   ],
 });
@@ -183,7 +183,7 @@ function toggleService(id) {
         <div class="max-w-3xl mx-auto text-center mb-16">
           <h2 class="text-4xl font-bold text-navy mb-6">What We Offer</h2>
           <p class="text-lg text-slate-700">
-            Cambridge Construction provides a full spectrum of construction
+            Cambridge Building Group provides a full spectrum of construction
             services, from initial concept and planning through completion and
             beyond. Our integrated approach ensures seamless project delivery
             and exceptional results.

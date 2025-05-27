@@ -3,7 +3,7 @@
     <!-- 0. Hero Section -->
     <SectionsHomeHero />
 
-    <!-- 1. Who is Cambridge Construction? -->
+    <!-- 1. Who is Cambridge Building Group? -->
     <SectionsWhoIsCC :showButton="true" />
 
     <!-- 2. Core Values -->

@@ -7,8 +7,8 @@ import { advantages } from "~/data/siteData";
 const props = defineProps({
   showButton: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 
 const activeAdvantage = ref(1);
@@ -34,9 +34,10 @@ const getActiveAdvantage = () => {
             Our Competitive Advantage
           </h2>
           <p class="text-lg text-slate-700 mb-6">
-            What sets Cambridge Construction apart is our unwavering commitment
-            to excellence, innovation, and client satisfaction. Our competitive
-            advantages drive successful outcomes for every project we undertake.
+            What sets Cambridge Building Group apart is our unwavering
+            commitment to excellence, innovation, and client satisfaction. Our
+            competitive advantages drive successful outcomes for every project
+            we undertake.
           </p>
           <div class="border-l-2 border-navy pl-4 my-8">
             <p class="text-lg text-slate-700 italic">

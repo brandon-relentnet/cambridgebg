@@ -10,8 +10,8 @@ import { tradeCategories } from "~/data/siteData";
 const props = defineProps({
   showButton: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 
 const activeCategory = ref(tradeCategories[0].id);
@@ -42,7 +42,7 @@ const currentCategory = computed(() => {
             <h2 class="text-5xl font-bold mb-4">Trade Partners</h2>
           </div>
           <p class="text-lg mb-6">
-            Cambridge Construction has established strong relationships with
+            Cambridge Building Group has established strong relationships with
             best-in-class subcontractors and suppliers across every specialty.
             Our carefully vetted trade partners share our commitment to quality,
             safety, and client satisfaction.

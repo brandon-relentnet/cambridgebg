@@ -13,12 +13,12 @@ import {
 
 // Page metadata
 useHead({
-  title: "Contact Us | Cambridge Construction",
+  title: "Contact Us | Cambridge Building Group",
   meta: [
     {
       name: "description",
       content:
-        "Get in touch with Cambridge Construction for your construction needs. Request a quote, discuss a project, or inquire about our services.",
+        "Get in touch with Cambridge Building Group for your construction needs. Request a quote, discuss a project, or inquire about our services.",
     },
   ],
 });
@@ -99,9 +99,9 @@ const officeLocations = [
 // FAQ questions
 const faqs = [
   {
-    question: "What types of projects does Cambridge Construction handle?",
+    question: "What types of projects does Cambridge Building Group handle?",
     answer:
-      "Cambridge Construction specializes in commercial construction, luxury residential projects, historic renovations, design-build solutions, and tenant improvements. Our experienced team can handle projects of various sizes and complexities across multiple sectors.",
+      "Cambridge Building Group specializes in commercial construction, luxury residential projects, historic renovations, design-build solutions, and tenant improvements. Our experienced team can handle projects of various sizes and complexities across multiple sectors.",
   },
   {
     question: "How do I request a quote for my project?",
@@ -116,12 +116,12 @@ const faqs = [
   {
     question: "What geographic areas do you serve?",
     answer:
-      "Cambridge Construction serves the Southeast and South Central United States, with offices in Nashville, Atlanta, and Dallas. We have the capacity to take on projects throughout Tennessee, Georgia, Texas, and neighboring states.",
+      "Cambridge Building Group serves the Southeast and South Central United States, with offices in Nashville, Atlanta, and Dallas. We have the capacity to take on projects throughout Tennessee, Georgia, Texas, and neighboring states.",
   },
   {
     question: "How do you ensure quality and safety on your projects?",
     answer:
-      "Quality and safety are core values at Cambridge Construction. We maintain rigorous quality control processes, comprehensive safety protocols, regular inspections, and ongoing training for all team members. Our impressive safety record and quality outcomes reflect our unwavering commitment to excellence.",
+      "Quality and safety are core values at Cambridge Building Group. We maintain rigorous quality control processes, comprehensive safety protocols, regular inspections, and ongoing training for all team members. Our impressive safety record and quality outcomes reflect our unwavering commitment to excellence.",
   },
 ];
 
