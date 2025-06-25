@@ -75,23 +75,9 @@ const timeframeOptions = [
 const officeLocations = [
   {
     city: "Nashville (Headquarters)",
-    address: "1234 Construction Way, Nashville, TN 37203",
+    address: "1011 Gillock St. Suite 160036, Nashville, TN 37216",
     phone: "(615) 555-7890",
-    email: "nashville@cambridgeconstruction.com",
-    hours: "Monday-Friday: 8am-5pm CST",
-  },
-  {
-    city: "Atlanta",
-    address: "4567 Peachtree Street, Atlanta, GA 30308",
-    phone: "(404) 555-1234",
-    email: "atlanta@cambridgeconstruction.com",
-    hours: "Monday-Friday: 8am-5pm EST",
-  },
-  {
-    city: "Dallas",
-    address: "7890 Mockingbird Lane, Dallas, TX 75201",
-    phone: "(214) 555-5678",
-    email: "dallas@cambridgeconstruction.com",
+    email: "nashville@cambridgebg.com",
     hours: "Monday-Friday: 8am-5pm CST",
   },
 ];
@@ -198,7 +184,7 @@ function submitForm() {
                     Main Office
                   </h3>
                   <p class="text-slate-700">
-                    1234 Construction Way, Nashville, TN 37203
+                    1011 Gillock St. Suite 160036, Nashville, TN 37216
                   </p>
                 </div>
               </div>
@@ -217,7 +203,7 @@ function submitForm() {
                 />
                 <div>
                   <h3 class="text-lg font-semibold text-navy mb-1">Email</h3>
-                  <p class="text-slate-700">info@cambridgeconstruction.com</p>
+                  <p class="text-slate-700">info@cambridgebg.com</p>
                 </div>
               </div>
 
@@ -503,13 +489,13 @@ function submitForm() {
     <section class="py-16 px-8 2xl:px-60 bg-slate-100">
       <div class="container mx-auto">
         <h2 class="text-3xl font-bold text-navy mb-8 text-center">
-          Our Offices
+          Our Office
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="flex justify-center gap-8">
           <div
             v-for="(office, index) in officeLocations"
             :key="index"
-            class="bg-white p-6 shadow-md border-t-4 border-navy"
+            class="bg-white w-1/3 p-6 shadow-md border-t-4 border-navy"
           >
             <h3 class="text-xl font-bold text-navy mb-4">{{ office.city }}</h3>
             <div class="space-y-3">

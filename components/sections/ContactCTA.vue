@@ -30,9 +30,7 @@ import { EnvelopeIcon, PhoneIcon, CalendarIcon } from "@heroicons/vue/24/solid";
               <EnvelopeIcon class="size-8 text-slate-400 mr-4" />
               <div>
                 <p class="text-sm text-slate-400">Email Us</p>
-                <p class="text-lg font-semibold">
-                  info@cambridgeconstruction.com
-                </p>
+                <p class="text-lg font-semibold">info@cambridgebg.com</p>
               </div>
             </div>
           </div>

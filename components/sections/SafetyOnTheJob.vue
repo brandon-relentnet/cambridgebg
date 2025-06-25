@@ -77,7 +77,7 @@ const props = defineProps({
           team member is empowered to prioritize safety above all else."
         </blockquote>
         <p class="text-right mt-4 text-slate-400">
-          — Terry Gilly, Director of Safety Operations
+          — Terry Gilley, Director of Safety Operations
         </p>
       </div>
     </div>

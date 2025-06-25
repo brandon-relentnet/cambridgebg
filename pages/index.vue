@@ -31,10 +31,7 @@
     <SectionsIndustryAwards :showButton="true" />
 
     <!-- 10. Case Studies -->
-    <SectionsCaseStudies :showButton="true" />
-
-    <!-- 11. Past Clients -->
-    <SectionsPastClients :showButton="true" />
+    <!-- <SectionsCaseStudies :showButton="true" /> -->
 
     <!-- 12. Trade Partners -->
     <SectionsTradePartners :showButton="true" />
@@ -42,8 +39,11 @@
     <!-- 13. Leadership Bios -->
     <SectionsLeadershipBios :showButton="true" />
 
+    <!-- 11. Past Clients -->
+    <SectionsPastClients :showButton="true" />
+
     <!-- 14. Board of Directors -->
-    <SectionsBoardOfDirectors :showButton="true" />
+    <!-- <SectionsBoardOfDirectors :showButton="true" /> -->
 
     <!-- 15. Community Outreach -->
     <SectionsCommunityOutreach />

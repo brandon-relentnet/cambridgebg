@@ -64,7 +64,7 @@ onMounted(async () => {
 <template>
   <section
     id="past-clients"
-    class="relative px-8 2xl:px-60 py-section bg-slate-100"
+    class="relative px-8 2xl:px-60 py-section bg-slate-800 text-slate-300"
   >
     <link
       href="https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.css"
@@ -76,8 +76,10 @@ onMounted(async () => {
         class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12"
       >
         <div class="w-full md:w-1/2 mb-6 md:mb-0">
-          <h2 class="text-5xl font-bold text-navy mb-4">Our Valued Clients</h2>
-          <p class="text-lg text-slate-700">
+          <h2 class="text-5xl font-bold text-slate-300 mb-4">
+            Our Valued Clients
+          </h2>
+          <p class="text-lg text-slate-300">
             Cambridge Building Group has built lasting partnerships with
             industry leaders across diverse sectors. We take pride in our
             clients' satisfaction and their continued trust in our services.
@@ -86,7 +88,7 @@ onMounted(async () => {
         <button
           v-if="showButton"
           @click="scrollToNextSection('trade-partners')"
-          class="bg-navy group text-slate-300 font-semibold px-4 py-2 border-2 border-navy shadow-lg transition duration-200 hover:scale-115 cursor-pointer"
+          class="bg-slate-300 group text-navy font-semibold px-4 py-2 border-2 border-slate-300 shadow-lg transition duration-200 hover:scale-115 cursor-pointer"
         >
           Trade Partners
           <ChevronRightIcon
@@ -98,21 +100,21 @@ onMounted(async () => {
         <div
           v-for="client in clients"
           :key="`logo-${client.id}`"
-          class="bg-white p-6 shadow-md flex items-center justify-center h-24"
+          class="bg-navy p-6 shadow-md flex items-center justify-center h-24 border border-slate-600"
         >
-          <p class="text-navy font-bold text-center">{{ client.name }}</p>
+          <p class="text-slate-300 font-bold text-center">{{ client.name }}</p>
         </div>
       </div>
       <div
         class="max-w-7xl items-end justify-between sm:flex sm:pe-6 lg:pe-8 mb-8"
       >
-        <h3 class="text-3xl font-bold text-navy">Client Testimonials</h3>
+        <h3 class="text-3xl font-bold text-slate-300">Client Testimonials</h3>
 
         <div class="mt-8 flex gap-4 lg:mt-0">
           <button
             aria-label="Previous testimonial"
             id="keen-slider-previous"
-            class="rounded-full border border-navy p-3 text-navy transition hover:bg-navy hover:text-slate-300"
+            class="rounded-full border border-slate-400 p-3 text-slate-300 transition hover:bg-slate-300 hover:text-navy"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -133,7 +135,7 @@ onMounted(async () => {
           <button
             aria-label="Next testimonial"
             id="keen-slider-next"
-            class="rounded-full border border-navy p-3 text-navy transition hover:bg-navy hover:text-slate-300"
+            class="rounded-full border border-slate-400 p-3 text-slate-300 transition hover:bg-slate-300 hover:text-navy"
           >
             <svg
               class="size-5 rtl:rotate-180"
@@ -161,10 +163,10 @@ onMounted(async () => {
             class="keen-slider__slide"
           >
             <blockquote
-              class="flex h-full flex-col justify-between bg-white p-6 shadow-md sm:p-8 lg:p-12 border-t-4 border-navy"
+              class="flex h-full flex-col justify-between bg-navy p-6 shadow-md sm:p-8 lg:p-12 border-t-4 border-slate-400"
             >
               <div>
-                <div class="flex gap-0.5 text-navy">
+                <div class="flex gap-0.5 text-slate-300">
                   <svg
                     v-for="star in testimonial.rating"
                     :key="star"
@@ -180,17 +182,17 @@ onMounted(async () => {
                 </div>
 
                 <div class="mt-4">
-                  <p class="text-2xl font-bold text-navy sm:text-3xl">
+                  <p class="text-2xl font-bold text-slate-300 sm:text-3xl">
                     {{ testimonial.company }}
                   </p>
 
-                  <p class="mt-4 leading-relaxed text-slate-700">
+                  <p class="mt-4 leading-relaxed text-slate-300">
                     "{{ testimonial.text }}"
                   </p>
                 </div>
               </div>
 
-              <footer class="mt-4 text-sm font-medium text-slate-700 sm:mt-6">
+              <footer class="mt-4 text-sm font-medium text-slate-400 sm:mt-6">
                 &mdash; {{ testimonial.author }}, {{ testimonial.title }}
               </footer>
             </blockquote>
@@ -216,8 +218,8 @@ onMounted(async () => {
 }
 
 .keen-slider__slide blockquote {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3),
+    0 4px 6px -2px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
 }
 
