@@ -21,10 +21,8 @@ const missionVision = {
 };
 
 const companyStats = [
-  { label: "Years in Business", value: "25+" },
+  { label: "Years in Business", value: "10" },
   { label: "Completed Projects", value: "350+" },
-  { label: "Industry Awards", value: "42" },
-  { label: "Team Members", value: "175" },
 ];
 </script>
 
@@ -43,7 +41,7 @@ const companyStats = [
         </h1>
         <p class="text-xl text-slate-300 max-w-3xl mx-auto">
           Building excellence through innovation, integrity, and dedicated
-          craftsmanship since 1985.
+          craftsmanship since 2015.
         </p>
       </div>
     </section>
@@ -105,6 +103,9 @@ const companyStats = [
 
     <!-- Milestones -->
     <SectionsMilestones />
+
+    <!-- 15. Community Outreach -->
+    <SectionsCommunityOutreach />
 
     <!-- Leadership Team -->
     <SectionsLeadershipBios />

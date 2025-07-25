@@ -35,6 +35,7 @@ const services = [
       "From office buildings to retail spaces, we deliver commercial properties that balance functionality, aesthetics, and long-term value. Our approach encompasses everything from ground-up construction to tenant improvements.",
     details: [
       "Office Buildings & Corporate Campuses",
+      "Light Industrial",
       "Retail & Restaurant Spaces",
       "Medical Facilities & Healthcare Centers",
       "Hospitality & Entertainment Venues",
@@ -111,7 +112,7 @@ const services = [
     details: [
       "Project Feasibility Analysis",
       "Comprehensive Budget Development",
-      "Value Engineering & Cost Optimization",
+      "Cost Optimization",
       "Schedule Development & Planning",
       "Constructability & Risk Assessment",
     ],
@@ -231,17 +232,6 @@ function toggleService(id) {
                   </li>
                 </ul>
               </div>
-              <div class="mt-6 text-right">
-                <NuxtLink
-                  :to="service.link"
-                  class="inline-flex items-center text-navy font-semibold group"
-                >
-                  Learn More
-                  <ArrowRightIcon
-                    class="size-4 ml-2 group-hover:translate-x-1 transition-transform"
-                  />
-                </NuxtLink>
-              </div>
             </div>
           </div>
         </div>
@@ -341,7 +331,7 @@ function toggleService(id) {
                 </div>
                 <h3 class="text-xl font-bold text-navy mb-2">Construction</h3>
                 <p class="text-slate-700">
-                  Our skilled craftsmen and project managers execute the plan
+                  Our Skilled Project Managers and Trade Partners execute the plan
                   with precision, maintaining constant communication and
                   providing regular updates.
                 </p>

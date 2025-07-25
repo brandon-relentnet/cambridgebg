@@ -90,7 +90,7 @@ export const milestones = [
     title: "Company Founded",
     description:
       "Cambridge Building Group was established by Terry Gilley in October 2015, following his successful completion of the State of Tennessee's highest Contractor licensure. Terry's vision was to create a company where customers, contractors, and employees could collaboratively develop the best possible solutions.",
-    link: "/about/founded",
+    link: "/about",
   },
   {
     id: 2,
@@ -106,7 +106,7 @@ export const milestones = [
     title: "Tornado Recovery Efforts",
     description:
       "In response to the devastating 2020 tornadoes in Middle Tennessee, Cambridge partnered with Recover Nashville and Rebuilding Together to restore and rebuild 26 homes for impacted families, demonstrating the company's commitment to community support.",
-    link: "/community/disaster-recovery",
+    link: "/about",
   },
   {
     id: 4,
@@ -114,7 +114,7 @@ export const milestones = [
     title: "Unlimited License Upgrade",
     description:
       'Cambridge achieved "Unlimited" status for General Contractor licensing in Tennessee, significantly expanding its project scope and capabilities to take on projects of any size within the state.',
-    link: "/about/licensing",
+    link: "/about",
   },
   {
     id: 5,
@@ -122,7 +122,7 @@ export const milestones = [
     title: "Leadership Expansion & PEMB Certification",
     description:
       "Jason Hall joined as business partner and Executive Vice President, bringing 30 years of industry experience. The company also became a certified builder for pre-engineered metal buildings (PEMB) through partnerships with Capital Steel and Kirby Building Systems.",
-    link: "/about/leadership",
+    link: "/about",
   },
 ];
 
@@ -753,17 +753,17 @@ export const footerLinks = {
     { name: "Our Story", url: "/about" },
     { name: "Core Values", url: "/#core-values" },
     { name: "Leadership Team", url: "/#leadership-bios" },
-    { name: "Careers", url: "/careers" },
+    { name: "Careers", url: "/about" },
   ],
   services: [
-    { name: "Commercial Construction", url: "/services/commercial" },
-    { name: "Hospitality Construction", url: "/services/hospitality" },
-    { name: "Industrial Construction", url: "/services/industrial" },
-    { name: "Multifamily Construction", url: "/services/multifamily" },
-    { name: "Select Residential", url: "/services/residential" },
+    { name: "Commercial Construction", url: "/services" },
+    { name: "Hospitality Construction", url: "/services" },
+    { name: "Industrial Construction", url: "/services" },
+    { name: "Multifamily Construction", url: "/services" },
+    { name: "Select Residential", url: "/services" },
     {
       name: "Construction Management",
-      url: "/services/construction-management",
+      url: "/services",
     },
   ],
   projects: [
@@ -775,7 +775,6 @@ export const footerLinks = {
     { name: "Contact Us", url: "/contact" },
     { name: "Community Outreach", url: "/#community-outreach" },
     { name: "Trade Partners", url: "/#trade-partners" },
-    { name: "News & Events", url: "/news" },
   ],
 };
 

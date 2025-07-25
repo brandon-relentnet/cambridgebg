@@ -130,26 +130,6 @@ const currentYear = new Date().getFullYear();
           &copy; {{ currentYear }} {{ companyInfo.name }}
           <span class="italic ml-2">All rights reserved.</span>
         </p>
-        <div class="flex space-x-6">
-          <NuxtLink
-            to="/privacy-policy"
-            class="hover:text-slate-300 transition duration-200"
-          >
-            Privacy Policy
-          </NuxtLink>
-          <NuxtLink
-            to="/terms-of-service"
-            class="hover:text-slate-300 transition duration-200"
-          >
-            Terms of Service
-          </NuxtLink>
-          <NuxtLink
-            to="/sitemap"
-            class="hover:text-slate-300 transition duration-200"
-          >
-            Sitemap
-          </NuxtLink>
-        </div>
       </div>
     </div>
   </footer>

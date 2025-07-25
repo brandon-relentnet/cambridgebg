@@ -120,7 +120,7 @@ const formatValue = (value, index) => {
           </p>
         </div>
         <NuxtLink
-          to="/community"
+          to="/about"
           class="bg-navy group text-slate-300 font-semibold px-6 py-3 border-2 border-navy shadow-lg transition duration-200 hover:scale-115 flex items-center"
         >
           Community Programs
