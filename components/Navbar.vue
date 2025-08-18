@@ -44,23 +44,21 @@ onUnmounted(() => {
   <header>
     <!-- Main Navigation Bar -->
     <nav
-      class="w-full h-20 fixed top-0 left-0 z-50 transition-all bg-slate-100 duration-300"
+      class="top-0 left-0 z-50 fixed bg-slate-100 w-full h-20 transition-all duration-300"
       :class="[
-        isScrolled
-          ? 'shadow-md'
-          : 'shadow-none',
+        isScrolled ? 'shadow-md' : 'shadow-none',
         isMobileMenuOpen ? 'bg-slate-100' : '',
       ]"
     >
       <div
-        class="container mx-auto px-6 h-full flex justify-between items-center"
+        class="flex justify-between items-center mx-auto px-6 h-full container"
       >
         <!-- Logo -->
         <NuxtLink to="/" class="flex items-center" @click="closeMobileMenu">
           <NuxtImg
             src="/cbg-logo-transparent.png"
             alt="Cambridge Building Group Logo"
-            class="h-14 w-auto"
+            class="w-auto h-14"
             quality="100"
           />
         </NuxtLink>
@@ -68,20 +66,20 @@ onUnmounted(() => {
         <!-- Desktop Menu -->
         <div class="hidden md:flex items-center gap-8">
           <ul
-            class="flex gap-x-6 justify-center items-center text-navy font-bold uppercase"
+            class="flex justify-center items-center gap-x-6 font-bold text-navy uppercase"
           >
             <li
               v-for="item in Object.values(navItems)"
               :key="item.title"
-              class="relative group"
+              class="group relative"
             >
               <NuxtLink
                 :to="item.link"
-                class="py-2 transition-colors duration-300 hover:text-slate-500 relative"
+                class="relative py-2 hover:text-slate-500 transition-colors duration-300"
               >
                 {{ item.title }}
                 <span
-                  class="absolute bottom-0 left-0 w-0 h-0.5 bg-navy transition-all duration-300 group-hover:w-full"
+                  class="bottom-0 left-0 absolute bg-navy w-0 group-hover:w-full h-0.5 transition-all duration-300"
                 ></span>
               </NuxtLink>
             </li>
@@ -90,16 +88,16 @@ onUnmounted(() => {
           <!-- CTA Button -->
           <NuxtLink
             to="/contact"
-            class="bg-navy text-slate-300 font-semibold px-4 py-2 border border-navy shadow transition duration-200 hover:bg-transparent hover:text-navy flex items-center"
+            class="flex items-center bg-navy hover:bg-transparent shadow px-4 py-2 border border-navy font-semibold text-slate-300 hover:text-navy transition duration-200"
           >
-            <PhoneIcon class="size-4 mr-2" />
+            <PhoneIcon class="mr-2 size-4" />
             Get a Quote
           </NuxtLink>
         </div>
 
         <!-- Mobile Menu Toggle Button -->
         <button
-          class="md:hidden text-navy focus:outline-none"
+          class="md:hidden focus:outline-none text-navy"
           @click="toggleMobileMenu"
           aria-label="Toggle navigation menu"
         >
@@ -112,13 +110,13 @@ onUnmounted(() => {
     <!-- Mobile Menu Overlay -->
     <div
       v-if="isMobileMenuOpen"
-      class="fixed inset-0 bg-slate-900/50 z-40"
+      class="z-40 fixed inset-0 bg-slate-900/50"
       @click="closeMobileMenu"
     ></div>
 
     <!-- Mobile Menu Panel -->
     <div
-      class="fixed top-20 right-0 bottom-0 w-4/5 max-w-sm bg-slate-100 z-50 transform transition-transform duration-300 ease-in-out overflow-y-auto"
+      class="top-20 right-0 bottom-0 z-50 fixed bg-slate-100 w-4/5 max-w-sm overflow-y-auto transition-transform duration-300 ease-in-out transform"
       :class="isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'"
     >
       <div class="px-6 py-8">
@@ -126,7 +124,7 @@ onUnmounted(() => {
           <li v-for="item in Object.values(navItems)" :key="item.title">
             <NuxtLink
               :to="item.link"
-              class="block text-xl font-bold text-navy hover:text-slate-500 transition duration-200"
+              class="block font-bold text-navy hover:text-slate-500 text-xl transition duration-200"
               @click="closeMobileMenu"
             >
               {{ item.title }}
@@ -134,19 +132,19 @@ onUnmounted(() => {
           </li>
         </ul>
 
-        <div class="mt-12 border-t border-slate-300 pt-6">
+        <div class="mt-12 pt-6 border-slate-300 border-t">
           <NuxtLink
             to="/contact"
-            class="block w-full bg-navy text-slate-300 font-semibold px-4 py-3 text-center shadow transition duration-200 hover:bg-slate-700"
+            class="block bg-navy hover:bg-slate-700 shadow px-4 py-3 w-full font-semibold text-slate-300 text-center transition duration-200"
             @click="closeMobileMenu"
           >
             Get a Free Quote
           </NuxtLink>
 
-          <div class="mt-8 space-y-4">
+          <div class="space-y-4 mt-8">
             <div class="flex items-center">
-              <PhoneIcon class="size-5 text-navy mr-3" />
-              <a href="tel:6155557890" class="text-navy">(615) 555-7890</a>
+              <PhoneIcon class="mr-3 size-5 text-navy" />
+              <a href="tel:6155557890" class="text-navy">(615) 747-7007</a>
             </div>
           </div>
         </div>

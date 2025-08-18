@@ -48,7 +48,7 @@ export const coreValues = [
     description:
       "We uphold honesty and transparency in every project. Our work stands as a testament to our ethical practices and unwavering commitment to excellence. We believe in doing the right thing even when no one is watching.",
     application:
-      "From transparent pricing to honest project updates, we maintain open communication with all stakeholders throughout every project.",
+      "From transparent pricing to project updates, we maintain open communication with all stakeholders throughout every project.",
   },
   {
     id: 4,
@@ -132,7 +132,7 @@ export const leadershipTeam = [
     id: 1,
     name: "Terry Gilley",
     title: "Founder & President",
-    image: "/terry-gilley.jpg",
+    image: "/terry-gilley.png",
     bio: "Terry Gilley began his construction career at an early age, joining his father on job sites at just 10 years old. Over decades of hands-on experience, he developed a deep understanding of the trades, project management, and team leadership. By 22, Terry had become the youngest superintendent at Rogers Construction, one of the world's largest construction companies at the time, where he gained a reputation for exceptional site leadership and operational efficiency. With nearly 50 years of industry experience, Terry has led projects ranging from small-scale commercial builds to multi-billion dollar government installations.",
     education:
       "Extensive hands-on industry training and professional development",
@@ -147,7 +147,7 @@ export const leadershipTeam = [
     fullName: "Terry Gilley",
     position: "Founder & President",
     department: "Executive Leadership",
-    email: "terry@cambridgebuildinggroup.com",
+    email: "terry@cambridgebg.com",
     phone: "(615) 555-1234",
     linkedIn: "https://linkedin.com/",
     twitter: "https://twitter.com/",
@@ -158,7 +158,7 @@ export const leadershipTeam = [
     id: 2,
     name: "Jason Hall",
     title: "Executive Vice President",
-    image: "/jason-hall.jpg",
+    image: "/jason-hall.png",
     bio: "With nearly 30 years of experience in the construction industry, Jason Hall has earned a reputation as a highly skilled leader, known for his ability to guide complex projects from concept to completion. He has managed teams on projects ranging from historic renovations to cutting-edge technology facilities, consistently delivering high-quality results across diverse market sectors. Jason's experience spans commercial, medical, hospitality, and data center projects, with successful builds throughout the Southeast and beyond.",
     education: "MBA, Vanderbilt University School of Engineering",
     experience: [
@@ -172,7 +172,7 @@ export const leadershipTeam = [
     fullName: "Jason Hall",
     position: "Executive Vice President",
     department: "Executive Leadership",
-    email: "jason@cambridgebuildinggroup.com",
+    email: "jason@cambridgebg.com",
     phone: "(615) 555-5678",
     linkedIn: "https://linkedin.com/",
     twitter: "https://twitter.com/",
@@ -424,7 +424,7 @@ export const initiatives = [
     description:
       "We work with Rebuilding Together to restore homes and communities affected by natural disasters. This ongoing initiative focuses on providing construction assistance to those most in need following devastating events.",
     impact:
-      "Completed eight home restorations after the December 2023 tornado, with additional projects planned for 2025.",
+      "Completed 14 home restorations after the December 2023 tornado, with additional projects planned for 2025.",
     icon: BuildingLibraryIcon,
   },
   // {
@@ -439,9 +439,8 @@ export const initiatives = [
 
 // Community Impact Stats
 export const impactStats = [
-  { id: 1, value: 0, target: 80, label: "Years of Combined Experience" },
-  { id: 2, value: 0, target: 26, label: "Homes Rebuilt After 2020 Tornadoes" },
-  { id: 3, value: 0, target: 8, label: "Homes Restored After 2023 Tornado" },
+  { id: 1, value: 0, target: 26, label: "Homes Rebuilt After 2020 Tornadoes" },
+  { id: 2, value: 0, target: 14, label: "Homes Restored After 2023 Tornado" },
 ];
 
 // Markets We Serve
@@ -714,20 +713,15 @@ export const tradeCategories = [
   {
     id: 2,
     name: "Building Materials",
-    partners: ["84 Lumber", "Builders First Source", "Huskey Lumber"],
+    partners: ["84 Lumber", "Builders First Source", "Huskey Lumber, Valley Drywall"],
   },
   {
     id: 3,
-    name: "Specialty Contractors",
-    partners: ["Valley Drywall"],
-  },
-  {
-    id: 4,
     name: "PEMB Partners",
     partners: ["Capital Steel", "Kirby Building Systems"],
   },
   {
-    id: 5,
+    id: 4,
     name: "Excavation & Site Work",
     partners: [
       "Gilley Trucking",
@@ -736,12 +730,12 @@ export const tradeCategories = [
     ],
   },
   {
-    id: 6,
+    id: 5,
     name: "Hospitality",
     partners: ["Choice Hotel Brands"],
   },
   {
-    id: 7,
+    id: 6,
     name: "Repair & Maintenance",
     partners: ["Gilley's Repair Service"],
   },
@@ -780,8 +774,8 @@ export const footerLinks = {
 
 // Social Links
 export const socialLinks = [
-  { name: "LinkedIn", url: "https://linkedin.com", icon: "i-mdi-linkedin" },
-  { name: "Facebook", url: "https://facebook.com", icon: "i-mdi-facebook" },
+  { name: "LinkedIn", url: "https://linkedin.com", icon: "/linkedin.svg" },
+  { name: "Facebook", url: "https://facebook.com", icon: "/facebook.svg" },
 ];
 
 // Company Info
@@ -790,8 +784,8 @@ export const companyInfo = {
   tagline:
     "Building excellence through communication, integrity, and dedicated craftsmanship since 2015.",
   address: "Nashville, Tennessee", // Updated to Nashville based on documents
-  phone: "(615) 555-1234", // Placeholder - not provided in client information
-  email: "info@cambridgebuildinggroup.com", // Placeholder - not provided in client information
+  phone: "(615) 747-7007", // Placeholder - not provided in client information
+  email: "info@cambridgebg.com", // Placeholder - not provided in client information
   hours: "Monday-Friday: 8am-5pm CST", // Assumed based on industry standard
 };
 

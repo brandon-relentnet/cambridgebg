@@ -31,9 +31,6 @@ onMounted(() => {
 
 const formatValue = (value, index) => {
   // Format stats values with commas for thousands and dollar sign for the contribution amount
-  if (index === 2) {
-    return "$" + Math.floor(value).toLocaleString();
-  }
   return Math.floor(value).toLocaleString();
 };
 </script>
@@ -41,15 +38,15 @@ const formatValue = (value, index) => {
 <template>
   <section
     id="community-outreach"
-    class="relative px-8 2xl:px-60 py-section bg-slate-100"
+    class="relative bg-slate-100 px-8 2xl:px-60 py-section"
   >
-    <div class="container mx-auto py-block">
-      <div class="w-full md:w-2/3 mx-auto text-center mb-12">
-        <div class="flex items-center justify-center mb-4">
-          <HeartIcon class="size-10 text-navy mr-4" />
-          <h2 class="text-5xl font-bold text-navy">Community Impact</h2>
+    <div class="py-block mx-auto container">
+      <div class="mx-auto mb-12 w-full md:w-2/3 text-center">
+        <div class="flex justify-center items-center mb-4">
+          <HeartIcon class="mr-4 size-10 text-navy" />
+          <h2 class="font-bold text-navy text-5xl">Community Impact</h2>
         </div>
-        <p class="text-xl text-slate-700">
+        <p class="text-slate-700 text-xl">
           At Cambridge Building Group, we believe in building more than
           structures—we build communities. Our commitment to social
           responsibility drives us to give back to the communities where we live
@@ -58,46 +55,46 @@ const formatValue = (value, index) => {
       </div>
 
       <!-- Impact Statistics -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      <div class="gap-8 grid grid-cols-1 md:grid-cols-2 mb-16">
         <div
           v-for="(stat, index) in stats"
           :key="stat.id"
-          class="bg-white p-8 shadow-lg text-center border-b-4 border-navy"
+          class="bg-white shadow-lg p-8 border-navy border-b-4 text-center"
         >
-          <p class="text-5xl font-bold text-navy mb-3">
+          <p class="mb-3 font-bold text-navy text-5xl">
             {{ formatValue(stat.value, index) }}
           </p>
-          <p class="text-xl text-slate-700">{{ stat.label }}</p>
+          <p class="text-slate-700 text-xl">{{ stat.label }}</p>
         </div>
       </div>
 
       <!-- Community Initiatives -->
-      <h3 class="text-3xl font-bold text-navy mb-8 text-center">
+      <h3 class="mb-8 font-bold text-navy text-3xl text-center">
         Our Community Initiatives
       </h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      <div class="gap-8 grid grid-cols-1 md:grid-cols-2 mb-16">
         <div
           v-for="initiative in initiatives"
           :key="initiative.id"
-          class="bg-white p-6 shadow-lg overflow-hidden relative group border-t-4 border-navy"
+          class="group relative bg-white shadow-lg p-6 border-navy border-t-4 overflow-hidden"
         >
           <!-- Icon background -->
           <component
             :is="initiative.icon"
-            class="size-40 text-slate-200 absolute -bottom-6 -right-6 opacity-50 transition-transform duration-500 transform group-hover:scale-110 group-hover:rotate-12"
+            class="-right-6 -bottom-6 absolute opacity-50 size-40 text-slate-200 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-500 transform"
           />
 
-          <div class="relative z-10">
+          <div class="z-10 relative">
             <span
-              class="inline-block px-3 py-1 bg-slate-200 text-navy text-sm font-semibold mb-3"
+              class="inline-block bg-slate-200 mb-3 px-3 py-1 font-semibold text-navy text-sm"
             >
               {{ initiative.category }}
             </span>
-            <h4 class="text-2xl font-bold text-navy mb-3">
+            <h4 class="mb-3 font-bold text-navy text-2xl">
               {{ initiative.title }}
             </h4>
-            <p class="text-slate-700 mb-4">{{ initiative.description }}</p>
-            <div class="border-t border-slate-200 pt-3 mt-4">
+            <p class="mb-4 text-slate-700">{{ initiative.description }}</p>
+            <div class="mt-4 pt-3 border-slate-200 border-t">
               <p class="font-semibold text-navy">
                 Impact: {{ initiative.impact }}
               </p>
@@ -108,24 +105,24 @@ const formatValue = (value, index) => {
 
       <!-- Call to Action -->
       <div
-        class="bg-white p-8 shadow-lg border-l-4 border-navy flex flex-col md:flex-row items-center justify-between"
+        class="flex md:flex-row flex-col justify-between items-center bg-white shadow-lg p-8 border-navy border-l-4"
       >
         <div class="mb-6 md:mb-0">
-          <h3 class="text-2xl font-bold text-navy mb-2">
+          <h3 class="mb-2 font-bold text-navy text-2xl">
             Join Us in Making a Difference
           </h3>
-          <p class="text-lg text-slate-700">
+          <p class="text-slate-700 text-lg">
             Learn more about our community initiatives and how you can get
             involved.
           </p>
         </div>
         <NuxtLink
           to="/about"
-          class="bg-navy group text-slate-300 font-semibold px-6 py-3 border-2 border-navy shadow-lg transition duration-200 hover:scale-115 flex items-center"
+          class="group flex items-center bg-navy shadow-lg px-6 py-3 border-2 border-navy font-semibold text-slate-300 hover:scale-115 transition duration-200"
         >
           Community Programs
           <ChevronRightIcon
-            class="size-5 ml-2 group-hover:translate-x-1 transition-transform duration-200"
+            class="ml-2 size-5 transition-transform group-hover:translate-x-1 duration-200"
           />
         </NuxtLink>
       </div>

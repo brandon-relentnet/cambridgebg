@@ -7,8 +7,8 @@ import { leadershipTeam } from "~/data/siteData";
 const props = defineProps({
   showButton: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 
 // Filter featured leaders for top row
@@ -31,55 +31,46 @@ function setActiveLeader(id) {
 <template>
   <section
     id="leadership-bios"
-    class="relative px-8 2xl:px-60 py-section bg-slate-100"
+    class="relative bg-slate-100 px-8 2xl:px-60 py-section"
   >
-    <div class="container mx-auto py-block">
+    <div class="py-block mx-auto container">
       <div
-        class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12"
+        class="flex md:flex-row flex-col justify-between items-start md:items-end mb-12"
       >
-        <div class="w-full md:w-1/2 mb-6 md:mb-0">
+        <div class="mb-6 md:mb-0 w-full md:w-1/2">
           <div class="flex items-center mb-4">
-            <UserCircleIcon class="size-10 text-navy mr-4" />
-            <h2 class="text-5xl font-bold text-navy">Our Leadership</h2>
+            <UserCircleIcon class="mr-4 size-10 text-navy" />
+            <h2 class="font-bold text-navy text-5xl">Our Leadership</h2>
           </div>
-          <p class="text-lg text-slate-700">
+          <p class="text-slate-700 text-lg">
             Cambridge Building Group is led by a team of experienced industry
             professionals combining diverse expertise and a shared commitment to
             excellence, innovation, and ethical business practices.
           </p>
         </div>
-        <button
-          v-if="showButton"
-          @click="scrollToNextSection('board-of-directors')"
-          class="bg-navy group text-slate-300 font-semibold px-4 py-2 border-2 border-navy shadow-lg transition duration-200 hover:scale-115 cursor-pointer"
-        >
-          Board of Directors
-          <ChevronRightIcon
-            class="size-5 -mt-0.5 group-hover:rotate-90 inline-block transition duration-200"
-          />
-        </button>
       </div>
 
       <!-- Featured Leadership (Desktop) -->
-      <div class="hidden md:grid md:grid-cols-3 gap-8 mb-12">
+      <div class="hidden gap-8 md:grid md:grid-cols-2 mb-12">
         <div
           v-for="leader in featuredLeaders"
           :key="`desktop-${leader.id}`"
-          class="bg-white p-6 shadow-lg border-t-4 border-navy overflow-hidden"
+          class="bg-white shadow-lg p-6 border-navy border-t-4 overflow-hidden"
         >
-          <div class="h-48 bg-slate-200 flex items-center justify-center">
-            <div class="text-4xl font-bold text-slate-400 opacity-50">
-              {{ leader.name.split(" ")[0].charAt(0)
-              }}{{ leader.name.split(" ")[1].charAt(0) }}
-            </div>
+          <div class="flex justify-center items-center bg-slate-200 h-80">
+            <img
+              :src="leader.image"
+              alt="Leader Image"
+              class="w-full h-full object-cover"
+            />
           </div>
           <div class="p-6">
-            <h3 class="text-2xl font-bold text-navy mb-1">{{ leader.name }}</h3>
-            <p class="text-slate-600 font-medium mb-4">{{ leader.title }}</p>
-            <p class="text-slate-700 mb-4">{{ leader.bio }}</p>
-            <h4 class="text-lg font-semibold text-navy mb-2">Education</h4>
-            <p class="text-slate-600 mb-4">{{ leader.education }}</p>
-            <h4 class="text-lg font-semibold text-navy mb-2">Experience</h4>
+            <h3 class="mb-1 font-bold text-navy text-2xl">{{ leader.name }}</h3>
+            <p class="mb-4 font-medium text-slate-600">{{ leader.title }}</p>
+            <p class="mb-4 text-slate-700">{{ leader.bio }}</p>
+            <h4 class="mb-2 font-semibold text-navy text-lg">Education</h4>
+            <p class="mb-4 text-slate-600">{{ leader.education }}</p>
+            <h4 class="mb-2 font-semibold text-navy text-lg">Experience</h4>
             <ul class="text-slate-600">
               <li
                 v-for="(item, index) in leader.experience"
@@ -94,25 +85,25 @@ function setActiveLeader(id) {
       </div>
 
       <!-- Other Leadership (Desktop) -->
-      <div class="hidden md:grid md:grid-cols-3 gap-6">
+      <div class="hidden gap-6 md:grid md:grid-cols-3">
         <div
           v-for="leader in otherLeaders"
           :key="`desktop-other-${leader.id}`"
-          class="bg-white p-6 shadow-md border-l-4 border-navy"
+          class="bg-white shadow-md p-6 border-navy border-l-4"
         >
           <div class="flex items-center mb-4">
             <div
-              class="w-12 h-12 rounded-full bg-slate-200 flex items-center justify-center text-navy font-bold text-xl mr-4"
+              class="flex justify-center items-center bg-slate-200 mr-4 rounded-full w-12 h-12 font-bold text-navy text-xl"
             >
               {{ leader.name.split(" ")[0].charAt(0)
               }}{{ leader.name.split(" ")[1].charAt(0) }}
             </div>
             <div>
-              <h3 class="text-xl font-bold text-navy">{{ leader.name }}</h3>
+              <h3 class="font-bold text-navy text-xl">{{ leader.name }}</h3>
               <p class="text-slate-600">{{ leader.title }}</p>
             </div>
           </div>
-          <p class="text-slate-700 mb-3">{{ leader.bio }}</p>
+          <p class="mb-3 text-slate-700">{{ leader.bio }}</p>
           <p class="text-slate-600 text-sm italic">{{ leader.education }}</p>
         </div>
       </div>
@@ -125,17 +116,17 @@ function setActiveLeader(id) {
           class="bg-white shadow-md overflow-hidden"
         >
           <div
-            class="p-4 flex items-center cursor-pointer"
+            class="flex items-center p-4 cursor-pointer"
             @click="setActiveLeader(leader.id)"
           >
             <div
-              class="w-12 h-12 rounded-full bg-slate-200 flex items-center justify-center text-navy font-bold text-xl mr-4"
+              class="flex justify-center items-center bg-slate-200 mr-4 rounded-full w-12 h-12 font-bold text-navy text-xl"
             >
               {{ leader.name.split(" ")[0].charAt(0)
               }}{{ leader.name.split(" ")[1].charAt(0) }}
             </div>
             <div class="flex-1">
-              <h3 class="text-xl font-bold text-navy">{{ leader.name }}</h3>
+              <h3 class="font-bold text-navy text-xl">{{ leader.name }}</h3>
               <p class="text-slate-600">{{ leader.title }}</p>
             </div>
             <ChevronRightIcon
@@ -145,12 +136,12 @@ function setActiveLeader(id) {
           </div>
           <div
             v-if="activeLeader === leader.id"
-            class="p-4 pt-0 border-t border-slate-200"
+            class="p-4 pt-0 border-slate-200 border-t"
           >
-            <p class="text-slate-700 mb-4">{{ leader.bio }}</p>
-            <h4 class="text-lg font-semibold text-navy mb-2">Education</h4>
-            <p class="text-slate-600 mb-4">{{ leader.education }}</p>
-            <h4 class="text-lg font-semibold text-navy mb-2">Experience</h4>
+            <p class="mb-4 text-slate-700">{{ leader.bio }}</p>
+            <h4 class="mb-2 font-semibold text-navy text-lg">Education</h4>
+            <p class="mb-4 text-slate-600">{{ leader.education }}</p>
+            <h4 class="mb-2 font-semibold text-navy text-lg">Experience</h4>
             <ul class="text-slate-600">
               <li
                 v-for="(item, index) in leader.experience"

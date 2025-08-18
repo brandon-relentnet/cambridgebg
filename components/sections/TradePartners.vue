@@ -32,42 +32,32 @@ const currentCategory = computed(() => {
 <template>
   <section
     id="trade-partners"
-    class="relative px-8 2xl:px-60 py-section bg-slate-800 text-slate-300"
+    class="relative bg-slate-800 px-8 2xl:px-60 py-section text-slate-300"
   >
-    <div class="container mx-auto py-block">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+    <div class="py-block mx-auto container">
+      <div class="items-start gap-12 grid grid-cols-1 lg:grid-cols-2">
         <div>
           <div class="flex items-center mb-4">
-            <BuildingStorefrontIcon class="size-10 text-slate-300 mr-4" />
-            <h2 class="text-5xl font-bold mb-4">Trade Partners</h2>
+            <BuildingStorefrontIcon class="mr-4 size-10 text-slate-300" />
+            <h2 class="mb-4 font-bold text-5xl">Trade Partners</h2>
           </div>
-          <p class="text-lg mb-6">
+          <p class="mb-6 text-lg">
             Cambridge Building Group has established strong relationships with
             best-in-class subcontractors and suppliers across every specialty.
             Our carefully vetted trade partners share our commitment to quality,
             safety, and client satisfaction.
           </p>
-          <div class="border-l-2 border-slate-400 pl-4 my-8">
+          <div class="my-8 pl-4 border-slate-400 border-l-2">
             <p class="text-lg italic">
               "The strength of our trade partner network allows us to assemble
               the perfect team for each project, ensuring specialized expertise
               and consistent quality across all aspects of construction."
             </p>
           </div>
-          <button
-            v-if="showButton"
-            @click="scrollToNextSection('company-history')"
-            class="bg-slate-300 group text-navy font-semibold px-4 py-2 border-2 border-slate-300 shadow-lg transition duration-200 hover:scale-115 cursor-pointer mt-4"
-          >
-            Our History
-            <ChevronRightIcon
-              class="size-5 -mt-0.5 group-hover:rotate-90 inline-block transition duration-200"
-            />
-          </button>
         </div>
 
-        <div class="bg-navy p-6 shadow-lg border-l-4 border-slate-400">
-          <h3 class="text-2xl font-bold mb-6 pb-3 border-b border-slate-600">
+        <div class="bg-navy shadow-lg p-6 border-slate-400 border-l-4">
+          <h3 class="mb-6 pb-3 border-slate-600 border-b font-bold text-2xl">
             Our Trusted Network
           </h3>
 
@@ -76,7 +66,7 @@ const currentCategory = computed(() => {
               v-for="category in tradeCategories"
               :key="`nav-${category.id}`"
               @click="setActiveCategory(category.id)"
-              class="px-3 py-1 text-sm font-medium rounded-full transition duration-200 cursor-pointer"
+              class="px-3 py-1 rounded-full font-medium text-sm transition duration-200 cursor-pointer"
               :class="
                 activeCategory === category.id
                   ? 'bg-slate-300 text-navy'
@@ -89,8 +79,8 @@ const currentCategory = computed(() => {
 
           <!-- Replace v-for with v-show approach with computed property -->
           <div>
-            <h4 class="text-xl font-semibold mb-4">
-              {{ currentCategory.name }} Partners
+            <h4 class="mb-4 font-semibold text-xl">
+              {{ currentCategory.name }}
             </h4>
             <ul class="space-y-3">
               <li
@@ -98,11 +88,11 @@ const currentCategory = computed(() => {
                 :key="index"
                 class="flex items-center"
               >
-                <span class="w-2 h-2 bg-slate-300 rounded-full mr-3"></span>
+                <span class="bg-slate-300 mr-3 rounded-full w-2 h-2"></span>
                 <span>{{ partner }}</span>
               </li>
             </ul>
-            <p class="text-slate-400 font-medium mt-6">
+            <p class="mt-6 font-medium text-slate-400">
               * All partners undergo rigorous qualification and maintain our
               high standards for quality and safety.
             </p>
