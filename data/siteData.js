@@ -98,7 +98,7 @@ export const milestones = [
     title: "Nashville Shores Project",
     description:
       "Cambridge took on a pivotal role in the expansion of Nashville Shores, constructing two major waterslides that set a new benchmark for the company's capabilities. This project became a cornerstone of Cambridge's commercial portfolio.",
-    link: "/portfolio/nashville-shores",
+    link: "/portfolio",
   },
   {
     id: 3,
@@ -549,7 +549,7 @@ export const services = [
       "Restaurant Developments",
       "Turnkey Construction Services",
     ],
-    link: "/services/commercial",
+    link: "/services",
   },
   {
     id: 2,
@@ -564,7 +564,7 @@ export const services = [
       "Entertainment Venues",
       "Hospitality Renovations",
     ],
-    link: "/services/hospitality",
+    link: "/services",
   },
   {
     id: 3,
@@ -579,7 +579,7 @@ export const services = [
       "Industrial Retrofits",
       "Specialized Industrial Spaces",
     ],
-    link: "/services/industrial",
+    link: "/services",
   },
   {
     id: 4,
@@ -594,7 +594,7 @@ export const services = [
       "Student Housing",
       "Mixed-Use Developments",
     ],
-    link: "/services/multifamily",
+    link: "/services",
   },
   {
     id: 5,
@@ -609,7 +609,7 @@ export const services = [
       "Luxury Renovations",
       "Estate Construction",
     ],
-    link: "/services/residential",
+    link: "/services",
   },
   {
     id: 6,
@@ -624,7 +624,7 @@ export const services = [
       "Agricultural Buildings",
       "Customized PEMB Solutions",
     ],
-    link: "/services/pemb",
+    link: "/services",
   },
 ];
 

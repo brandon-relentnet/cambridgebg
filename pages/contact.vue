@@ -223,7 +223,7 @@ function submitForm() {
                 <div class="flex items-center">
                   <BuildingOfficeIcon class="mr-3 size-5 text-navy" />
                   <NuxtLink
-                    to="/services/commercial"
+                    to="/services"
                     class="text-slate-700 hover:text-navy"
                   >
                     Commercial Construction
@@ -232,7 +232,7 @@ function submitForm() {
                 <div class="flex items-center">
                   <HomeModernIcon class="mr-3 size-5 text-navy" />
                   <NuxtLink
-                    to="/services/residential"
+                    to="/services"
                     class="text-slate-700 hover:text-navy"
                   >
                     Luxury Residential
@@ -241,7 +241,7 @@ function submitForm() {
                 <div class="flex items-center">
                   <BuildingStorefrontIcon class="mr-3 size-5 text-navy" />
                   <NuxtLink
-                    to="/services/renovation"
+                    to="/services"
                     class="text-slate-700 hover:text-navy"
                   >
                     Historic Renovation
@@ -250,7 +250,7 @@ function submitForm() {
                 <div class="flex items-center">
                   <WrenchScrewdriverIcon class="mr-3 size-5 text-navy" />
                   <NuxtLink
-                    to="/services/design-build"
+                    to="/services"
                     class="text-slate-700 hover:text-navy"
                   >
                     Design-Build Solutions

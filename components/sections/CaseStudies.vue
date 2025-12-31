@@ -11,13 +11,15 @@ const props = defineProps({
   }
 });
 
-const activeStudy = ref(caseStudies[0].id);
+const hasCaseStudies = computed(() => caseStudies && caseStudies.length > 0);
+const activeStudy = ref(hasCaseStudies.value ? caseStudies[0].id : null);
 
 function setActiveStudy(id) {
   activeStudy.value = id;
 }
 
 const getActiveStudy = computed(() => {
+  if (!hasCaseStudies.value) return null;
   return (
     caseStudies.find((study) => study.id === activeStudy.value) ||
     caseStudies[0]
@@ -27,6 +29,7 @@ const getActiveStudy = computed(() => {
 
 <template>
   <section
+    v-if="hasCaseStudies"
     id="case-studies"
     class="relative px-8 2xl:px-60 py-section bg-slate-800 text-slate-300"
   >

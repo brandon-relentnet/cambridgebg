@@ -41,7 +41,7 @@ const services = [
       "Hospitality & Entertainment Venues",
       "Financial Institutions & Banks",
     ],
-    link: "/services/commercial",
+    link: "/services",
   },
   {
     id: 2,
@@ -56,7 +56,7 @@ const services = [
       "Vacation & Second Homes",
       "Residential Community Planning",
     ],
-    link: "/services/residential",
+    link: "/services",
   },
   {
     id: 3,
@@ -71,7 +71,7 @@ const services = [
       "Period Detail Reconstruction",
       "Heritage Building Modernization",
     ],
-    link: "/services/renovation",
+    link: "/services",
   },
   {
     id: 4,
@@ -86,7 +86,7 @@ const services = [
       "Accelerated Project Timelines",
       "Collaborative Problem-Solving",
     ],
-    link: "/services/design-build",
+    link: "/services",
   },
   {
     id: 5,
@@ -101,7 +101,7 @@ const services = [
       "Workspace Modernization",
       "Brand-Aligned Design Implementation",
     ],
-    link: "/services/tenant-improvements",
+    link: "/services",
   },
   {
     id: 6,
@@ -116,7 +116,7 @@ const services = [
       "Schedule Development & Planning",
       "Constructability & Risk Assessment",
     ],
-    link: "/services/pre-construction",
+    link: "/services",
   },
 ];
 
