@@ -1,13 +1,18 @@
 <script setup>
-useHead({
-  title: "Privacy Policy | Cambridge Building Group",
-  meta: [
-    {
-      name: "description",
-      content: "Privacy Policy for Cambridge Building Group.",
-    },
-  ],
+useSeoMeta({
+  title: "Privacy Policy",
+  description:
+    "Privacy Policy for Cambridge Building Group. Learn how we protect your personal data.",
+  ogTitle: "Privacy Policy | Cambridge Building Group",
+  ogDescription:
+    "Privacy Policy for Cambridge Building Group. Learn how we protect your personal data.",
 });
+
+useSchemaOrg([
+  defineWebPage({
+    name: "Privacy Policy",
+  }),
+]);
 </script>
 
 <template>

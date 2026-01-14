@@ -1,6 +1,5 @@
 export function scrollToNextSection(el) {
-    const nextSectionEl = document.getElementById(
-        el
-    );
-    nextSectionEl?.scrollIntoView({ behavior: "smooth" });
-};
+  if (typeof document === "undefined") return;
+  const nextSectionEl = document.getElementById(el);
+  nextSectionEl?.scrollIntoView({ behavior: "smooth" });
+}

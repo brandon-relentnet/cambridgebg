@@ -5,7 +5,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "start": "PORT=${PORT:-3331} node .output/server/index.mjs",
+    "start": "node .output/server/index.mjs",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
@@ -17,9 +17,12 @@
     "@nuxt/image": "^1.9.0",
     "@tailwindcss/vite": "^4.0.9",
     "@vueuse/nuxt": "^12.7.0",
-    "nuxt": "^3.15.4",
+    "nuxt": "^3.20.2",
     "tailwindcss": "^4.0.9",
     "vue": "latest",
     "vue-router": "latest"
+  },
+  "devDependencies": {
+    "@nuxtjs/seo": "^3.3.0"
   }
 }

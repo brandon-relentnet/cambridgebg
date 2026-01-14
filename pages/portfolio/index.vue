@@ -8,15 +8,20 @@ import { projects, categories } from "~/data/portfolioData";
 import { companyInfo } from "~/data/siteData";
 
 // Page metadata
-useHead({
-  title: `Portfolio | ${companyInfo.name}`,
-  meta: [
-    {
-      name: "description",
-      content: `Explore ${companyInfo.name}'s portfolio of commercial, residential, and renovation projects that showcase our expertise and craftsmanship.`,
-    },
-  ],
+useSeoMeta({
+  title: "Our Portfolio",
+  description: `Explore ${companyInfo.name}'s portfolio of commercial, residential, and renovation projects that showcase our expertise and craftsmanship.`,
+  ogTitle: `Portfolio | ${companyInfo.name}`,
+  ogDescription: `Explore ${companyInfo.name}'s portfolio of commercial, residential, and renovation projects that showcase our expertise and craftsmanship.`,
+  ogImage: "/portfolio-header.jpg",
+  twitterCard: "summary_large_image",
 });
+
+useSchemaOrg([
+  defineWebPage({
+    name: "Our Portfolio",
+  }),
+]);
 
 // Active filter
 const activeCategory = ref("all");
@@ -211,9 +216,6 @@ function setActiveCategory(categoryId) {
         </div>
       </div>
     </section>
-
-    <!-- Case Studies component -->
-    <SectionsCaseStudies />
 
     <!-- Awards component -->
     <SectionsIndustryAwards />

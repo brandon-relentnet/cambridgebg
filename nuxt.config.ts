@@ -11,5 +11,13 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@vueuse/nuxt",
     "@formkit/auto-animate/nuxt",
+    "@nuxtjs/seo",
   ],
+
+  site: {
+    url: "https://cambridgebg.com",
+    name: "Cambridge Building Group",
+    description: "Building excellence through communication, integrity, and dedicated craftsmanship.",
+    defaultLocale: "en",
+  },
 });

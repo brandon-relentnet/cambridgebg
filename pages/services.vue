@@ -15,16 +15,22 @@ import {
 } from "@heroicons/vue/24/solid";
 
 // Page metadata
-useHead({
-  title: "Services | Cambridge Building Group",
-  meta: [
-    {
-      name: "description",
-      content:
-        "Explore Cambridge Building Group's comprehensive services including commercial construction, luxury residential, historic renovation, design-build, and more.",
-    },
-  ],
+useSeoMeta({
+  title: "Our Services",
+  description:
+    "Explore Cambridge Building Group's comprehensive services including commercial construction, luxury residential, historic renovation, design-build, and more.",
+  ogTitle: "Construction Services | Cambridge Building Group",
+  ogDescription:
+    "Explore Cambridge Building Group's comprehensive services including commercial construction, luxury residential, historic renovation, design-build, and more.",
+  ogImage: "/services-header.jpg",
+  twitterCard: "summary_large_image",
 });
+
+useSchemaOrg([
+  defineWebPage({
+    name: "Our Services",
+  }),
+]);
 
 const services = [
   {

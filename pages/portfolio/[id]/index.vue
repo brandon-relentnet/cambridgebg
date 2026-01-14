@@ -30,20 +30,23 @@ onMounted(() => {
 });
 
 // Page metadata
-useHead({
+useSeoMeta({
   title: computed(() =>
+    project.value ? project.value.title : "Project Details"
+  ),
+  description: computed(() =>
+    project.value ? project.value.description : "Project details page"
+  ),
+  ogTitle: computed(() =>
     project.value
       ? `${project.value.title} | Cambridge Building Group Portfolio`
       : "Project Details"
   ),
-  meta: [
-    {
-      name: "description",
-      content: computed(() =>
-        project.value ? project.value.description : "Project details page"
-      ),
-    },
-  ],
+  ogDescription: computed(() =>
+    project.value ? project.value.description : "Project details page"
+  ),
+  ogImage: "/riverfront-plaza.jpg",
+  twitterCard: "summary_large_image",
 });
 </script>
 

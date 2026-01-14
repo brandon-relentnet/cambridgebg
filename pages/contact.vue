@@ -12,16 +12,22 @@ import {
 } from "@heroicons/vue/24/solid";
 
 // Page metadata
-useHead({
-  title: "Contact Us | Cambridge Building Group",
-  meta: [
-    {
-      name: "description",
-      content:
-        "Get in touch with Cambridge Building Group for your construction needs. Request a quote, discuss a project, or inquire about our services.",
-    },
-  ],
+useSeoMeta({
+  title: "Contact Us",
+  description:
+    "Get in touch with Cambridge Building Group for your construction needs. Request a quote, discuss a project, or inquire about our services.",
+  ogTitle: "Contact Us | Cambridge Building Group",
+  ogDescription:
+    "Get in touch with Cambridge Building Group for your construction needs. Request a quote, discuss a project, or inquire about our services.",
+  ogImage: "/contact-header.jpg",
+  twitterCard: "summary_large_image",
 });
+
+useSchemaOrg([
+  defineWebPage({
+    name: "Contact Us",
+  }),
+]);
 
 // Form data
 const form = ref({

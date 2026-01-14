@@ -1,3 +1,16 @@
+<script setup>
+useSeoMeta({
+  title: "General Contractor & Construction Management",
+  description:
+    "Cambridge Building Group is a premier general contractor in Nashville, TN, offering commercial, industrial, hospitality, and luxury residential construction services since 2015.",
+  ogTitle: "Cambridge Building Group | General Contractor in Nashville",
+  ogDescription:
+    "Building excellence through communication, integrity, and dedicated craftsmanship. Specializing in commercial, industrial, and luxury residential projects.",
+  ogImage: "/home-hero.jpg",
+  twitterCard: "summary_large_image",
+});
+</script>
+
 <template>
   <div>
     <!-- 0. Hero Section -->
@@ -41,9 +54,6 @@
 
     <!-- 11. Past Clients -->
     <SectionsPastClients :showButton="true" />
-
-    <!-- 14. Board of Directors -->
-    <!-- <SectionsBoardOfDirectors :showButton="true" /> -->
 
     <!-- 15. Community Outreach -->
     <SectionsCommunityOutreach />

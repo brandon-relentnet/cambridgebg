@@ -2,16 +2,23 @@
 import { BoltIcon, HandRaisedIcon, UsersIcon } from "@heroicons/vue/24/solid";
 
 // Page metadata
-useHead({
-  title: "About Us | Cambridge Building Group",
-  meta: [
-    {
-      name: "description",
-      content:
-        "Learn about Cambridge Building Group - our history, values, leadership team, and commitment to excellence in the construction industry.",
-    },
-  ],
+useSeoMeta({
+  title: "About Us",
+  description:
+    "Learn about Cambridge Building Group - our history, values, leadership team, and commitment to excellence in the construction industry.",
+  ogTitle: "About Us | Cambridge Building Group",
+  ogDescription:
+    "Learn about Cambridge Building Group - our history, values, leadership team, and commitment to excellence in the construction industry.",
+  ogImage: "/about-header.jpg",
+  twitterCard: "summary_large_image",
 });
+
+useSchemaOrg([
+  defineWebPage({
+    "@type": "AboutPage",
+    name: "About Us",
+  }),
+]);
 
 const missionVision = {
   mission:
@@ -109,9 +116,6 @@ const companyStats = [
 
     <!-- Leadership Team -->
     <SectionsLeadershipBios />
-
-    <!-- Board of Directors -->
-    <SectionsBoardOfDirectors />
 
     <!-- Company Culture -->
     <section class="py-16 px-8 2xl:px-60 bg-slate-100">
