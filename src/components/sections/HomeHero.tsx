@@ -92,7 +92,11 @@ export function HomeHero({ showButton: _showButton = false }: HomeHeroProps): Re
           <motion.img
             src="/cbg-secondary-logo.png"
             alt="Cambridge Building Group"
-            className="mb-6 w-[220px] md:w-[300px] lg:w-[340px] brightness-0 invert opacity-90"
+            className="mb-6 w-[220px] md:w-[300px] lg:w-[340px] opacity-80"
+            style={{
+              filter:
+                'brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(10deg) contrast(1.1)',
+            }}
             variants={itemVariants}
           />
 
@@ -101,9 +105,7 @@ export function HomeHero({ showButton: _showButton = false }: HomeHeroProps): Re
             className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight"
             variants={itemVariants}
           >
-            Building Nashville&rsquo;s
-            <br />
-            <span className="text-amber">Future</span>
+            Building Nashville&rsquo;s <span className="text-amber">Future</span>
           </motion.h1>
 
           {/* Tagline */}
