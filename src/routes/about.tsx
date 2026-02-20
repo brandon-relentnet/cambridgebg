@@ -27,11 +27,15 @@ function AboutPage(): React.ReactElement {
   return (
     <div>
       {/* Page Header */}
-      <section className="relative h-[40vh] flex items-center justify-center bg-slate-800">
-        <div className="absolute inset-0 z-0 opacity-30 bg-[url('/about-header.jpg')] bg-cover bg-center" />
-        <div className="relative z-10 text-center px-8">
-          <h1 className="text-5xl md:text-6xl font-bold text-slate-300 mb-4">About Us</h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+      <section className="relative h-[50vh] flex items-end bg-slate-800 overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-20 bg-[url('/about-header.jpg')] bg-cover bg-center" />
+        <div className="absolute inset-0 z-0 bg-gradient-to-t from-slate-800 via-slate-800/60 to-transparent" />
+        <div className="relative z-10 px-8 2xl:px-60 pb-12 w-full">
+          <p className="font-display text-slate-400 text-lg tracking-widest uppercase mb-2">
+            Who We Are
+          </p>
+          <h1 className="font-display text-5xl md:text-7xl text-slate-300 mb-4">About Us</h1>
+          <p className="text-xl text-slate-400 max-w-2xl">
             Building excellence through innovation, integrity, and dedicated craftsmanship since
             2015.
           </p>
@@ -43,7 +47,9 @@ function AboutPage(): React.ReactElement {
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-navy mb-6">Our Mission &amp; Vision</h2>
+              <h2 className="font-display text-4xl font-bold text-navy mb-6">
+                Our Mission &amp; Vision
+              </h2>
               <div className="mb-8">
                 <h3 className="text-2xl font-semibold text-navy mb-3 flex items-center">
                   <BoltIcon className="size-6 text-navy mr-2" />
@@ -98,7 +104,7 @@ function AboutPage(): React.ReactElement {
         <div className="container mx-auto">
           <div className="flex items-center mb-8">
             <UsersIcon className="size-10 text-navy mr-4" />
-            <h2 className="text-4xl font-bold text-navy">Our Company Culture</h2>
+            <h2 className="font-display text-4xl font-bold text-navy">Our Company Culture</h2>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>

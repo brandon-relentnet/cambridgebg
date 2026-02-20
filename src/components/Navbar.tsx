@@ -32,8 +32,10 @@ export function Navbar(): React.ReactElement {
   return (
     <header>
       <nav
-        className={`top-0 left-0 z-50 fixed bg-slate-100 w-full h-20 transition-all duration-300 ${
-          isScrolled ? 'shadow-md' : 'shadow-none'
+        className={`top-0 left-0 z-50 fixed w-full h-20 transition-all duration-500 ${
+          isScrolled
+            ? 'bg-slate-100/90 backdrop-blur-lg shadow-[0_1px_0_rgba(11,27,37,0.08)] shadow-md'
+            : 'bg-slate-100 shadow-none'
         }`}
       >
         <div className="flex justify-between items-center mx-auto px-6 h-full container">

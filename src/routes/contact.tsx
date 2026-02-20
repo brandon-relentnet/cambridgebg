@@ -143,11 +143,15 @@ function ContactPage(): React.ReactElement {
   return (
     <div>
       {/* Page Header */}
-      <section className="relative flex justify-center items-center bg-slate-800 h-[40vh]">
-        <div className="z-0 absolute inset-0 bg-[url('/contact-header.jpg')] bg-cover bg-center opacity-30" />
-        <div className="z-10 relative px-8 text-center">
-          <h1 className="mb-4 font-bold text-slate-300 text-5xl md:text-6xl">Contact Us</h1>
-          <p className="mx-auto max-w-3xl text-slate-300 text-xl">
+      <section className="relative flex items-end bg-slate-800 h-[50vh] overflow-hidden">
+        <div className="z-0 absolute inset-0 bg-[url('/contact-header.jpg')] bg-cover bg-center opacity-20" />
+        <div className="z-0 absolute inset-0 bg-gradient-to-t from-slate-800 via-slate-800/60 to-transparent" />
+        <div className="z-10 relative px-8 2xl:px-60 pb-12 w-full">
+          <p className="font-display text-slate-400 text-lg tracking-widest uppercase mb-2">
+            Get in Touch
+          </p>
+          <h1 className="font-display text-5xl md:text-7xl text-slate-300 mb-4">Contact Us</h1>
+          <p className="text-xl text-slate-400 max-w-2xl">
             Let&apos;s discuss your project and transform your vision into reality.
           </p>
         </div>
@@ -159,7 +163,7 @@ function ContactPage(): React.ReactElement {
           <div className="gap-12 grid grid-cols-1 lg:grid-cols-2">
             {/* Contact Details */}
             <div>
-              <h2 className="mb-6 font-bold text-navy text-4xl">Get In Touch</h2>
+              <h2 className="font-display mb-6 font-bold text-navy text-4xl">Get In Touch</h2>
               <p className="mb-8 text-slate-700 text-lg">
                 Whether you&apos;re ready to start a new project, need information about our
                 services, or have questions about working with us, we&apos;re here to help. Contact
@@ -454,7 +458,7 @@ function ContactPage(): React.ReactElement {
       {/* Office Locations */}
       <section className="bg-slate-100 px-8 2xl:px-60 py-16">
         <div className="mx-auto container">
-          <h2 className="mb-8 font-bold text-navy text-3xl text-center">Our Office</h2>
+          <h2 className="font-display mb-8 font-bold text-navy text-3xl text-center">Our Office</h2>
           <div className="flex justify-center gap-8">
             {officeLocations.map((office) => (
               <div
@@ -489,7 +493,7 @@ function ContactPage(): React.ReactElement {
       {/* FAQ Section */}
       <section className="bg-slate-100 px-8 2xl:px-60 py-16">
         <div className="mx-auto container">
-          <h2 className="mb-8 font-bold text-navy text-3xl text-center">
+          <h2 className="font-display mb-8 font-bold text-navy text-3xl text-center">
             Frequently Asked Questions
           </h2>
           <div className="mx-auto max-w-3xl">

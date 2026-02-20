@@ -25,47 +25,64 @@ function HomePage(): React.ReactElement {
       {/* Hero Section */}
       <HomeHero />
 
-      {/* Who is Cambridge Building Group? */}
-      <WhoIsCC showButton />
+      {/* First section: flat top, slanted bottom */}
+      <div className="slant-bottom">
+        <WhoIsCC showButton />
+      </div>
 
-      {/* Core Values */}
-      <CoreValues showButton />
+      {/* Middle sections: full parallelogram (slanted top + bottom) */}
+      <div className="slant-both">
+        <CoreValues showButton />
+      </div>
 
-      {/* Milestones */}
-      <Milestones showButton />
+      <div className="slant-both">
+        <Milestones showButton />
+      </div>
 
-      {/* Combined Experience */}
-      <CombinedExperience showButton />
+      <div className="slant-both">
+        <CombinedExperience showButton />
+      </div>
 
-      {/* Services Provided */}
-      <ServicesProvided showButton />
+      <div className="slant-both">
+        <ServicesProvided showButton />
+      </div>
 
-      {/* Markets We Serve */}
-      <MarketsWeServe showButton />
+      <div className="slant-both">
+        <MarketsWeServe showButton />
+      </div>
 
-      {/* Competitive Advantage */}
-      <CompetitiveAdvantage showButton />
+      <div className="slant-both">
+        <CompetitiveAdvantage showButton />
+      </div>
 
-      {/* Safety on the Job Site */}
-      <SafetyOnTheJob showButton />
+      <div className="slant-both">
+        <SafetyOnTheJob showButton />
+      </div>
 
-      {/* Industry Awards */}
-      <IndustryAwards showButton />
+      <div className="slant-both">
+        <IndustryAwards showButton />
+      </div>
 
-      {/* Trade Partners */}
-      <TradePartners showButton />
+      <div className="slant-both">
+        <TradePartners showButton />
+      </div>
 
-      {/* Leadership Bios */}
-      <LeadershipBios showButton />
+      <div className="slant-both">
+        <LeadershipBios showButton />
+      </div>
 
-      {/* Past Clients */}
-      <PastClients showButton />
+      <div className="slant-both">
+        <PastClients showButton />
+      </div>
 
-      {/* Community Outreach */}
-      <CommunityOutreach />
+      <div className="slant-both">
+        <CommunityOutreach />
+      </div>
 
-      {/* Contact Us */}
-      <ContactCTA />
+      {/* Last section: slanted top, flat bottom */}
+      <div className="slant-top">
+        <ContactCTA />
+      </div>
     </div>
   )
 }

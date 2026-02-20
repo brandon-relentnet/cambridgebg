@@ -1,7 +1,9 @@
+import { ScrollReveal } from '@/components/ScrollReveal'
 import { impactStats, initiatives } from '@/data/siteData'
 import { ChevronRightIcon, HeartIcon } from '@heroicons/react/24/solid'
 import { Link } from '@tanstack/react-router'
-import { useEffect, useState } from 'react'
+import { useInView } from 'motion/react'
+import { useEffect, useRef, useState } from 'react'
 
 interface CommunityOutreachProps {
   showButton?: boolean
@@ -18,9 +20,13 @@ export function CommunityOutreach({ showButton: _showButton = false }: Community
   const [stats, setStats] = useState<AnimatedStat[]>(
     impactStats.map((stat) => ({ ...stat, value: 0 })),
   )
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const isInView = useInView(sectionRef, { once: true, amount: 0.3 })
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: animation runs once on mount
+  // biome-ignore lint/correctness/useExhaustiveDependencies: animation runs once when in view
   useEffect(() => {
+    if (!isInView) return
+
     const duration = 2000
     const intervals: ReturnType<typeof setInterval>[] = []
 
@@ -47,7 +53,7 @@ export function CommunityOutreach({ showButton: _showButton = false }: Community
     return () => {
       for (const interval of intervals) clearInterval(interval)
     }
-  }, [])
+  }, [isInView])
 
   function formatValue(value: number): string {
     return Math.floor(value).toLocaleString()
@@ -56,30 +62,34 @@ export function CommunityOutreach({ showButton: _showButton = false }: Community
   return (
     <section id="community-outreach" className="relative bg-slate-100 px-8 2xl:px-60 py-section">
       <div className="py-block mx-auto container">
-        <div className="mx-auto mb-12 w-full md:w-2/3 text-center">
-          <div className="flex justify-center items-center mb-4">
-            <HeartIcon className="mr-4 size-10 text-navy" />
-            <h2 className="font-bold text-navy text-5xl">Community Impact</h2>
+        <ScrollReveal>
+          <div className="mx-auto mb-12 w-full md:w-2/3 text-center">
+            <div className="flex justify-center items-center mb-4">
+              <HeartIcon className="mr-4 size-10 text-navy" />
+              <h2 className="font-display font-bold text-navy text-5xl">Community Impact</h2>
+            </div>
+            <p className="text-slate-700 text-xl">
+              At Cambridge Building Group, we believe in building more than structures&mdash;we
+              build communities. Our commitment to social responsibility drives us to give back to
+              the communities where we live and work.
+            </p>
           </div>
-          <p className="text-slate-700 text-xl">
-            At Cambridge Building Group, we believe in building more than structures&mdash;we build
-            communities. Our commitment to social responsibility drives us to give back to the
-            communities where we live and work.
-          </p>
-        </div>
+        </ScrollReveal>
 
         {/* Impact Statistics */}
-        <div className="gap-8 grid grid-cols-1 md:grid-cols-2 mb-16">
-          {stats.map((stat) => (
-            <div
-              key={stat.id}
-              className="bg-white shadow-lg p-8 border-navy border-b-4 text-center"
-            >
-              <p className="mb-3 font-bold text-navy text-5xl">{formatValue(stat.value)}</p>
-              <p className="text-slate-700 text-xl">{stat.label}</p>
-            </div>
-          ))}
-        </div>
+        <ScrollReveal delay={0.1}>
+          <div ref={sectionRef} className="gap-8 grid grid-cols-1 md:grid-cols-2 mb-16">
+            {stats.map((stat) => (
+              <div
+                key={stat.id}
+                className="bg-white shadow-lg p-8 border-navy border-b-4 text-center"
+              >
+                <p className="mb-3 font-bold text-navy text-5xl">{formatValue(stat.value)}</p>
+                <p className="text-slate-700 text-xl">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </ScrollReveal>
 
         {/* Community Initiatives */}
         <h3 className="mb-8 font-bold text-navy text-3xl text-center">Our Community Initiatives</h3>

@@ -3,6 +3,9 @@
 @theme {
   --color-navy: #0b1b25;
 
+  --font-display: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --font-body: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+
   --breakpoint-3xl: 130rem;
   --breakpoint-4xl: 140rem;
 
@@ -19,4 +22,52 @@
 
 html {
   background-color: var(--color-slate-100);
+  font-family: var(--font-body);
+}
+
+/* ── Background textures ──────────────────────────────────── */
+
+/* Subtle blueprint-style grid for dark sections */
+.bg-grid {
+  background-image: linear-gradient(rgba(148, 163, 184, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Fine dot pattern for light sections */
+.bg-dots {
+  background-image: radial-gradient(circle, rgba(11, 27, 37, 0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Crosshatch pattern for accents */
+.bg-crosshatch {
+  background-image: linear-gradient(45deg, rgba(148, 163, 184, 0.03) 1px, transparent 1px),
+    linear-gradient(-45deg, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* ── Parallelogram section slants ──────────────────────────── */
+
+/* First section after hero: flat top, slanted bottom */
+.slant-bottom {
+  --slant: clamp(32px, 5vw, 72px);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--slant)), 0 100%);
+  position: relative;
+}
+
+/* Middle sections: full parallelogram (slanted top + bottom) */
+.slant-both {
+  --slant: clamp(32px, 5vw, 72px);
+  clip-path: polygon(0 var(--slant), 100% 0, 100% calc(100% - var(--slant)), 0 100%);
+  margin-top: calc(-1 * var(--slant));
+  position: relative;
+}
+
+/* Last section: slanted top, flat bottom */
+.slant-top {
+  --slant: clamp(32px, 5vw, 72px);
+  clip-path: polygon(0 var(--slant), 100% 0, 100% 100%, 0 100%);
+  margin-top: calc(-1 * var(--slant));
+  position: relative;
 }

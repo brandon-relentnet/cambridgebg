@@ -50,11 +50,15 @@ function PortfolioPage(): React.ReactElement {
   return (
     <div>
       {/* Page Header */}
-      <section className="relative h-[40vh] flex items-center justify-center bg-slate-800">
-        <div className="absolute inset-0 z-0 opacity-30 bg-[url('/portfolio-header.jpg')] bg-cover bg-center" />
-        <div className="relative z-10 text-center px-8">
-          <h1 className="text-5xl md:text-6xl font-bold text-slate-300 mb-4">Our Portfolio</h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+      <section className="relative h-[50vh] flex items-end bg-slate-800 overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-20 bg-[url('/portfolio-header.jpg')] bg-cover bg-center" />
+        <div className="absolute inset-0 z-0 bg-gradient-to-t from-slate-800 via-slate-800/60 to-transparent" />
+        <div className="relative z-10 px-8 2xl:px-60 pb-12 w-full">
+          <p className="font-display text-slate-400 text-lg tracking-widest uppercase mb-2">
+            Our Work
+          </p>
+          <h1 className="font-display text-5xl md:text-7xl text-slate-300 mb-4">Portfolio</h1>
+          <p className="text-xl text-slate-400 max-w-2xl">
             Explore our diverse collection of projects that showcase our expertise, innovation, and
             dedication to excellence.
           </p>

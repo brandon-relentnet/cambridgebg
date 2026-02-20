@@ -1,3 +1,4 @@
+import { ScrollReveal } from '@/components/ScrollReveal'
 import { caseStudies } from '@/data/siteData'
 import { scrollToNextSection } from '@/utils/autoScroll'
 import { ArrowRightIcon, ChevronRightIcon } from '@heroicons/react/24/solid'
@@ -27,26 +28,28 @@ export function CaseStudies({ showButton = false }: CaseStudiesProps) {
       className="relative px-8 2xl:px-60 py-section bg-slate-800 text-slate-300"
     >
       <div className="container mx-auto py-block">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
-          <div className="w-full md:w-1/2 mb-6 md:mb-0">
-            <h2 className="text-5xl font-bold mb-4">Case Studies</h2>
-            <p className="text-lg">
-              Explore our featured projects to see how Cambridge Building Group transforms
-              challenges into successful outcomes through expertise, innovation, and dedication to
-              excellence.
-            </p>
+        <ScrollReveal>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
+            <div className="w-full md:w-1/2 mb-6 md:mb-0">
+              <h2 className="font-display text-5xl font-bold mb-4">Case Studies</h2>
+              <p className="text-lg">
+                Explore our featured projects to see how Cambridge Building Group transforms
+                challenges into successful outcomes through expertise, innovation, and dedication to
+                excellence.
+              </p>
+            </div>
+            {showButton && (
+              <button
+                type="button"
+                onClick={() => scrollToNextSection('past-clients')}
+                className="bg-slate-300 group text-navy font-semibold px-4 py-2 border-2 border-slate-300 shadow-lg transition duration-200 hover:scale-115 cursor-pointer"
+              >
+                Our Clients
+                <ChevronRightIcon className="size-5 -mt-0.5 group-hover:rotate-90 inline-block transition duration-200" />
+              </button>
+            )}
           </div>
-          {showButton && (
-            <button
-              type="button"
-              onClick={() => scrollToNextSection('past-clients')}
-              className="bg-slate-300 group text-navy font-semibold px-4 py-2 border-2 border-slate-300 shadow-lg transition duration-200 hover:scale-115 cursor-pointer"
-            >
-              Our Clients
-              <ChevronRightIcon className="size-5 -mt-0.5 group-hover:rotate-90 inline-block transition duration-200" />
-            </button>
-          )}
-        </div>
+        </ScrollReveal>
         <div className="flex flex-wrap gap-4 mb-10">
           {caseStudies.map((study) => (
             <button

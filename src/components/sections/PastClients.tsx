@@ -1,3 +1,4 @@
+import { ScrollReveal } from '@/components/ScrollReveal'
 import { clients, testimonials } from '@/data/siteData'
 import { scrollToNextSection } from '@/utils/autoScroll'
 import { ChevronRightIcon } from '@heroicons/react/24/solid'
@@ -21,40 +22,46 @@ export function PastClients({ showButton = false }: PastClientsProps) {
   return (
     <section
       id="past-clients"
-      className="relative px-8 2xl:px-60 py-section bg-slate-800 text-slate-300"
+      className="relative px-8 2xl:px-60 py-section bg-slate-800 text-slate-300 bg-grid"
     >
       <div className="container mx-auto py-block">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
-          <div className="w-full md:w-1/2 mb-6 md:mb-0">
-            <h2 className="text-5xl font-bold text-slate-300 mb-4">Our Valued Clients</h2>
-            <p className="text-lg text-slate-300">
-              Cambridge Building Group has built lasting partnerships with industry leaders across
-              diverse sectors. We take pride in our clients&apos; satisfaction and their continued
-              trust in our services.
-            </p>
-          </div>
-          {showButton && (
-            <button
-              type="button"
-              onClick={() => scrollToNextSection('trade-partners')}
-              className="bg-slate-300 group text-navy font-semibold px-4 py-2 border-2 border-slate-300 shadow-lg transition duration-200 hover:scale-115 cursor-pointer"
-            >
-              Trade Partners
-              <ChevronRightIcon className="size-5 -mt-0.5 group-hover:rotate-90 inline-block transition duration-200" />
-            </button>
-          )}
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-16">
-          {clients.map((client) => (
-            <div
-              key={`logo-${client.id}`}
-              className="bg-navy p-6 shadow-md flex items-center justify-center h-24 border border-slate-600"
-            >
-              <p className="text-slate-300 font-bold text-center">{client.name}</p>
+        <ScrollReveal>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
+            <div className="w-full md:w-1/2 mb-6 md:mb-0">
+              <h2 className="font-display text-5xl font-bold text-slate-300 mb-4">
+                Our Valued Clients
+              </h2>
+              <p className="text-lg text-slate-300">
+                Cambridge Building Group has built lasting partnerships with industry leaders across
+                diverse sectors. We take pride in our clients&apos; satisfaction and their continued
+                trust in our services.
+              </p>
             </div>
-          ))}
-        </div>
+            {showButton && (
+              <button
+                type="button"
+                onClick={() => scrollToNextSection('trade-partners')}
+                className="bg-slate-300 group text-navy font-semibold px-4 py-2 border-2 border-slate-300 shadow-lg transition duration-200 hover:scale-115 cursor-pointer"
+              >
+                Trade Partners
+                <ChevronRightIcon className="size-5 -mt-0.5 group-hover:rotate-90 inline-block transition duration-200" />
+              </button>
+            )}
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.1}>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-16">
+            {clients.map((client) => (
+              <div
+                key={`logo-${client.id}`}
+                className="bg-navy p-6 shadow-md flex items-center justify-center h-24 border border-slate-600"
+              >
+                <p className="text-slate-300 font-bold text-center">{client.name}</p>
+              </div>
+            ))}
+          </div>
+        </ScrollReveal>
 
         <div className="max-w-7xl items-end justify-between sm:flex sm:pe-6 lg:pe-8 mb-8">
           <h3 className="text-3xl font-bold text-slate-300">Client Testimonials</h3>

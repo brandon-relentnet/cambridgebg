@@ -202,11 +202,15 @@ function ServicesPage(): React.ReactElement {
   return (
     <div>
       {/* Page Header */}
-      <section className="relative h-[40vh] flex items-center justify-center bg-slate-800">
-        <div className="absolute inset-0 z-0 opacity-30 bg-[url('/services-header.jpg')] bg-cover bg-center" />
-        <div className="relative z-10 text-center px-8">
-          <h1 className="text-5xl md:text-6xl font-bold text-slate-300 mb-4">Our Services</h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+      <section className="relative h-[50vh] flex items-end bg-slate-800 overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-20 bg-[url('/services-header.jpg')] bg-cover bg-center" />
+        <div className="absolute inset-0 z-0 bg-gradient-to-t from-slate-800 via-slate-800/60 to-transparent" />
+        <div className="relative z-10 px-8 2xl:px-60 pb-12 w-full">
+          <p className="font-display text-slate-400 text-lg tracking-widest uppercase mb-2">
+            What We Do
+          </p>
+          <h1 className="font-display text-5xl md:text-7xl text-slate-300 mb-4">Our Services</h1>
+          <p className="text-xl text-slate-400 max-w-2xl">
             Comprehensive construction solutions tailored to your unique vision and requirements.
           </p>
         </div>
@@ -216,7 +220,7 @@ function ServicesPage(): React.ReactElement {
       <section className="py-16 px-8 2xl:px-60 bg-white">
         <div className="container mx-auto">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-4xl font-bold text-navy mb-6">What We Offer</h2>
+            <h2 className="font-display text-4xl font-bold text-navy mb-6">What We Offer</h2>
             <p className="text-lg text-slate-700">
               Cambridge Building Group provides a full spectrum of construction services, from
               initial concept and planning through completion and beyond. Our integrated approach
@@ -276,7 +280,9 @@ function ServicesPage(): React.ReactElement {
       {/* Additional Services */}
       <section className="py-16 px-8 2xl:px-60 bg-slate-100">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-navy mb-8 text-center">Additional Expertise</h2>
+          <h2 className="font-display text-3xl font-bold text-navy mb-8 text-center">
+            Additional Expertise
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {additionalServices.map((service) => {
               const Icon = service.icon
@@ -295,7 +301,9 @@ function ServicesPage(): React.ReactElement {
       {/* Service Process */}
       <section className="py-16 px-8 2xl:px-60 bg-white">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-navy mb-8 text-center">Our Service Process</h2>
+          <h2 className="font-display text-4xl font-bold text-navy mb-8 text-center">
+            Our Service Process
+          </h2>
           <div className="max-w-3xl mx-auto">
             <div className="relative">
               {/* Vertical line */}
