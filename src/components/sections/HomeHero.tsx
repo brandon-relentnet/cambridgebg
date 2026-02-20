@@ -60,22 +60,22 @@ export function HomeHero({ showButton: _showButton = false }: HomeHeroProps): Re
         {/* Nashville skyline — blueprint tracing, fades out toward center */}
         <motion.div
           className={`absolute right-0 bottom-0 left-0 z-[1] pointer-events-none transition-all duration-1000 ease-out ${
-            skylineVisible ? 'opacity-100 translate-y-[30%]' : 'opacity-0 translate-y-[35%]'
+            skylineVisible ? 'opacity-100 translate-y-[35%]' : 'opacity-0 translate-y-[40%]'
           }`}
           style={{
             y: parallaxY,
             maskImage:
-              'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%, transparent 80%)',
+              'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 35%, rgba(0,0,0,0.08) 80%)',
             WebkitMaskImage:
-              'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%, transparent 80%)',
+              'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 35%, rgba(0,0,0,0.08) 80%)',
           }}
         >
           <img
             src="/nashville-skyline.svg"
             alt=""
-            className="w-full h-auto opacity-[0.12]"
+            className="w-full h-auto opacity-[0.25]"
             style={{
-              filter: 'brightness(0) invert(1) sepia(1) saturate(3) hue-rotate(10deg) contrast(2)',
+              filter: 'brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(5deg) contrast(1.5)',
             }}
             onLoad={() => setSkylineVisible(true)}
           />
