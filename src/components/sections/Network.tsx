@@ -16,19 +16,15 @@ export function Network({ showButton: _showButton = false }: NetworkProps): Reac
   }, [activeCategory])
 
   return (
-    <section
-      id="network"
-      className="relative bg-graphite px-8 2xl:px-60 py-section text-slate-300 bg-grid"
-    >
-      <div className="absolute inset-0 bg-noise" />
-      <div className="relative py-block mx-auto container">
+    <section id="network" className="relative bg-stone bg-dots px-8 2xl:px-60 py-section">
+      <div className="py-block mx-auto container">
         {/* Section header */}
         <ScrollReveal>
           <div className="mb-12">
-            <h2 className="font-display font-bold text-5xl mb-4">
+            <h2 className="font-display font-bold text-navy text-5xl mb-4">
               Our <span className="text-amber">Network</span>
             </h2>
-            <p className="max-w-2xl text-lg text-slate-400">
+            <p className="max-w-2xl text-lg text-slate-700">
               Strong relationships with best-in-class partners and valued clients drive the quality
               and reliability of every Cambridge project.
             </p>
@@ -41,10 +37,10 @@ export function Network({ showButton: _showButton = false }: NetworkProps): Reac
             <div>
               <div className="flex items-center mb-6">
                 <BuildingStorefrontIcon className="mr-3 text-amber size-7" />
-                <h3 className="font-display font-bold text-2xl">Trade Partners</h3>
+                <h3 className="font-display font-bold text-navy text-2xl">Trade Partners</h3>
               </div>
 
-              <div className="bg-navy shadow-lg p-6 border-amber border-l-4">
+              <div className="bg-white shadow-lg p-6 border-amber border-l-4">
                 <div className="flex flex-wrap gap-2 mb-6">
                   {tradeCategories.map((category) => (
                     <button
@@ -54,7 +50,7 @@ export function Network({ showButton: _showButton = false }: NetworkProps): Reac
                       className={`px-3 py-1.5 rounded-full font-medium text-sm transition duration-200 cursor-pointer ${
                         activeCategory === category.id
                           ? 'bg-amber text-navy'
-                          : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                          : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
                       }`}
                     >
                       {category.name}
@@ -62,10 +58,10 @@ export function Network({ showButton: _showButton = false }: NetworkProps): Reac
                   ))}
                 </div>
 
-                <h4 className="mb-4 font-semibold text-lg">{currentCategory.name}</h4>
+                <h4 className="mb-4 font-semibold text-navy text-lg">{currentCategory.name}</h4>
                 <ul className="space-y-3">
                   {currentCategory.partners.map((partner) => (
-                    <li key={partner} className="flex items-center">
+                    <li key={partner} className="flex items-center text-slate-700">
                       <span className="bg-amber mr-3 rounded-full w-2 h-2" />
                       <span>{partner}</span>
                     </li>
@@ -77,8 +73,8 @@ export function Network({ showButton: _showButton = false }: NetworkProps): Reac
                 </p>
               </div>
 
-              <div className="my-8 pl-4 border-slate-600 border-l-2">
-                <p className="text-slate-400 italic">
+              <div className="my-8 pl-4 border-amber border-l-2">
+                <p className="text-slate-600 italic">
                   &ldquo;The strength of our trade partner network allows us to assemble the perfect
                   team for each project, ensuring specialized expertise and consistent
                   quality.&rdquo;
@@ -92,7 +88,9 @@ export function Network({ showButton: _showButton = false }: NetworkProps): Reac
             <div>
               <div className="flex items-center mb-6">
                 <UserGroupIcon className="mr-3 text-amber size-7" />
-                <h3 className="font-display font-bold text-2xl">Clients &amp; Testimonials</h3>
+                <h3 className="font-display font-bold text-navy text-2xl">
+                  Clients &amp; Testimonials
+                </h3>
               </div>
 
               {/* Client logos */}
@@ -100,9 +98,9 @@ export function Network({ showButton: _showButton = false }: NetworkProps): Reac
                 {clients.map((client) => (
                   <div
                     key={`logo-${client.id}`}
-                    className="flex justify-center items-center bg-navy shadow-md p-6 border border-slate-700 h-24"
+                    className="flex justify-center items-center bg-white shadow-md p-6 border border-slate-200 h-24"
                   >
-                    <p className="font-bold text-center">{client.name}</p>
+                    <p className="font-bold text-navy text-center">{client.name}</p>
                   </div>
                 ))}
               </div>
@@ -111,7 +109,7 @@ export function Network({ showButton: _showButton = false }: NetworkProps): Reac
               {testimonials.map((testimonial) => (
                 <blockquote
                   key={testimonial.id}
-                  className="bg-navy shadow-lg p-6 md:p-8 border-amber border-t-4"
+                  className="bg-white shadow-lg p-6 md:p-8 border-amber border-t-4"
                 >
                   <div className="flex gap-0.5 mb-4 text-amber">
                     {Array.from({ length: testimonial.rating }, (_, i) => `star-${i}`).map(
@@ -129,8 +127,10 @@ export function Network({ showButton: _showButton = false }: NetworkProps): Reac
                       ),
                     )}
                   </div>
-                  <p className="mb-4 text-lg leading-relaxed">&ldquo;{testimonial.text}&rdquo;</p>
-                  <footer className="text-slate-400 text-sm">
+                  <p className="mb-4 text-slate-700 text-lg leading-relaxed">
+                    &ldquo;{testimonial.text}&rdquo;
+                  </p>
+                  <footer className="text-slate-500 text-sm">
                     &mdash; {testimonial.author}, {testimonial.title}
                   </footer>
                 </blockquote>

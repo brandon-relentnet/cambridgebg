@@ -16,17 +16,13 @@ export function MarketsWeServe({ showButton = false }: MarketsWeServeProps): Rea
   }
 
   return (
-    <section
-      id="markets-we-serve"
-      className="relative bg-graphite px-8 2xl:px-60 py-section text-slate-300 bg-grid"
-    >
-      <div className="absolute inset-0 bg-noise" />
-      <div className="relative py-block mx-auto container">
+    <section id="markets-we-serve" className="relative bg-stone bg-dots px-8 2xl:px-60 py-section">
+      <div className="py-block mx-auto container">
         <ScrollReveal>
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
             <div className="mb-6 md:mb-0 w-full md:w-1/2">
-              <h2 className="font-display font-bold text-5xl mb-4">Markets We Serve</h2>
-              <p className="text-lg text-slate-400">
+              <h2 className="font-display font-bold text-navy text-5xl mb-4">Markets We Serve</h2>
+              <p className="text-lg text-slate-700">
                 Cambridge Building Group delivers specialized expertise across diverse industry
                 sectors, understanding the unique challenges and requirements of each market.
               </p>
@@ -35,7 +31,7 @@ export function MarketsWeServe({ showButton = false }: MarketsWeServeProps): Rea
               <button
                 type="button"
                 onClick={() => scrollToNextSection('why-cambridge')}
-                className="group bg-amber shadow-lg px-6 py-2.5 font-semibold text-navy hover:scale-105 transition duration-200 cursor-pointer"
+                className="group bg-navy shadow-lg px-6 py-2.5 border-2 border-navy font-semibold text-slate-300 hover:scale-105 transition duration-200 cursor-pointer"
               >
                 Our Advantage
                 <ChevronRightIcon className="inline-block -mt-0.5 group-hover:rotate-90 transition duration-200 size-5" />
@@ -49,7 +45,7 @@ export function MarketsWeServe({ showButton = false }: MarketsWeServeProps): Rea
             {markets.map((market) => (
               <div
                 key={market.id}
-                className="group bg-navy relative shadow-lg overflow-hidden cursor-pointer"
+                className="group bg-white relative shadow-lg overflow-hidden cursor-pointer"
                 style={{ alignSelf: 'flex-start' }}
               >
                 <button
@@ -58,7 +54,7 @@ export function MarketsWeServe({ showButton = false }: MarketsWeServeProps): Rea
                   onClick={() => toggleMarket(market.id)}
                 >
                   <div className="flex justify-between items-start">
-                    <h3 className="font-bold text-lg">{market.title}</h3>
+                    <h3 className="font-bold text-navy text-lg">{market.title}</h3>
                     <div className="bg-amber px-2 py-1 font-semibold text-navy text-sm whitespace-nowrap">
                       {market.projects} projects
                     </div>
@@ -71,7 +67,7 @@ export function MarketsWeServe({ showButton = false }: MarketsWeServeProps): Rea
                 </button>
                 {activeMarket === market.id && (
                   <div className="z-10 relative px-6 pb-6">
-                    <p className="text-slate-400 text-sm">{market.description}</p>
+                    <p className="text-slate-700 text-sm">{market.description}</p>
                   </div>
                 )}
               </div>

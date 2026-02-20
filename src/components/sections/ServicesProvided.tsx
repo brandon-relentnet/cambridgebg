@@ -14,12 +14,16 @@ export function ServicesProvided({
   const [hoveredService, setHoveredService] = useState<number | null>(null)
 
   return (
-    <section id="services-provided" className="relative bg-stone bg-dots px-8 2xl:px-60 py-section">
-      <div className="py-block mx-auto container">
+    <section
+      id="services-provided"
+      className="relative bg-graphite px-8 2xl:px-60 py-section text-slate-300 bg-grid"
+    >
+      <div className="absolute inset-0 bg-noise" />
+      <div className="relative py-block mx-auto container">
         <ScrollReveal>
           <div className="mb-12 w-full md:w-1/2">
-            <h2 className="font-display font-bold text-navy text-5xl mb-4">Services Provided</h2>
-            <p className="mb-6 text-slate-700 text-lg">
+            <h2 className="font-display font-bold text-5xl mb-4">Services Provided</h2>
+            <p className="mb-6 text-slate-400 text-lg">
               Cambridge Building Group offers a comprehensive suite of construction services
               tailored to meet the diverse needs of our clients. From concept to completion, we
               apply our expertise at every stage of the building process.
@@ -28,7 +32,7 @@ export function ServicesProvided({
               <button
                 type="button"
                 onClick={() => scrollToNextSection('markets-we-serve')}
-                className="group bg-navy shadow-lg px-6 py-2.5 border-2 border-navy font-semibold text-slate-300 hover:scale-105 transition duration-200 cursor-pointer"
+                className="group bg-amber shadow-lg px-6 py-2.5 font-semibold text-navy hover:scale-105 transition duration-200 cursor-pointer"
               >
                 Markets We Serve
                 <ChevronRightIcon className="inline-block -mt-0.5 group-hover:rotate-90 transition duration-200 size-5" />
@@ -44,10 +48,10 @@ export function ServicesProvided({
               return (
                 <div
                   key={service.id}
-                  className={`group relative overflow-hidden bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
+                  className={`group relative overflow-hidden bg-navy shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
                     hoveredService === service.id
                       ? 'border-t-4 border-amber'
-                      : 'border-t-4 border-slate-300'
+                      : 'border-t-4 border-slate-600'
                   }`}
                   onMouseEnter={() => setHoveredService(service.id)}
                   onMouseLeave={() => setHoveredService(null)}
@@ -56,8 +60,8 @@ export function ServicesProvided({
                     <div className="bg-amber/10 mb-4 p-3 rounded-full w-fit">
                       <Icon className="text-amber size-8" />
                     </div>
-                    <h3 className="mb-3 font-bold text-navy text-2xl">{service.title}</h3>
-                    <p className="text-slate-700">{service.description}</p>
+                    <h3 className="mb-3 font-bold text-slate-200 text-2xl">{service.title}</h3>
+                    <p className="text-slate-400">{service.description}</p>
                   </div>
                 </div>
               )
