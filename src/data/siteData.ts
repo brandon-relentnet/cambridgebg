@@ -695,7 +695,7 @@ export const footerLinks: FooterLinks = {
   about: [
     { name: 'Our Story', url: '/about' },
     { name: 'Core Values', url: '/#core-values' },
-    { name: 'Leadership Team', url: '/#leadership-bios' },
+    { name: 'Leadership Team', url: '/#leadership' },
     { name: 'Careers', url: '/about' },
   ],
   services: [
@@ -708,13 +708,13 @@ export const footerLinks: FooterLinks = {
   ],
   projects: [
     { name: 'Portfolio', url: '/portfolio' },
-    { name: 'Testimonials', url: '/#past-clients' },
+    { name: 'Testimonials', url: '/#network' },
     { name: 'Markets We Serve', url: '/#markets-we-serve' },
   ],
   connect: [
     { name: 'Contact Us', url: '/contact' },
-    { name: 'Community Outreach', url: '/#community-outreach' },
-    { name: 'Trade Partners', url: '/#trade-partners' },
+    { name: 'Community Impact', url: '/#recognition-impact' },
+    { name: 'Trade Partners', url: '/#network' },
   ],
 }
 

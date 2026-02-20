@@ -11,7 +11,7 @@ function RootLayout(): React.ReactElement {
     <div>
       <Navbar />
       <main>
-        <div className="bg-slate-100">
+        <div className="bg-stone">
           <Outlet />
         </div>
       </main>

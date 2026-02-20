@@ -1,5 +1,5 @@
 import { scrollToNextSection } from '@/utils/autoScroll'
-import { ChevronRightIcon, DocumentCheckIcon } from '@heroicons/react/24/solid'
+import { ChevronDownIcon, DocumentCheckIcon } from '@heroicons/react/24/solid'
 import { Link } from '@tanstack/react-router'
 import { motion, useScroll, useTransform } from 'motion/react'
 import { useState } from 'react'
@@ -8,59 +8,164 @@ interface HomeHeroProps {
   showButton?: boolean
 }
 
-export function HomeHero({ showButton: _showButton = false }: HomeHeroProps) {
-  const [imageVisible, setImageVisible] = useState(false)
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      when: 'beforeChildren' as const,
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
+  },
+}
+
+const statsItemVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
+  },
+}
+
+export function HomeHero({ showButton: _showButton = false }: HomeHeroProps): React.ReactElement {
+  const [skylineVisible, setSkylineVisible] = useState(false)
   const { scrollY } = useScroll()
   const parallaxY = useTransform(scrollY, (v) => -v * 0.3)
 
+  const stats = [
+    { value: 'Est. 2015', label: 'Nashville, TN' },
+    { value: '120+', label: 'Years Combined Experience' },
+    { value: '350+', label: 'Projects Completed' },
+  ]
+
   return (
     <section>
-      <div className="relative flex justify-center items-center h-[92vh] text-navy">
+      <div className="relative flex justify-center items-center h-[calc(100dvh-5rem)] text-stone">
+        {/* Dark background — constrained to the hero area */}
+        <div className="absolute inset-0 bg-graphite bg-grid overflow-hidden">
+          <div className="absolute inset-0 bg-noise" />
+        </div>
+
+        {/* Nashville skyline — blueprint tracing, fades out toward center */}
         <motion.div
-          className={`z-0 absolute inset-0 transition-transform duration-700 ease-out ${
-            imageVisible
-              ? 'translate-y-[76vh] sm:translate-y-[66vh] md:translate-y-[59vh] lg:translate-y-[49vh] xl:translate-y-[39vh] 2xl:translate-y-[29vh] opacity-100'
-              : 'translate-y-[100vh] opacity-0'
+          className={`absolute right-0 bottom-0 left-0 z-[1] pointer-events-none transition-all duration-1000 ease-out ${
+            skylineVisible ? 'opacity-100 translate-y-[30%]' : 'opacity-0 translate-y-[35%]'
           }`}
-          style={{ y: parallaxY }}
+          style={{
+            y: parallaxY,
+            maskImage:
+              'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%, transparent 80%)',
+            WebkitMaskImage:
+              'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%, transparent 80%)',
+          }}
         >
           <img
             src="/nashville-skyline.svg"
-            alt="Nashville Skyline"
-            className="opacity-70 w-full h-auto"
-            onLoad={() => setImageVisible(true)}
+            alt=""
+            className="w-full h-auto opacity-[0.12]"
+            style={{
+              filter: 'brightness(0) invert(1) sepia(1) saturate(3) hue-rotate(10deg) contrast(2)',
+            }}
+            onLoad={() => setSkylineVisible(true)}
           />
         </motion.div>
 
+        {/* Main content */}
         <motion.div
-          className="z-2 relative flex flex-col justify-center items-center gap-y-4 mx-auto p-6 px-6 md:px-12 pb-50 text-center container"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="z-10 relative flex flex-col items-center pb-32 md:pb-40 text-center"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
         >
-          <img
+          {/* Logo */}
+          <motion.img
             src="/cbg-secondary-logo.png"
-            alt="Logo"
-            className="w-[275px] md:w-[400px] lg:w-[450px]"
+            alt="Cambridge Building Group"
+            className="mb-6 w-[220px] md:w-[300px] lg:w-[340px] brightness-0 invert opacity-90"
+            variants={itemVariants}
           />
-          <div className="gap-x-4 grid grid-cols-2">
+
+          {/* Headline */}
+          <motion.h1
+            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight"
+            variants={itemVariants}
+          >
+            Building Nashville&rsquo;s
+            <br />
+            <span className="text-amber">Future</span>
+          </motion.h1>
+
+          {/* Tagline */}
+          <motion.p
+            className="mt-4 max-w-lg text-lg text-slate-400 md:text-xl"
+            variants={itemVariants}
+          >
+            Commercial construction built on communication, integrity, and dedicated craftsmanship.
+          </motion.p>
+
+          {/* Stats strip */}
+          <motion.div
+            className="gap-6 md:gap-10 grid grid-cols-3 mt-10 md:mt-12"
+            variants={itemVariants}
+          >
+            {stats.map((stat) => (
+              <motion.div key={stat.label} className="text-center" variants={statsItemVariants}>
+                <div className="font-display text-2xl text-amber md:text-3xl lg:text-4xl">
+                  {stat.value}
+                </div>
+                <div className="mt-1 text-slate-500 text-xs md:text-sm tracking-wide uppercase">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* CTAs */}
+          <motion.div
+            className="flex flex-col gap-4 sm:flex-row mt-10 md:mt-12"
+            variants={itemVariants}
+          >
             <button
               type="button"
               onClick={() => scrollToNextSection('who-is-cambridge-construction')}
-              className="group bg-navy shadow-lg px-4 py-2 border-2 border-navy font-semibold text-slate-300 hover:scale-115 transition duration-200 cursor-pointer"
+              className="bg-amber hover:bg-amber/90 px-8 py-3.5 font-semibold text-navy transition-all duration-200 hover:scale-105 cursor-pointer"
             >
-              Learn More{' '}
-              <ChevronRightIcon className="inline-block -mt-0.5 size-5 group-hover:rotate-90 transition duration-200" />
+              Learn More
+              <ChevronDownIcon className="inline-block ml-2 -mt-0.5 size-4" />
             </button>
             <Link
               to="/contact"
-              className="group flex justify-center items-center shadow-lg px-4 py-2 border-2 border-navy font-semibold text-navy hover:scale-115 transition duration-200"
+              className="flex justify-center items-center border-2 border-stone/30 hover:border-amber px-8 py-3.5 font-semibold text-stone hover:text-amber transition-all duration-200"
             >
-              Free Quote{' '}
-              <DocumentCheckIcon className="inline-block ml-2 size-5 transition duration-200" />
+              <DocumentCheckIcon className="mr-2 size-4" />
+              Free Quote
             </Link>
-          </div>
+          </motion.div>
         </motion.div>
+
+        {/* Scroll indicator */}
+        <div className="bottom-8 z-10 absolute">
+          <button
+            type="button"
+            onClick={() => scrollToNextSection('who-is-cambridge-construction')}
+            className="flex flex-col items-center gap-2 text-slate-500 hover:text-amber transition-colors cursor-pointer"
+            aria-label="Scroll to content"
+          >
+            <span className="text-xs tracking-[0.2em] uppercase">Scroll</span>
+            <ChevronDownIcon className="animate-scroll-pulse size-5" />
+          </button>
+        </div>
       </div>
     </section>
   )

@@ -7,30 +7,31 @@ interface LeadershipBiosProps {
   showButton?: boolean
 }
 
-export function LeadershipBios({ showButton: _showButton = false }: LeadershipBiosProps) {
+export function LeadershipBios({
+  showButton: _showButton = false,
+}: LeadershipBiosProps): React.ReactElement {
   const [activeLeader, setActiveLeader] = useState<number | null>(null)
 
   const featuredLeaders = useMemo(() => leadershipTeam.filter((leader) => leader.featured), [])
   const otherLeaders = useMemo(() => leadershipTeam.filter((leader) => !leader.featured), [])
 
-  function toggleLeader(id: number) {
+  function toggleLeader(id: number): void {
     setActiveLeader(activeLeader === id ? null : id)
   }
 
   return (
-    <section id="leadership-bios" className="relative bg-slate-100 px-8 2xl:px-60 py-section">
+    <section id="leadership" className="relative bg-stone px-8 2xl:px-60 py-section">
       <div className="py-block mx-auto container">
         <ScrollReveal>
           <div className="flex md:flex-row flex-col justify-between items-start md:items-end mb-12">
             <div className="mb-6 md:mb-0 w-full md:w-1/2">
               <div className="flex items-center mb-4">
-                <UserCircleIcon className="mr-4 size-10 text-navy" />
+                <UserCircleIcon className="mr-4 text-amber size-10" />
                 <h2 className="font-display font-bold text-navy text-5xl">Our Leadership</h2>
               </div>
               <p className="text-slate-700 text-lg">
-                Cambridge Building Group is led by a team of experienced industry professionals
-                combining diverse expertise and a shared commitment to excellence, innovation, and
-                ethical business practices.
+                Cambridge Building Group is led by experienced industry professionals combining
+                diverse expertise and a shared commitment to excellence.
               </p>
             </div>
           </div>
@@ -42,25 +43,32 @@ export function LeadershipBios({ showButton: _showButton = false }: LeadershipBi
             {featuredLeaders.map((leader) => (
               <div
                 key={`desktop-${leader.id}`}
-                className="bg-white shadow-lg p-6 border-navy border-t-4 overflow-hidden"
+                className="bg-white shadow-lg overflow-hidden border-t-4 border-amber"
               >
                 <div className="flex justify-center items-center bg-slate-200 h-80">
                   <img
                     src={leader.image}
-                    alt={`${leader.name}`}
+                    alt={leader.name}
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="mb-1 font-bold text-navy text-2xl">{leader.name}</h3>
-                  <p className="mb-4 font-medium text-slate-600">{leader.title}</p>
-                  <p className="mb-4 text-slate-700">{leader.bio}</p>
+                  <p className="mb-4 font-medium text-amber">{leader.title}</p>
+                  {/* Editorial intro — first sentence in serif */}
+                  <p className="mb-4 font-display text-navy text-lg italic leading-relaxed">
+                    {leader.bio.split('.')[0]}.
+                  </p>
+                  <p className="mb-4 text-slate-700">
+                    {leader.bio.split('.').slice(1).join('.').trim()}
+                  </p>
                   <h4 className="mb-2 font-semibold text-navy text-lg">Education</h4>
                   <p className="mb-4 text-slate-600">{leader.education}</p>
                   <h4 className="mb-2 font-semibold text-navy text-lg">Experience</h4>
                   <ul className="text-slate-600">
                     {leader.experience.map((item) => (
-                      <li key={item} className="mb-1">
+                      <li key={item} className="flex items-start mb-1">
+                        <span className="bg-amber mt-2 mr-2 rounded-full w-1.5 h-1.5 shrink-0" />
                         {item}
                       </li>
                     ))}
@@ -77,10 +85,10 @@ export function LeadershipBios({ showButton: _showButton = false }: LeadershipBi
             {otherLeaders.map((leader) => (
               <div
                 key={`desktop-other-${leader.id}`}
-                className="bg-white shadow-md p-6 border-navy border-l-4"
+                className="bg-white shadow-md p-6 border-amber border-l-4"
               >
                 <div className="flex items-center mb-4">
-                  <div className="flex justify-center items-center bg-slate-200 mr-4 rounded-full w-12 h-12 font-bold text-navy text-xl">
+                  <div className="flex justify-center items-center bg-amber mr-4 rounded-full w-12 h-12 font-bold text-navy text-xl">
                     {leader.name.split(' ')[0]?.charAt(0) ?? ''}
                     {leader.name.split(' ')[1]?.charAt(0) ?? ''}
                   </div>
@@ -102,10 +110,10 @@ export function LeadershipBios({ showButton: _showButton = false }: LeadershipBi
             <div key={`mobile-${leader.id}`} className="bg-white shadow-md overflow-hidden">
               <button
                 type="button"
-                className="flex items-center p-4 cursor-pointer w-full text-left"
+                className="flex items-center p-4 w-full text-left cursor-pointer"
                 onClick={() => toggleLeader(leader.id)}
               >
-                <div className="flex justify-center items-center bg-slate-200 mr-4 rounded-full w-12 h-12 font-bold text-navy text-xl">
+                <div className="flex justify-center items-center bg-amber mr-4 rounded-full w-12 h-12 font-bold text-navy text-xl">
                   {leader.name.split(' ')[0]?.charAt(0) ?? ''}
                   {leader.name.split(' ')[1]?.charAt(0) ?? ''}
                 </div>
@@ -127,7 +135,8 @@ export function LeadershipBios({ showButton: _showButton = false }: LeadershipBi
                   <h4 className="mb-2 font-semibold text-navy text-lg">Experience</h4>
                   <ul className="text-slate-600">
                     {leader.experience.map((item) => (
-                      <li key={item} className="mb-1">
+                      <li key={item} className="flex items-start mb-1">
+                        <span className="bg-amber mt-2 mr-2 rounded-full w-1.5 h-1.5 shrink-0" />
                         {item}
                       </li>
                     ))}

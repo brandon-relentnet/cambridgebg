@@ -34,8 +34,8 @@ export function Navbar(): React.ReactElement {
       <nav
         className={`top-0 left-0 z-50 fixed w-full h-20 transition-all duration-500 ${
           isScrolled
-            ? 'bg-slate-100/90 backdrop-blur-lg shadow-[0_1px_0_rgba(11,27,37,0.08)] shadow-md'
-            : 'bg-slate-100 shadow-none'
+            ? 'bg-stone/90 backdrop-blur-lg shadow-[0_1px_0_rgba(11,27,37,0.08)] shadow-md'
+            : 'bg-stone shadow-none'
         }`}
       >
         <div className="flex justify-between items-center mx-auto px-6 h-full container">
@@ -97,7 +97,7 @@ export function Navbar(): React.ReactElement {
 
       {/* Mobile Menu Panel */}
       <div
-        className={`top-20 right-0 bottom-0 z-50 fixed bg-slate-100 w-4/5 max-w-sm overflow-y-auto transition-transform duration-300 ease-in-out transform ${
+        className={`top-20 right-0 bottom-0 z-50 fixed bg-stone w-4/5 max-w-sm overflow-y-auto transition-transform duration-300 ease-in-out transform ${
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >

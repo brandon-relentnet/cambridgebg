@@ -20,19 +20,19 @@ export function Footer(): React.ReactElement {
               <p className="mb-6">{companyInfo.tagline}</p>
               <div className="space-y-4">
                 <div className="flex items-start">
-                  <MapPinIcon className="flex-shrink-0 mt-1 mr-3 size-5 text-slate-300" />
+                  <MapPinIcon className="flex-shrink-0 mt-1 mr-3 size-5 text-amber" />
                   <p>{companyInfo.address}</p>
                 </div>
                 <div className="flex items-start">
-                  <PhoneIcon className="flex-shrink-0 mt-1 mr-3 size-5 text-slate-300" />
+                  <PhoneIcon className="flex-shrink-0 mt-1 mr-3 size-5 text-amber" />
                   <p>{companyInfo.phone}</p>
                 </div>
                 <div className="flex items-start">
-                  <EnvelopeIcon className="flex-shrink-0 mt-1 mr-3 size-5 text-slate-300" />
+                  <EnvelopeIcon className="flex-shrink-0 mt-1 mr-3 size-5 text-amber" />
                   <p>{companyInfo.email}</p>
                 </div>
                 <div className="flex items-start">
-                  <ClockIcon className="flex-shrink-0 mt-1 mr-3 size-5 text-slate-300" />
+                  <ClockIcon className="flex-shrink-0 mt-1 mr-3 size-5 text-amber" />
                   <p>{companyInfo.hours}</p>
                 </div>
               </div>

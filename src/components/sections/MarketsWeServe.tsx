@@ -8,24 +8,25 @@ interface MarketsWeServeProps {
   showButton?: boolean
 }
 
-export function MarketsWeServe({ showButton = false }: MarketsWeServeProps) {
+export function MarketsWeServe({ showButton = false }: MarketsWeServeProps): React.ReactElement {
   const [activeMarket, setActiveMarket] = useState<number | null>(null)
 
-  function toggleMarket(id: number) {
+  function toggleMarket(id: number): void {
     setActiveMarket(activeMarket === id ? null : id)
   }
 
   return (
     <section
       id="markets-we-serve"
-      className="relative px-8 2xl:px-60 py-section bg-slate-800 text-slate-300 bg-grid"
+      className="relative bg-graphite px-8 2xl:px-60 py-section text-slate-300 bg-grid"
     >
-      <div className="container mx-auto py-block">
+      <div className="absolute inset-0 bg-noise" />
+      <div className="relative py-block mx-auto container">
         <ScrollReveal>
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
-            <div className="w-full md:w-1/2 mb-6 md:mb-0">
-              <h2 className="font-display text-5xl font-bold mb-4">Markets We Serve</h2>
-              <p className="text-lg">
+            <div className="mb-6 md:mb-0 w-full md:w-1/2">
+              <h2 className="font-display font-bold text-5xl mb-4">Markets We Serve</h2>
+              <p className="text-lg text-slate-400">
                 Cambridge Building Group delivers specialized expertise across diverse industry
                 sectors, understanding the unique challenges and requirements of each market.
               </p>
@@ -33,55 +34,46 @@ export function MarketsWeServe({ showButton = false }: MarketsWeServeProps) {
             {showButton && (
               <button
                 type="button"
-                onClick={() => scrollToNextSection('competitive-advantage')}
-                className="bg-slate-300 group text-navy font-semibold px-4 py-2 border-2 border-slate-300 shadow-lg transition duration-200 hover:scale-115 cursor-pointer"
+                onClick={() => scrollToNextSection('why-cambridge')}
+                className="group bg-amber shadow-lg px-6 py-2.5 font-semibold text-navy hover:scale-105 transition duration-200 cursor-pointer"
               >
                 Our Advantage
-                <ChevronRightIcon className="size-5 -mt-0.5 group-hover:rotate-90 inline-block transition duration-200" />
+                <ChevronRightIcon className="inline-block -mt-0.5 group-hover:rotate-90 transition duration-200 size-5" />
               </button>
             )}
           </div>
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {markets.map((market) => (
               <div
                 key={market.id}
-                className={`${market.bgClass} relative overflow-hidden shadow-lg cursor-pointer group`}
+                className="group bg-navy relative shadow-lg overflow-hidden cursor-pointer"
                 style={{ alignSelf: 'flex-start' }}
               >
                 <button
                   type="button"
-                  className="p-6 z-10 relative w-full text-left"
+                  className="z-10 relative p-6 w-full text-left cursor-pointer"
                   onClick={() => toggleMarket(market.id)}
                 >
                   <div className="flex justify-between items-start">
-                    <h3 className="text-2xl font-bold text-navy mb-1">{market.title}</h3>
-                    <div className="bg-navy text-slate-300 px-2 py-1 text-sm font-semibold whitespace-nowrap">
+                    <h3 className="font-bold text-lg">{market.title}</h3>
+                    <div className="bg-amber px-2 py-1 font-semibold text-navy text-sm whitespace-nowrap">
                       {market.projects} projects
                     </div>
                   </div>
                   <div
-                    className={`h-1 bg-navy mt-3 transition-all duration-300 ${
-                      activeMarket === market.id ? 'w-full' : 'w-12'
+                    className={`h-0.5 bg-amber mt-3 transition-all duration-300 ${
+                      activeMarket === market.id ? 'w-full' : 'w-10'
                     }`}
                   />
                 </button>
                 {activeMarket === market.id && (
-                  <div className="px-6 pb-6 z-10 relative">
-                    <p className="text-slate-700 transition-all duration-300">
-                      {market.description}
-                    </p>
+                  <div className="z-10 relative px-6 pb-6">
+                    <p className="text-slate-400 text-sm">{market.description}</p>
                   </div>
                 )}
-                <div
-                  className={`absolute top-0 right-0 opacity-10 transition-transform duration-500 ${
-                    activeMarket === market.id ? 'scale-110' : ''
-                  }`}
-                >
-                  <ChevronRightIcon className="size-24 text-navy transform rotate-45" />
-                </div>
               </div>
             ))}
           </div>
