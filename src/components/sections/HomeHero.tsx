@@ -139,10 +139,10 @@ export function HomeHero({ showButton: _showButton = false }: HomeHeroProps): Re
             <button
               type="button"
               onClick={() => scrollToNextSection('who-is-cambridge-construction')}
-              className="bg-amber hover:bg-amber/90 px-8 py-3.5 font-semibold text-navy transition-all duration-200 hover:scale-105 cursor-pointer"
+              className="inline-flex items-center gap-2 bg-amber hover:bg-amber/90 px-8 py-3.5 font-semibold text-navy transition-all duration-200 hover:scale-105 cursor-pointer"
             >
               Learn More
-              <ChevronDownIcon className="inline-block ml-2 -mt-0.5 size-4" />
+              <ChevronDownIcon className="size-4" />
             </button>
             <Link
               to="/contact"

@@ -113,10 +113,10 @@ export function CoreValues({ showButton = false }: CoreValuesProps): React.React
             <button
               type="button"
               onClick={() => scrollToNextSection('track-record')}
-              className="group bg-amber shadow-lg px-6 py-2.5 font-semibold text-navy hover:scale-105 transition duration-200 cursor-pointer"
+              className="group inline-flex items-center gap-2 bg-amber shadow-lg px-6 py-2.5 font-semibold text-navy hover:scale-105 transition duration-200 cursor-pointer"
             >
               Track Record
-              <ChevronRightIcon className="inline-block -mt-0.5 group-hover:rotate-90 transition duration-200 size-5" />
+              <ChevronRightIcon className="group-hover:rotate-90 transition duration-200 size-4" />
             </button>
           </div>
         )}

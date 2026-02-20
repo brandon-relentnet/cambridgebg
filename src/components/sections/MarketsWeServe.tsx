@@ -31,10 +31,10 @@ export function MarketsWeServe({ showButton = false }: MarketsWeServeProps): Rea
               <button
                 type="button"
                 onClick={() => scrollToNextSection('why-cambridge')}
-                className="group bg-navy shadow-lg px-6 py-2.5 border-2 border-navy font-semibold text-slate-300 hover:scale-105 transition duration-200 cursor-pointer"
+                className="group inline-flex items-center gap-2 bg-navy shadow-lg px-6 py-2.5 border-2 border-navy font-semibold text-slate-300 hover:scale-105 transition duration-200 cursor-pointer"
               >
                 Our Advantage
-                <ChevronRightIcon className="inline-block -mt-0.5 group-hover:rotate-90 transition duration-200 size-5" />
+                <ChevronRightIcon className="group-hover:rotate-90 transition duration-200 size-4" />
               </button>
             )}
           </div>
