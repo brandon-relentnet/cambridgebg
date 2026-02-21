@@ -4,7 +4,10 @@ import { createRoot } from 'react-dom/client'
 import { routeTree } from './routeTree.gen'
 import './assets/css/main.css'
 
-const router = createRouter({ routeTree })
+const router = createRouter({
+  routeTree,
+  scrollRestoration: true,
+})
 
 declare module '@tanstack/react-router' {
   interface Register {
