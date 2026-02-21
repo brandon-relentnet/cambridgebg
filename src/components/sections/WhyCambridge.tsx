@@ -46,7 +46,7 @@ function AdvantageContent({
 
   return (
     <motion.div
-      className="absolute top-0 left-0 w-full"
+      className="absolute top-0 left-0 w-full p-8 md:p-10"
       style={{
         x: useTransform(x, (latest) => viewOffset + latest),
         opacity,
@@ -190,7 +190,7 @@ export function WhyCambridge({ showButton = false }: WhyCambridgeProps): React.R
 
         {/* Static card shell — only inner content slides */}
         <ScrollReveal delay={0.2}>
-          <div className="bg-navy shadow-lg p-8 md:p-10 border-amber border-l-4 relative overflow-hidden">
+          <div className="bg-navy shadow-lg border-amber border-l-4 relative overflow-hidden">
             <motion.div
               ref={innerRef}
               className="relative overflow-hidden"
@@ -203,6 +203,7 @@ export function WhyCambridge({ showButton = false }: WhyCambridgeProps): React.R
                   ref={(el) => {
                     viewRefs.current[index] = el
                   }}
+                  className="p-8 md:p-10"
                   style={{
                     visibility: 'hidden',
                     position: 'absolute',

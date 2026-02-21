@@ -41,7 +41,7 @@ function ValueContent({ value, index, y, containerHeight }: ValueContentProps): 
 
   return (
     <motion.div
-      className="absolute top-0 left-0 w-full"
+      className="absolute top-0 left-0 w-full p-8"
       style={{
         y: useTransform(y, (latest) => viewOffset + latest),
         opacity,
@@ -198,7 +198,7 @@ export function CoreValues({ showButton = false }: CoreValuesProps): React.React
 
             {/* Static card shell — only inner content slides vertically */}
             <div className="lg:col-span-4">
-              <div className="relative bg-navy shadow-lg p-8 border-amber border-l-4 overflow-hidden">
+              <div className="relative bg-navy shadow-lg border-amber border-l-4 overflow-hidden">
                 <motion.div
                   ref={innerRef}
                   className="relative overflow-hidden"
@@ -211,6 +211,7 @@ export function CoreValues({ showButton = false }: CoreValuesProps): React.React
                       ref={(el) => {
                         viewRefs.current[index] = el
                       }}
+                      className="p-8"
                       style={{
                         visibility: 'hidden',
                         position: 'absolute',
