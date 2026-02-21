@@ -1,11 +1,17 @@
-import { navItems } from '@/data/siteData'
+import { companyInfo, navItems } from '@/data/siteData'
 import { Bars3Icon, PhoneIcon, XMarkIcon } from '@heroicons/react/24/solid'
-import { Link } from '@tanstack/react-router'
+import { Link, useRouterState } from '@tanstack/react-router'
+import { AnimatePresence, motion } from 'motion/react'
 import { useCallback, useEffect, useState } from 'react'
+
+import type React from 'react'
+
+const NAV_LINKS = Object.values(navItems)
 
 export function Navbar(): React.ReactElement {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const pathname = useRouterState({ select: (s) => s.location.pathname })
 
   const toggleMobileMenu = useCallback(() => {
     setIsMobileMenuOpen((prev) => {
@@ -22,118 +28,222 @@ export function Navbar(): React.ReactElement {
 
   useEffect(() => {
     function handleScroll(): void {
-      setIsScrolled(window.scrollY > 50)
+      setIsScrolled(window.scrollY > 20)
     }
-
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Close mobile menu on route change
+  // biome-ignore lint/correctness/useExhaustiveDependencies: intentionally close menu on route change
+  useEffect(() => {
+    closeMobileMenu()
+  }, [pathname])
+
   return (
     <header>
+      {/* ── Desktop + Mobile Top Bar ──────────────────────────── */}
       <nav
-        className={`top-0 left-0 z-50 fixed w-full h-20 transition-all duration-500 ${
-          isScrolled
-            ? 'bg-stone/90 backdrop-blur-lg shadow-[0_1px_0_rgba(11,27,37,0.08)] shadow-md'
-            : 'bg-stone shadow-none'
+        className={`fixed top-0 left-0 z-50 w-full transition-all duration-500 ${
+          isScrolled ? 'bg-navy/95 backdrop-blur-md shadow-lg shadow-black/20' : 'bg-navy'
         }`}
       >
-        <div className="flex justify-between items-center mx-auto px-6 h-full container">
-          <Link to="/" className="flex items-center" onClick={closeMobileMenu}>
+        {/* Amber accent line */}
+        <div
+          className={`absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-amber to-transparent transition-opacity duration-500 ${
+            isScrolled ? 'opacity-60' : 'opacity-20'
+          }`}
+        />
+
+        <div className="flex items-center justify-between px-6 lg:px-12 2xl:px-24 h-20">
+          {/* Logo */}
+          <Link to="/" className="relative flex items-center" onClick={closeMobileMenu}>
             <img
-              src="/cbg-logo-transparent.png"
-              alt="Cambridge Building Group Logo"
-              className="w-auto h-14"
+              src="/cbg-logo-transparent-inverted.png"
+              alt="Cambridge Building Group"
+              className="h-12 w-auto"
             />
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            <ul className="flex justify-center items-center gap-x-6 font-bold text-navy uppercase">
-              {Object.values(navItems).map((item) => (
-                <li key={item.title} className="group relative">
-                  <Link
-                    to={item.link}
-                    className="relative py-2 hover:text-slate-500 transition-colors duration-300"
-                  >
-                    {item.title}
-                    <span className="bottom-0 left-0 absolute bg-navy w-0 group-hover:w-full h-0.5 transition-all duration-300" />
-                  </Link>
-                </li>
-              ))}
+          {/* ── Desktop Navigation ───────────────────────────── */}
+          <div className="hidden lg:flex items-center gap-10">
+            <ul className="flex items-center gap-8">
+              {NAV_LINKS.map((item) => {
+                const isActive =
+                  item.link === '/' ? pathname === '/' : pathname.startsWith(item.link)
+
+                return (
+                  <li key={item.title}>
+                    <Link
+                      to={item.link}
+                      className="group relative py-2 font-body text-sm font-semibold uppercase tracking-widest text-slate-400 transition-colors duration-300 hover:text-stone"
+                    >
+                      <span className={isActive ? 'text-stone' : ''}>{item.title}</span>
+                      {/* Animated underline */}
+                      <span
+                        className={`absolute bottom-0 left-0 h-0.5 bg-amber transition-all duration-300 ${
+                          isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                        }`}
+                      />
+                    </Link>
+                  </li>
+                )
+              })}
             </ul>
+
+            {/* Divider */}
+            <div className="h-8 w-px bg-slate-700" />
+
+            {/* Phone */}
+            <a
+              href={`tel:${companyInfo.phone.replace(/[^\d+]/g, '')}`}
+              className="flex items-center gap-2 text-sm text-slate-400 transition-colors duration-300 hover:text-stone"
+            >
+              <PhoneIcon className="size-4 text-amber" />
+              <span className="font-semibold tracking-wide">{companyInfo.phone}</span>
+            </a>
+
+            {/* CTA Button */}
             <Link
               to="/contact"
-              className="flex items-center bg-navy hover:bg-transparent shadow px-4 py-2 border border-navy font-semibold text-slate-300 hover:text-navy transition duration-200"
+              className="inline-flex items-center gap-2 border border-amber bg-amber px-5 py-2.5 text-sm font-bold uppercase tracking-wider text-navy transition-all duration-300 hover:bg-transparent hover:text-amber"
             >
-              <PhoneIcon className="mr-2 size-4" /> Get a Quote
+              Get a Quote
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* ── Mobile Hamburger ─────────────────────────────── */}
           <button
             type="button"
-            className="md:hidden focus:outline-none text-navy"
+            className="relative z-60 lg:hidden text-stone"
             onClick={toggleMobileMenu}
             aria-label="Toggle navigation menu"
           >
-            {isMobileMenuOpen ? <XMarkIcon className="size-8" /> : <Bars3Icon className="size-8" />}
+            <AnimatePresence mode="wait" initial={false}>
+              {isMobileMenuOpen ? (
+                <motion.div
+                  key="close"
+                  initial={{ opacity: 0, rotate: -90 }}
+                  animate={{ opacity: 1, rotate: 0 }}
+                  exit={{ opacity: 0, rotate: 90 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <XMarkIcon className="size-7" />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="menu"
+                  initial={{ opacity: 0, rotate: 90 }}
+                  animate={{ opacity: 1, rotate: 0 }}
+                  exit={{ opacity: 0, rotate: -90 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Bars3Icon className="size-7" />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </button>
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
-      {isMobileMenuOpen && (
-        <div
-          role="button"
-          tabIndex={0}
-          className="z-40 fixed inset-0 bg-slate-900/50"
-          onClick={closeMobileMenu}
-          onKeyDown={(e) => {
-            if (e.key === 'Escape' || e.key === 'Enter') closeMobileMenu()
-          }}
-        />
-      )}
-
-      {/* Mobile Menu Panel */}
-      <div
-        className={`top-20 right-0 bottom-0 z-50 fixed bg-stone w-4/5 max-w-sm overflow-y-auto transition-transform duration-300 ease-in-out transform ${
-          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
-      >
-        <div className="px-6 py-8">
-          <ul className="space-y-6">
-            {Object.values(navItems).map((item) => (
-              <li key={item.title}>
-                <Link
-                  to={item.link}
-                  className="block font-bold text-navy hover:text-slate-500 text-xl transition duration-200"
-                  onClick={closeMobileMenu}
-                >
-                  {item.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-12 pt-6 border-slate-300 border-t">
-            <Link
-              to="/contact"
-              className="block bg-navy hover:bg-slate-700 shadow px-4 py-3 w-full font-semibold text-slate-300 text-center transition duration-200"
+      {/* ── Mobile Menu Overlay ───────────────────────────────── */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              key="backdrop"
+              className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
               onClick={closeMobileMenu}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Escape' || e.key === 'Enter') closeMobileMenu()
+              }}
+            />
+
+            {/* Panel */}
+            <motion.div
+              key="panel"
+              className="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-navy bg-grid"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] as const }}
             >
-              Get a Free Quote
-            </Link>
-            <div className="space-y-4 mt-8">
-              <div className="flex items-center">
-                <PhoneIcon className="mr-3 size-5 text-navy" />
-                <a href="tel:6155557890" className="text-navy">
-                  (615) 747-7007
-                </a>
+              {/* Noise overlay */}
+              <div className="bg-noise pointer-events-none absolute inset-0" />
+
+              <div className="relative flex h-full flex-col px-8 pt-28 pb-10">
+                {/* Nav links */}
+                <nav className="flex-1">
+                  <ul className="space-y-2">
+                    {NAV_LINKS.map((item, i) => {
+                      const isActive =
+                        item.link === '/' ? pathname === '/' : pathname.startsWith(item.link)
+
+                      return (
+                        <motion.li
+                          key={item.title}
+                          initial={{ opacity: 0, x: 40 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{
+                            delay: 0.1 + i * 0.06,
+                            duration: 0.4,
+                            ease: [0.22, 1, 0.36, 1] as const,
+                          }}
+                        >
+                          <Link
+                            to={item.link}
+                            className={`block border-l-2 py-3 pl-5 font-display text-2xl transition-all duration-300 ${
+                              isActive
+                                ? 'border-amber text-stone'
+                                : 'border-transparent text-slate-400 hover:border-amber/50 hover:text-slate-200'
+                            }`}
+                            onClick={closeMobileMenu}
+                          >
+                            {item.title}
+                          </Link>
+                        </motion.li>
+                      )
+                    })}
+                  </ul>
+                </nav>
+
+                {/* Bottom section */}
+                <motion.div
+                  className="border-t border-slate-700/50 pt-8"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.4 }}
+                >
+                  <Link
+                    to="/contact"
+                    className="mb-8 block w-full border border-amber bg-amber px-5 py-3 text-center text-sm font-bold uppercase tracking-wider text-navy transition-all duration-300 hover:bg-transparent hover:text-amber"
+                    onClick={closeMobileMenu}
+                  >
+                    Get a Free Quote
+                  </Link>
+
+                  <div className="space-y-4">
+                    <a
+                      href={`tel:${companyInfo.phone.replace(/[^\d+]/g, '')}`}
+                      className="flex items-center gap-3 text-slate-400 transition-colors duration-300 hover:text-stone"
+                    >
+                      <PhoneIcon className="size-5 text-amber" />
+                      <span className="font-semibold">{companyInfo.phone}</span>
+                    </a>
+                  </div>
+                </motion.div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
 
       {/* Spacer to offset fixed navbar */}
       <div className="h-20" />

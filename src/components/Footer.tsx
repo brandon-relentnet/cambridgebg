@@ -2,100 +2,134 @@ import { companyInfo, footerLinks, socialLinks } from '@/data/siteData'
 import { ClockIcon, EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/solid'
 import { Link } from '@tanstack/react-router'
 
+import type React from 'react'
+
 const currentYear = new Date().getFullYear()
+
+interface ContactDetailProps {
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
+  children: React.ReactNode
+  href?: string
+}
+
+function ContactDetail({ icon: Icon, children, href }: ContactDetailProps): React.ReactElement {
+  const content = (
+    <span className="flex items-start gap-3 text-slate-400 transition-colors duration-300 group-hover:text-slate-200">
+      <Icon className="mt-0.5 size-4 shrink-0 text-amber" />
+      <span>{children}</span>
+    </span>
+  )
+
+  if (href) {
+    return (
+      <a href={href} className="group">
+        {content}
+      </a>
+    )
+  }
+
+  return <div className="group">{content}</div>
+}
+
+interface FooterColumnProps {
+  title: string
+  links: { name: string; url: string }[]
+}
+
+function FooterColumn({ title, links }: FooterColumnProps): React.ReactElement {
+  return (
+    <div>
+      <h3 className="mb-6 text-xs font-bold uppercase tracking-widest text-amber">{title}</h3>
+      <ul className="space-y-3">
+        {links.map((link) => (
+          <li key={link.name}>
+            <Link
+              to={link.url}
+              className="relative text-slate-400 transition-colors duration-300 hover:text-stone"
+            >
+              {link.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
 
 export function Footer(): React.ReactElement {
   return (
-    <footer className="bg-slate-900 text-slate-400">
-      <div className="px-8 2xl:px-60 pt-16 pb-12">
-        <div className="mx-auto container">
-          <div className="gap-12 grid grid-cols-1 lg:grid-cols-5">
-            {/* Company Info */}
-            <div className="lg:col-span-2">
-              <img
-                src="/cbg-logo-transparent-inverted.png"
-                alt="Cambridge Building Group Logo"
-                className="mb-6 w-auto h-16"
-              />
-              <p className="mb-6">{companyInfo.tagline}</p>
+    <footer className="relative bg-navy bg-grid">
+      {/* Noise overlay */}
+      <div className="bg-noise pointer-events-none absolute inset-0" />
+
+      {/* Amber accent line at top */}
+      <div className="absolute top-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-amber to-transparent opacity-40" />
+
+      {/* ── Main content ──────────────────────────────────────── */}
+      <div className="relative px-8 pt-20 pb-12 lg:px-12 2xl:px-24">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+            {/* Company Info — spans 4 cols */}
+            <div className="lg:col-span-4">
+              <Link to="/" className="inline-block">
+                <img
+                  src="/cbg-secondary-logo.png"
+                  alt="Cambridge Building Group"
+                  className="mb-6 w-[180px] opacity-80"
+                  style={{
+                    filter:
+                      'brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(10deg) contrast(1.1)',
+                  }}
+                />
+              </Link>
+              <p className="mb-8 max-w-sm leading-relaxed text-slate-400">{companyInfo.tagline}</p>
+
               <div className="space-y-4">
-                <div className="flex items-start">
-                  <MapPinIcon className="flex-shrink-0 mt-1 mr-3 size-5 text-amber" />
-                  <p>{companyInfo.address}</p>
-                </div>
-                <div className="flex items-start">
-                  <PhoneIcon className="flex-shrink-0 mt-1 mr-3 size-5 text-amber" />
-                  <p>{companyInfo.phone}</p>
-                </div>
-                <div className="flex items-start">
-                  <EnvelopeIcon className="flex-shrink-0 mt-1 mr-3 size-5 text-amber" />
-                  <p>{companyInfo.email}</p>
-                </div>
-                <div className="flex items-start">
-                  <ClockIcon className="flex-shrink-0 mt-1 mr-3 size-5 text-amber" />
-                  <p>{companyInfo.hours}</p>
-                </div>
+                <ContactDetail icon={MapPinIcon}>{companyInfo.address}</ContactDetail>
+                <ContactDetail
+                  icon={PhoneIcon}
+                  href={`tel:${companyInfo.phone.replace(/[^\d+]/g, '')}`}
+                >
+                  {companyInfo.phone}
+                </ContactDetail>
+                <ContactDetail icon={EnvelopeIcon} href={`mailto:${companyInfo.email}`}>
+                  {companyInfo.email}
+                </ContactDetail>
+                <ContactDetail icon={ClockIcon}>{companyInfo.hours}</ContactDetail>
               </div>
             </div>
 
-            {/* About Links */}
-            <div>
-              <h3 className="mb-6 font-bold text-slate-300 text-xl">About</h3>
-              <ul className="space-y-3">
-                {footerLinks.about.map((link) => (
-                  <li key={link.name}>
-                    <Link to={link.url} className="hover:text-slate-300 transition duration-200">
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+            {/* Link columns — 2 cols each */}
+            <div className="lg:col-span-2 lg:col-start-6">
+              <FooterColumn title="About" links={footerLinks.about} />
             </div>
 
-            {/* Services Links */}
-            <div>
-              <h3 className="mb-6 font-bold text-slate-300 text-xl">Services</h3>
-              <ul className="space-y-3">
-                {footerLinks.services.map((link) => (
-                  <li key={link.name}>
-                    <Link to={link.url} className="hover:text-slate-300 transition duration-200">
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+            <div className="lg:col-span-2">
+              <FooterColumn title="Services" links={footerLinks.services} />
             </div>
 
-            {/* Connect Links & Social */}
-            <div>
-              <h3 className="mb-6 font-bold text-slate-300 text-xl">Connect</h3>
-              <ul className="space-y-3">
-                {footerLinks.connect.map((link) => (
-                  <li key={link.name}>
-                    <Link to={link.url} className="hover:text-slate-300 transition duration-200">
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+            <div className="lg:col-span-2">
+              <FooterColumn title="Connect" links={footerLinks.connect} />
+
+              {/* Social links */}
               <div className="mt-8">
-                <h4 className="mb-4 font-semibold text-slate-300 text-lg">Follow Us</h4>
-                <div className="flex space-x-4">
+                <h4 className="mb-4 text-xs font-bold uppercase tracking-widest text-amber">
+                  Follow Us
+                </h4>
+                <div className="flex gap-3">
                   {socialLinks.map((social) => (
                     <a
                       key={social.name}
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-slate-200 hover:bg-slate-400 p-3 rounded-full text-slate-300 transition duration-200"
-                      aria-label={social.name}
+                      className="flex size-10 items-center justify-center border border-slate-700 text-slate-400 transition-all duration-300 hover:border-amber hover:text-amber"
                     >
                       <span className="sr-only">{social.name}</span>
                       <img
                         src={social.icon}
                         alt={social.name}
-                        className="w-6 h-6"
-                        aria-hidden="true"
+                        className="size-5 opacity-60 transition-opacity duration-300 hover:opacity-100"
                       />
                     </a>
                   ))}
@@ -106,13 +140,19 @@ export function Footer(): React.ReactElement {
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="bg-slate-950 px-8 2xl:px-60 py-6">
-        <div className="flex md:flex-row flex-col justify-between items-center mx-auto container">
-          <p className="mb-4 md:mb-0">
-            &copy; {currentYear} {companyInfo.name}{' '}
-            <span className="ml-2 italic">All rights reserved.</span>
+      {/* ── Bottom bar ────────────────────────────────────────── */}
+      <div className="relative border-t border-slate-800 px-8 py-6 lg:px-12 2xl:px-24">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 md:flex-row">
+          <p className="text-sm text-slate-500">
+            &copy; {currentYear} {companyInfo.name}
+            <span className="ml-2 text-slate-600">All rights reserved.</span>
           </p>
+          <Link
+            to="/privacy-policy"
+            className="text-sm text-slate-500 transition-colors duration-300 hover:text-slate-300"
+          >
+            Privacy Policy
+          </Link>
         </div>
       </div>
     </footer>
