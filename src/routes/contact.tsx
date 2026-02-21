@@ -7,6 +7,7 @@ import {
   PhoneIcon,
 } from '@heroicons/react/24/solid'
 import { Link, createFileRoute } from '@tanstack/react-router'
+import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
 
 export const Route = createFileRoute('/contact')({
@@ -136,13 +137,30 @@ function ContactPage(): React.ReactElement {
         <div className="absolute inset-0 z-0 opacity-15 bg-[url('/contact-header.jpg')] bg-cover bg-center" />
         <div className="absolute inset-0 z-0 bg-gradient-to-t from-graphite via-graphite/60 to-transparent" />
         <div className="relative z-10 px-8 2xl:px-60 pb-12 w-full">
-          <p className="font-display text-amber text-lg tracking-widest uppercase mb-2">
+          <motion.p
+            initial={{ opacity: 0, transform: 'translateY(20px)' }}
+            animate={{ opacity: 1, transform: 'translateY(0px)' }}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] as const }}
+            className="font-display text-amber text-lg tracking-widest uppercase mb-2"
+          >
             Get in Touch
-          </p>
-          <h1 className="font-display text-5xl md:text-7xl text-stone mb-4">Contact Us</h1>
-          <p className="text-xl text-slate-400 max-w-2xl">
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, transform: 'translateY(20px)' }}
+            animate={{ opacity: 1, transform: 'translateY(0px)' }}
+            transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] as const }}
+            className="font-display text-5xl md:text-7xl text-stone mb-4"
+          >
+            Contact Us
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, transform: 'translateY(20px)' }}
+            animate={{ opacity: 1, transform: 'translateY(0px)' }}
+            transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] as const }}
+            className="text-xl text-slate-400 max-w-2xl"
+          >
             Let&apos;s discuss your project and transform your vision into reality.
-          </p>
+          </motion.p>
         </div>
       </section>
 
@@ -221,12 +239,17 @@ function ContactPage(): React.ReactElement {
                   </h2>
 
                   {isSubmitted ? (
-                    <div className="bg-amber/10 p-5 border-l-4 border-amber">
+                    <motion.div
+                      initial={{ opacity: 0, transform: 'translateY(20px)' }}
+                      animate={{ opacity: 1, transform: 'translateY(0px)' }}
+                      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
+                      className="bg-amber/10 p-5 border-l-4 border-amber"
+                    >
                       <p className="font-semibold text-navy mb-1">Thank you for reaching out.</p>
                       <p className="text-slate-700">
                         We&apos;ve received your inquiry and will get back to you within 24 hours.
                       </p>
-                    </div>
+                    </motion.div>
                   ) : (
                     <form onSubmit={submitForm} className="space-y-5">
                       {/* Name */}
@@ -425,13 +448,15 @@ function ContactPage(): React.ReactElement {
                       </div>
 
                       {/* Submit */}
-                      <button
+                      <motion.button
                         type="submit"
                         disabled={isSubmitting}
-                        className="flex justify-center items-center bg-navy hover:bg-amber disabled:opacity-70 shadow px-4 py-3 w-full font-semibold text-stone transition duration-200 disabled:cursor-not-allowed"
+                        whileHover={isSubmitting ? {} : { scale: 1.02 }}
+                        whileTap={isSubmitting ? {} : { scale: 0.97 }}
+                        className="flex justify-center items-center bg-navy hover:bg-amber disabled:opacity-70 shadow px-4 py-3 w-full font-semibold text-stone transition-colors duration-200 disabled:cursor-not-allowed"
                       >
                         {isSubmitting ? 'Sending...' : 'Submit Request'}
-                      </button>
+                      </motion.button>
                     </form>
                   )}
                 </div>
@@ -472,11 +497,23 @@ function ContactPage(): React.ReactElement {
                         }`}
                       />
                     </button>
-                    {activeFaq === index && (
-                      <div className="px-5 pb-5 border-t border-slate-700">
-                        <p className="text-slate-400 leading-relaxed pt-4">{faq.answer}</p>
-                      </div>
-                    )}
+                    <AnimatePresence initial={false}>
+                      {activeFaq === index && (
+                        <motion.div
+                          // biome-ignore lint/suspicious/noArrayIndexKey: FAQ items are static, index is stable
+                          key={`faq-${index}`}
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] as const }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-5 pb-5 border-t border-slate-700">
+                            <p className="text-slate-400 leading-relaxed pt-4">{faq.answer}</p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </ScrollReveal>
               ))}

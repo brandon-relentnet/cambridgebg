@@ -1,6 +1,7 @@
 import { ScrollReveal } from '@/components/ScrollReveal'
 import { leadershipTeam } from '@/data/siteData'
 import { ChevronRightIcon } from '@heroicons/react/24/solid'
+import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
 
 interface LeadershipBiosProps {
@@ -37,10 +38,12 @@ export function LeadershipBios({
             <ScrollReveal key={leader.id} delay={index * 0.1}>
               <div className="flex items-center gap-5 mb-6">
                 <div className="w-36 aspect-[4/3] overflow-hidden bg-slate-200 shrink-0">
-                  <img
+                  <motion.img
                     src={leader.image}
                     alt={leader.name}
                     className="w-full h-full object-cover object-top"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                   />
                 </div>
                 <div>
@@ -104,22 +107,33 @@ export function LeadershipBios({
                   />
                 </div>
               </button>
-              {activeMobile === leader.id && (
-                <div className="border-l-2 border-amber pl-5 mt-4">
-                  <p className="mb-4 text-slate-700 leading-relaxed">{leader.bio}</p>
-                  <h4 className="mb-1 font-semibold text-navy">Education</h4>
-                  <p className="mb-4 text-slate-600">{leader.education}</p>
-                  <h4 className="mb-1 font-semibold text-navy">Experience</h4>
-                  <ul className="text-slate-600 space-y-1">
-                    {leader.experience.map((item) => (
-                      <li key={item} className="flex items-start">
-                        <span className="bg-amber mt-2 mr-2 rounded-full w-1.5 h-1.5 shrink-0" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+              <AnimatePresence initial={false}>
+                {activeMobile === leader.id && (
+                  <motion.div
+                    key={`bio-${leader.id}`}
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] as const }}
+                    className="overflow-hidden"
+                  >
+                    <div className="border-l-2 border-amber pl-5 mt-4">
+                      <p className="mb-4 text-slate-700 leading-relaxed">{leader.bio}</p>
+                      <h4 className="mb-1 font-semibold text-navy">Education</h4>
+                      <p className="mb-4 text-slate-600">{leader.education}</p>
+                      <h4 className="mb-1 font-semibold text-navy">Experience</h4>
+                      <ul className="text-slate-600 space-y-1">
+                        {leader.experience.map((item) => (
+                          <li key={item} className="flex items-start">
+                            <span className="bg-amber mt-2 mr-2 rounded-full w-1.5 h-1.5 shrink-0" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           ))}
         </div>

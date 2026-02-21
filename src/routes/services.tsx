@@ -18,6 +18,7 @@ import {
   WrenchScrewdriverIcon,
 } from '@heroicons/react/24/solid'
 import { Link, createFileRoute } from '@tanstack/react-router'
+import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
 
 import type React from 'react'
@@ -229,13 +230,30 @@ function ServicesPage(): React.ReactElement {
         <div className="absolute inset-0 z-0 opacity-15 bg-[url('/services-header.jpg')] bg-cover bg-center" />
         <div className="absolute inset-0 z-0 bg-gradient-to-t from-graphite via-graphite/60 to-transparent" />
         <div className="relative z-10 px-8 2xl:px-60 pb-12 w-full">
-          <p className="font-display text-amber text-lg tracking-widest uppercase mb-2">
+          <motion.p
+            initial={{ opacity: 0, transform: 'translateY(20px)' }}
+            animate={{ opacity: 1, transform: 'translateY(0px)' }}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] as const }}
+            className="font-display text-amber text-lg tracking-widest uppercase mb-2"
+          >
             What We Do
-          </p>
-          <h1 className="font-display text-5xl md:text-7xl text-stone mb-4">Our Services</h1>
-          <p className="text-xl text-slate-400 max-w-2xl">
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, transform: 'translateY(20px)' }}
+            animate={{ opacity: 1, transform: 'translateY(0px)' }}
+            transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] as const }}
+            className="font-display text-5xl md:text-7xl text-stone mb-4"
+          >
+            Our Services
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, transform: 'translateY(20px)' }}
+            animate={{ opacity: 1, transform: 'translateY(0px)' }}
+            transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] as const }}
+            className="text-xl text-slate-400 max-w-2xl"
+          >
             Comprehensive construction solutions tailored to your unique vision and requirements.
-          </p>
+          </motion.p>
         </div>
       </section>
 
@@ -282,21 +300,32 @@ function ServicesPage(): React.ReactElement {
                           />
                         </div>
                       </button>
-                      {activeService === service.id && (
-                        <div className="pt-4">
-                          <p className="text-slate-700 mb-5 leading-relaxed">
-                            {service.description}
-                          </p>
-                          <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                            {service.details.map((detail) => (
-                              <li key={detail} className="flex items-center">
-                                <span className="w-2 h-2 bg-amber rounded-full mr-3 shrink-0" />
-                                <span className="text-slate-700">{detail}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
+                      <AnimatePresence initial={false}>
+                        {activeService === service.id && (
+                          <motion.div
+                            key={`service-${service.id}`}
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] as const }}
+                            className="overflow-hidden"
+                          >
+                            <div className="pt-4">
+                              <p className="text-slate-700 mb-5 leading-relaxed">
+                                {service.description}
+                              </p>
+                              <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                {service.details.map((detail) => (
+                                  <li key={detail} className="flex items-center">
+                                    <span className="w-2 h-2 bg-amber rounded-full mr-3 shrink-0" />
+                                    <span className="text-slate-700">{detail}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
                   </ScrollReveal>
                 )
@@ -321,13 +350,19 @@ function ServicesPage(): React.ReactElement {
                 const Icon = service.icon
                 return (
                   <ScrollReveal key={service.id} delay={service.id * 0.05}>
-                    <div className="bg-navy p-6 shadow-lg border-t-4 border-amber h-full">
+                    <motion.div
+                      whileHover={{
+                        y: -4,
+                        transition: { type: 'spring', stiffness: 400, damping: 25 },
+                      }}
+                      className="bg-navy p-6 shadow-lg border-t-4 border-amber h-full"
+                    >
                       <div className="bg-amber/10 p-2.5 rounded-full w-fit mb-4">
                         <Icon className="size-6 text-amber" />
                       </div>
                       <h3 className="text-lg font-bold mb-2">{service.title}</h3>
                       <p className="text-slate-400">{service.description}</p>
-                    </div>
+                    </motion.div>
                   </ScrollReveal>
                 )
               })}

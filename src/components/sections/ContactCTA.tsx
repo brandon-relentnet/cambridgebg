@@ -1,5 +1,6 @@
 import { ScrollReveal } from '@/components/ScrollReveal'
 import { CalendarIcon, EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/solid'
+import { motion } from 'motion/react'
 
 interface ContactCTAProps {
   showButton?: boolean
@@ -96,13 +97,15 @@ export function ContactCTA({
                     placeholder="Tell us about your project"
                   />
                 </div>
-                <button
+                <motion.button
                   type="submit"
-                  className="flex justify-center items-center bg-amber hover:bg-amber/90 shadow-lg px-6 py-3 w-full font-semibold text-navy transition duration-200"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="flex justify-center items-center bg-amber hover:bg-amber/90 shadow-lg px-6 py-3 w-full font-semibold text-navy transition-colors duration-200"
                 >
                   Schedule Consultation
                   <CalendarIcon className="ml-2 size-5" />
-                </button>
+                </motion.button>
               </form>
             </div>
           </div>

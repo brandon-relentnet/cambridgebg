@@ -1,19 +1,124 @@
 import { ScrollReveal } from '@/components/ScrollReveal'
 import { clients, testimonials, tradeCategories } from '@/data/siteData'
 import { BuildingStorefrontIcon, UserGroupIcon } from '@heroicons/react/24/solid'
-import { useMemo, useState } from 'react'
+import { motion, useMotionTemplate, useSpring, useTransform, useVelocity } from 'motion/react'
+import { useEffect, useRef, useState } from 'react'
+
+import type { MotionValue } from 'motion/react'
+import type React from 'react'
+
+// ---------------------------------------------------------------------------
+// Constants
+// ---------------------------------------------------------------------------
+
+const VIEW_GAP = 16
+const SPRING_CONFIG = { stiffness: 300, damping: 35 } as const
+const HEIGHT_SPRING = { stiffness: 200, damping: 30 } as const
+const INDICATOR_SPRING = { stiffness: 600, damping: 40 } as const
+
+// ---------------------------------------------------------------------------
+// CategoryContent — slides horizontally within the static wrapper
+// ---------------------------------------------------------------------------
+
+interface CategoryContentProps {
+  category: (typeof tradeCategories)[number]
+  index: number
+  x: MotionValue<number>
+  containerWidth: number
+}
+
+function CategoryContent({
+  category,
+  index,
+  x,
+  containerWidth,
+}: CategoryContentProps): React.ReactElement {
+  const viewOffset = index * (containerWidth + VIEW_GAP)
+
+  const distance = useTransform(x, (latest) => viewOffset + latest)
+  const opacity = useTransform(distance, [-containerWidth, 0, containerWidth], [0, 1, 0])
+
+  const xVelocity = useVelocity(x)
+  const blurValue = useTransform(xVelocity, [-2000, 0, 2000], [3, 0, 3])
+  const filter = useMotionTemplate`blur(${blurValue}px)`
+
+  return (
+    <motion.div
+      className="absolute top-0 left-0 w-full"
+      style={{
+        x: useTransform(x, (latest) => viewOffset + latest),
+        opacity,
+        filter,
+      }}
+    >
+      <h4 className="mb-4 font-semibold text-navy text-lg">{category.name}</h4>
+      <ul className="space-y-3">
+        {category.partners.map((partner) => (
+          <li key={partner} className="flex items-center text-slate-700">
+            <span className="bg-amber mr-3 rounded-full w-2 h-2" />
+            <span>{partner}</span>
+          </li>
+        ))}
+      </ul>
+    </motion.div>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// Network
+// ---------------------------------------------------------------------------
 
 interface NetworkProps {
   showButton?: boolean
 }
 
 export function Network({ showButton: _showButton = false }: NetworkProps): React.ReactElement {
-  const [activeCategory, setActiveCategory] = useState(tradeCategories[0]?.id ?? 1)
+  const [activeIndex, setActiveIndex] = useState(0)
+  const innerRef = useRef<HTMLDivElement>(null)
+  const viewRefs = useRef<(HTMLDivElement | null)[]>([])
+  const [innerWidth, setInnerWidth] = useState(0)
+  const [viewHeights, setViewHeights] = useState<number[]>([])
 
-  const currentCategory = useMemo((): (typeof tradeCategories)[number] => {
-    return (tradeCategories.find((c) => c.id === activeCategory) ??
-      tradeCategories[0]) as (typeof tradeCategories)[number]
-  }, [activeCategory])
+  // Measure inner content area width
+  useEffect(() => {
+    const el = innerRef.current
+    if (!el) return
+
+    const measure = (): void => {
+      setInnerWidth(el.getBoundingClientRect().width)
+    }
+    measure()
+
+    const observer = new ResizeObserver(measure)
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  // Measure view heights
+  useEffect(() => {
+    if (innerWidth === 0) return
+    const raf = requestAnimationFrame(() => {
+      const heights = viewRefs.current.map((ref) => ref?.getBoundingClientRect().height ?? 0)
+      setViewHeights(heights)
+    })
+    return () => cancelAnimationFrame(raf)
+  }, [innerWidth])
+
+  // Spring-driven x position
+  const x = useSpring(0, SPRING_CONFIG)
+
+  useEffect(() => {
+    if (innerWidth === 0) return
+    x.set(-activeIndex * (innerWidth + VIEW_GAP))
+  }, [activeIndex, innerWidth, x])
+
+  // Animate content area height — MotionValue applied directly, no React re-renders
+  const currentHeight = viewHeights[activeIndex] ?? 150
+  const contentHeight = useSpring(currentHeight, HEIGHT_SPRING)
+
+  useEffect(() => {
+    contentHeight.set(currentHeight)
+  }, [currentHeight, contentHeight])
 
   return (
     <section id="network" className="relative bg-stone bg-dots px-8 2xl:px-60 py-section">
@@ -41,32 +146,83 @@ export function Network({ showButton: _showButton = false }: NetworkProps): Reac
               </div>
 
               <div className="border-l-2 border-amber pl-6">
+                {/* Category pills with layoutId sliding indicator */}
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {tradeCategories.map((category) => (
-                    <button
-                      type="button"
-                      key={`nav-${category.id}`}
-                      onClick={() => setActiveCategory(category.id)}
-                      className={`px-3 py-1.5 rounded-full font-medium text-sm transition duration-200 cursor-pointer ${
-                        activeCategory === category.id
-                          ? 'bg-amber text-navy'
-                          : 'bg-slate-300/50 text-slate-700 hover:bg-slate-300'
-                      }`}
-                    >
-                      {category.name}
-                    </button>
-                  ))}
+                  {tradeCategories.map((category, index) => {
+                    const isActive = activeIndex === index
+                    return (
+                      <button
+                        type="button"
+                        key={`nav-${category.id}`}
+                        onClick={() => setActiveIndex(index)}
+                        className="relative px-3 py-1.5 rounded-full font-medium text-sm transition-colors duration-200 cursor-pointer"
+                      >
+                        {isActive && (
+                          <motion.span
+                            layoutId="net-pill-indicator"
+                            className="absolute inset-0 bg-amber rounded-full"
+                            transition={{ type: 'spring', ...INDICATOR_SPRING }}
+                          />
+                        )}
+                        <span
+                          className={`relative z-10 ${
+                            isActive ? 'text-navy' : 'text-slate-700 hover:text-navy'
+                          }`}
+                        >
+                          {category.name}
+                        </span>
+                      </button>
+                    )
+                  })}
                 </div>
 
-                <h4 className="mb-4 font-semibold text-navy text-lg">{currentCategory.name}</h4>
-                <ul className="space-y-3">
-                  {currentCategory.partners.map((partner) => (
-                    <li key={partner} className="flex items-center text-slate-700">
-                      <span className="bg-amber mr-3 rounded-full w-2 h-2" />
-                      <span>{partner}</span>
-                    </li>
+                {/* Partner list — static wrapper, content slides inside */}
+                <motion.div
+                  ref={innerRef}
+                  className="relative overflow-hidden"
+                  style={{ height: contentHeight }}
+                >
+                  {/* Hidden clones for height measurement */}
+                  {tradeCategories.map((category, index) => (
+                    <div
+                      key={`measure-${category.id}`}
+                      ref={(el) => {
+                        viewRefs.current[index] = el
+                      }}
+                      style={{
+                        visibility: 'hidden',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        pointerEvents: 'none',
+                      }}
+                    >
+                      <h4 className="mb-4 font-semibold text-navy text-lg">{category.name}</h4>
+                      <ul className="space-y-3">
+                        {category.partners.map((partner) => (
+                          <li key={partner} className="flex items-center text-slate-700">
+                            <span className="bg-amber mr-3 rounded-full w-2 h-2" />
+                            <span>{partner}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   ))}
-                </ul>
+
+                  {/* Visible sliding content views */}
+                  {innerWidth > 0 &&
+                    tradeCategories.map((category, index) => (
+                      <CategoryContent
+                        key={category.id}
+                        category={category}
+                        index={index}
+                        x={x}
+                        containerWidth={innerWidth}
+                      />
+                    ))}
+                </motion.div>
+
                 <p className="mt-6 text-slate-500 text-sm">
                   * All partners undergo rigorous qualification and maintain our high standards for
                   quality and safety.

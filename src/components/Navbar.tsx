@@ -79,10 +79,10 @@ export function Navbar(): React.ReactElement {
                       className="group relative py-2 font-body text-sm font-semibold uppercase tracking-widest text-slate-400 transition-colors duration-300 hover:text-stone"
                     >
                       <span className={isActive ? 'text-stone' : ''}>{item.title}</span>
-                      {/* Animated underline */}
+                      {/* Animated underline — scaleX for compositor-only animation */}
                       <span
-                        className={`absolute bottom-0 left-0 h-0.5 bg-amber transition-all duration-300 ${
-                          isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                        className={`absolute bottom-0 left-0 h-0.5 w-full bg-amber origin-left transition-transform duration-300 ${
+                          isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                         }`}
                       />
                     </Link>
@@ -123,9 +123,9 @@ export function Navbar(): React.ReactElement {
               {isMobileMenuOpen ? (
                 <motion.div
                   key="close"
-                  initial={{ opacity: 0, rotate: -90 }}
-                  animate={{ opacity: 1, rotate: 0 }}
-                  exit={{ opacity: 0, rotate: 90 }}
+                  initial={{ opacity: 0, transform: 'rotate(-90deg)' }}
+                  animate={{ opacity: 1, transform: 'rotate(0deg)' }}
+                  exit={{ opacity: 0, transform: 'rotate(90deg)' }}
                   transition={{ duration: 0.2 }}
                 >
                   <XMarkIcon className="size-7" />
@@ -133,9 +133,9 @@ export function Navbar(): React.ReactElement {
               ) : (
                 <motion.div
                   key="menu"
-                  initial={{ opacity: 0, rotate: 90 }}
-                  animate={{ opacity: 1, rotate: 0 }}
-                  exit={{ opacity: 0, rotate: -90 }}
+                  initial={{ opacity: 0, transform: 'rotate(90deg)' }}
+                  animate={{ opacity: 1, transform: 'rotate(0deg)' }}
+                  exit={{ opacity: 0, transform: 'rotate(-90deg)' }}
                   transition={{ duration: 0.2 }}
                 >
                   <Bars3Icon className="size-7" />
@@ -170,9 +170,9 @@ export function Navbar(): React.ReactElement {
             <motion.div
               key="panel"
               className="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-navy bg-grid"
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
+              initial={{ transform: 'translateX(100%)' }}
+              animate={{ transform: 'translateX(0%)' }}
+              exit={{ transform: 'translateX(100%)' }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] as const }}
             >
               {/* Noise overlay */}
@@ -189,8 +189,8 @@ export function Navbar(): React.ReactElement {
                       return (
                         <motion.li
                           key={item.title}
-                          initial={{ opacity: 0, x: 40 }}
-                          animate={{ opacity: 1, x: 0 }}
+                          initial={{ opacity: 0, transform: 'translateX(40px)' }}
+                          animate={{ opacity: 1, transform: 'translateX(0px)' }}
                           transition={{
                             delay: 0.1 + i * 0.06,
                             duration: 0.4,
@@ -217,8 +217,8 @@ export function Navbar(): React.ReactElement {
                 {/* Bottom section */}
                 <motion.div
                   className="border-t border-slate-700/50 pt-8"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, transform: 'translateY(20px)' }}
+                  animate={{ opacity: 1, transform: 'translateY(0px)' }}
                   transition={{ delay: 0.4, duration: 0.4 }}
                 >
                   <Link

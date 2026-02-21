@@ -1,8 +1,8 @@
-import { ScrollReveal } from '@/components/ScrollReveal'
 import { ContactCTA } from '@/components/sections/ContactCTA'
 import { categories, projects } from '@/data/portfolioData'
 import { MagnifyingGlassIcon, MapPinIcon } from '@heroicons/react/24/solid'
 import { createFileRoute } from '@tanstack/react-router'
+import { AnimatePresence, motion } from 'motion/react'
 import { useMemo, useState } from 'react'
 
 export const Route = createFileRoute('/portfolio/')({
@@ -51,12 +51,31 @@ function PortfolioPage(): React.ReactElement {
         <div className="absolute inset-0 z-0 opacity-15 bg-[url('/portfolio-header.jpg')] bg-cover bg-center" />
         <div className="absolute inset-0 z-0 bg-gradient-to-t from-graphite via-graphite/60 to-transparent" />
         <div className="relative z-10 px-8 2xl:px-60 pb-12 w-full">
-          <p className="font-display text-amber text-lg tracking-widest uppercase mb-2">Our Work</p>
-          <h1 className="font-display text-5xl md:text-7xl text-stone mb-4">Portfolio</h1>
-          <p className="text-xl text-slate-400 max-w-2xl">
+          <motion.p
+            initial={{ opacity: 0, transform: 'translateY(20px)' }}
+            animate={{ opacity: 1, transform: 'translateY(0px)' }}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] as const }}
+            className="font-display text-amber text-lg tracking-widest uppercase mb-2"
+          >
+            Our Work
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, transform: 'translateY(20px)' }}
+            animate={{ opacity: 1, transform: 'translateY(0px)' }}
+            transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] as const }}
+            className="font-display text-5xl md:text-7xl text-stone mb-4"
+          >
+            Portfolio
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, transform: 'translateY(20px)' }}
+            animate={{ opacity: 1, transform: 'translateY(0px)' }}
+            transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] as const }}
+            className="text-xl text-slate-400 max-w-2xl"
+          >
             Explore our diverse collection of projects that showcase our expertise, innovation, and
             dedication to excellence.
-          </p>
+          </motion.p>
         </div>
       </section>
 
@@ -72,13 +91,20 @@ function PortfolioPage(): React.ReactElement {
                     key={category.id}
                     type="button"
                     onClick={() => setActiveCategory(category.id)}
-                    className={`px-4 py-2 text-sm font-medium transition duration-200 cursor-pointer border ${
+                    className={`relative px-4 py-2 text-sm font-medium transition-colors duration-200 cursor-pointer border ${
                       activeCategory === category.id
-                        ? 'bg-amber/10 border-amber text-amber font-semibold'
+                        ? 'border-amber text-amber font-semibold'
                         : 'border-slate-300 text-slate-600 hover:border-amber hover:text-navy'
                     }`}
                   >
-                    {category.name}
+                    {activeCategory === category.id && (
+                      <motion.span
+                        layoutId="portfolio-filter"
+                        className="absolute inset-0 bg-amber/10"
+                        transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                      />
+                    )}
+                    <span className="relative z-10">{category.name}</span>
                   </button>
                 ))}
               </div>
@@ -104,10 +130,19 @@ function PortfolioPage(): React.ReactElement {
         <section className="py-section px-8 2xl:px-60 bg-stone bg-dots">
           <div className="py-block mx-auto container">
             {sortedProjects.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {sortedProjects.map((project) => (
-                  <ScrollReveal key={project.id}>
-                    <div className="bg-white shadow-lg overflow-hidden group">
+              <AnimatePresence mode="popLayout">
+                <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {sortedProjects.map((project) => (
+                    <motion.div
+                      key={project.id}
+                      layout
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] as const }}
+                      whileHover={{ y: -4 }}
+                      className="bg-white shadow-lg overflow-hidden group"
+                    >
                       {/* Project Image */}
                       <div className="h-56 bg-slate-200 relative overflow-hidden">
                         <div className="absolute inset-0 flex items-center justify-center text-slate-400">
@@ -143,10 +178,10 @@ function PortfolioPage(): React.ReactElement {
                           </span>
                         </div>
                       </div>
-                    </div>
-                  </ScrollReveal>
-                ))}
-              </div>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </AnimatePresence>
             ) : (
               <div className="text-center py-16">
                 <h3 className="text-2xl font-bold text-navy mb-2">No Projects Found</h3>

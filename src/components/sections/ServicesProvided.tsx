@@ -2,6 +2,7 @@ import { ScrollReveal } from '@/components/ScrollReveal'
 import { services } from '@/data/siteData'
 import { scrollToNextSection } from '@/utils/autoScroll'
 import { ChevronRightIcon } from '@heroicons/react/24/solid'
+import { motion } from 'motion/react'
 import { useState } from 'react'
 
 interface ServicesProvidedProps {
@@ -46,9 +47,14 @@ export function ServicesProvided({
             {services.map((service) => {
               const Icon = service.icon
               return (
-                <div
+                <motion.div
                   key={service.id}
-                  className={`group relative overflow-hidden bg-navy shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
+                  whileHover={{
+                    y: -4,
+                    transition: { type: 'spring', stiffness: 400, damping: 25 },
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`group relative overflow-hidden bg-navy shadow-md transition-colors duration-300 ${
                     hoveredService === service.id
                       ? 'border-t-4 border-amber'
                       : 'border-t-4 border-slate-600'
@@ -63,7 +69,7 @@ export function ServicesProvided({
                     <h3 className="mb-3 font-bold text-slate-200 text-2xl">{service.title}</h3>
                     <p className="text-slate-400">{service.description}</p>
                   </div>
-                </div>
+                </motion.div>
               )
             })}
           </div>

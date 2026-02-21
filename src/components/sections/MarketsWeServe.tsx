@@ -100,8 +100,8 @@ export function MarketsWeServe({ showButton = false }: MarketsWeServeProps): Rea
                       </div>
                       <div className="h-1.5 bg-slate-200 mb-2">
                         <div
-                          className="h-full bg-amber transition-all duration-700"
-                          style={{ width: `${barWidth}%` }}
+                          className="h-full w-full origin-left bg-amber transition-transform duration-700"
+                          style={{ transform: `scaleX(${barWidth / 100})` }}
                         />
                       </div>
                       <p className="text-slate-600 text-sm leading-relaxed">{sector.description}</p>

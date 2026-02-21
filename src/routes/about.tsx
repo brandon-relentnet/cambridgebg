@@ -10,7 +10,7 @@ import {
   WrenchScrewdriverIcon,
 } from '@heroicons/react/24/solid'
 import { createFileRoute } from '@tanstack/react-router'
-import { useInView } from 'motion/react'
+import { motion, useInView } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
 
 export const Route = createFileRoute('/about')({
@@ -123,14 +123,31 @@ function AboutPage(): React.ReactElement {
         <div className="absolute inset-0 z-0 opacity-15 bg-[url('/about-header.jpg')] bg-cover bg-center" />
         <div className="absolute inset-0 z-0 bg-gradient-to-t from-graphite via-graphite/60 to-transparent" />
         <div className="relative z-10 px-8 2xl:px-60 pb-12 w-full">
-          <p className="font-display text-amber text-lg tracking-widest uppercase mb-2">
+          <motion.p
+            initial={{ opacity: 0, transform: 'translateY(20px)' }}
+            animate={{ opacity: 1, transform: 'translateY(0px)' }}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] as const }}
+            className="font-display text-amber text-lg tracking-widest uppercase mb-2"
+          >
             Our Story
-          </p>
-          <h1 className="font-display text-5xl md:text-7xl text-stone mb-4">About Us</h1>
-          <p className="text-xl text-slate-400 max-w-2xl">
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, transform: 'translateY(20px)' }}
+            animate={{ opacity: 1, transform: 'translateY(0px)' }}
+            transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] as const }}
+            className="font-display text-5xl md:text-7xl text-stone mb-4"
+          >
+            About Us
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, transform: 'translateY(20px)' }}
+            animate={{ opacity: 1, transform: 'translateY(0px)' }}
+            transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] as const }}
+            className="text-xl text-slate-400 max-w-2xl"
+          >
             Building excellence through innovation, integrity, and dedicated craftsmanship since
             2015.
-          </p>
+          </motion.p>
         </div>
       </section>
 
