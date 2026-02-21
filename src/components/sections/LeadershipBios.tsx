@@ -39,20 +39,17 @@ export function LeadershipBios({
 
         {/* Featured Leadership (Desktop) */}
         <ScrollReveal delay={0.1}>
-          <div className="hidden gap-8 md:grid md:grid-cols-2 mb-12">
+          <div className="hidden gap-10 md:grid md:grid-cols-2 mb-12">
             {featuredLeaders.map((leader) => (
-              <div
-                key={`desktop-${leader.id}`}
-                className="bg-white shadow-lg overflow-hidden border-t-4 border-amber"
-              >
-                <div className="flex justify-center items-center bg-slate-200 h-80">
+              <div key={`desktop-${leader.id}`}>
+                <div className="bg-slate-200 h-80 mb-5 overflow-hidden">
                   <img
                     src={leader.image}
                     alt={leader.name}
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="p-6">
+                <div className="border-l-2 border-amber pl-6">
                   <h3 className="mb-1 font-bold text-navy text-2xl">{leader.name}</h3>
                   <p className="mb-4 font-medium text-amber">{leader.title}</p>
                   {/* Editorial intro — first sentence in serif */}
@@ -81,12 +78,9 @@ export function LeadershipBios({
 
         {/* Other Leadership (Desktop) */}
         {otherLeaders.length > 0 && (
-          <div className="hidden gap-6 md:grid md:grid-cols-3">
+          <div className="hidden gap-8 md:grid md:grid-cols-3">
             {otherLeaders.map((leader) => (
-              <div
-                key={`desktop-other-${leader.id}`}
-                className="bg-white shadow-md p-6 border-amber border-l-4"
-              >
+              <div key={`desktop-other-${leader.id}`} className="border-l-2 border-amber pl-5">
                 <div className="flex items-center mb-4">
                   <div className="flex justify-center items-center bg-amber mr-4 rounded-full w-12 h-12 font-bold text-navy text-xl">
                     {leader.name.split(' ')[0]?.charAt(0) ?? ''}
@@ -98,19 +92,19 @@ export function LeadershipBios({
                   </div>
                 </div>
                 <p className="mb-3 text-slate-700">{leader.bio}</p>
-                <p className="text-slate-600 text-sm italic">{leader.education}</p>
+                <p className="text-slate-600 italic">{leader.education}</p>
               </div>
             ))}
           </div>
         )}
 
         {/* Mobile View */}
-        <div className="md:hidden space-y-4">
+        <div className="md:hidden space-y-6">
           {leadershipTeam.map((leader) => (
-            <div key={`mobile-${leader.id}`} className="bg-white shadow-md overflow-hidden">
+            <div key={`mobile-${leader.id}`} className="border-l-2 border-amber pl-5">
               <button
                 type="button"
-                className="flex items-center p-4 w-full text-left cursor-pointer"
+                className="flex items-center w-full text-left cursor-pointer"
                 onClick={() => toggleLeader(leader.id)}
               >
                 <div className="flex justify-center items-center bg-amber mr-4 rounded-full w-12 h-12 font-bold text-navy text-xl">
@@ -128,7 +122,7 @@ export function LeadershipBios({
                 />
               </button>
               {activeLeader === leader.id && (
-                <div className="p-4 pt-0 border-slate-200 border-t">
+                <div className="pt-4">
                   <p className="mb-4 text-slate-700">{leader.bio}</p>
                   <h4 className="mb-2 font-semibold text-navy text-lg">Education</h4>
                   <p className="mb-4 text-slate-600">{leader.education}</p>

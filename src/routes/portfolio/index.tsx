@@ -1,8 +1,8 @@
+import { ScrollReveal } from '@/components/ScrollReveal'
 import { ContactCTA } from '@/components/sections/ContactCTA'
-import { IndustryAwards } from '@/components/sections/IndustryAwards'
 import { categories, projects } from '@/data/portfolioData'
-import { ArrowsPointingOutIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid'
-import { Link, createFileRoute } from '@tanstack/react-router'
+import { MagnifyingGlassIcon, MapPinIcon } from '@heroicons/react/24/solid'
+import { createFileRoute } from '@tanstack/react-router'
 import { useMemo, useState } from 'react'
 
 export const Route = createFileRoute('/portfolio/')({
@@ -16,12 +16,10 @@ function PortfolioPage(): React.ReactElement {
   const filteredProjects = useMemo(() => {
     let filtered = projects
 
-    // Filter by category
     if (activeCategory !== 'all') {
       filtered = filtered.filter((project) => project.category === activeCategory)
     }
 
-    // Filter by search query
     if (searchQuery) {
       const query = searchQuery.toLowerCase()
       filtered = filtered.filter(
@@ -38,11 +36,8 @@ function PortfolioPage(): React.ReactElement {
 
   const sortedProjects = useMemo(() => {
     return [...filteredProjects].sort((a, b) => {
-      // Sort featured projects first
       if (a.featured && !b.featured) return -1
       if (!a.featured && b.featured) return 1
-
-      // Then sort by year (newest first)
       return Number.parseInt(b.year) - Number.parseInt(a.year)
     })
   }, [filteredProjects])
@@ -50,14 +45,14 @@ function PortfolioPage(): React.ReactElement {
   return (
     <div>
       {/* Page Header */}
-      <section className="relative h-[50vh] flex items-end bg-slate-800 overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-20 bg-[url('/portfolio-header.jpg')] bg-cover bg-center" />
-        <div className="absolute inset-0 z-0 bg-gradient-to-t from-slate-800 via-slate-800/60 to-transparent" />
+      <section className="relative h-[50vh] flex items-end bg-graphite overflow-hidden">
+        <div className="absolute inset-0 bg-grid" />
+        <div className="absolute inset-0 bg-noise" />
+        <div className="absolute inset-0 z-0 opacity-15 bg-[url('/portfolio-header.jpg')] bg-cover bg-center" />
+        <div className="absolute inset-0 z-0 bg-gradient-to-t from-graphite via-graphite/60 to-transparent" />
         <div className="relative z-10 px-8 2xl:px-60 pb-12 w-full">
-          <p className="font-display text-slate-400 text-lg tracking-widest uppercase mb-2">
-            Our Work
-          </p>
-          <h1 className="font-display text-5xl md:text-7xl text-slate-300 mb-4">Portfolio</h1>
+          <p className="font-display text-amber text-lg tracking-widest uppercase mb-2">Our Work</p>
+          <h1 className="font-display text-5xl md:text-7xl text-stone mb-4">Portfolio</h1>
           <p className="text-xl text-slate-400 max-w-2xl">
             Explore our diverse collection of projects that showcase our expertise, innovation, and
             dedication to excellence.
@@ -65,122 +60,117 @@ function PortfolioPage(): React.ReactElement {
         </div>
       </section>
 
-      {/* Portfolio Controls */}
-      <section className="py-8 px-8 2xl:px-60 bg-white border-b border-slate-200">
-        <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            {/* Category Filters */}
-            <div className="flex flex-wrap gap-2 mb-4 md:mb-0">
-              {categories.map((category) => (
-                <button
-                  key={category.id}
-                  type="button"
-                  onClick={() => setActiveCategory(category.id)}
-                  className={`px-4 py-2 text-sm font-medium rounded-full transition duration-200 ${
-                    activeCategory === category.id
-                      ? 'bg-navy text-slate-300'
-                      : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                  }`}
-                >
-                  {category.name}
-                </button>
-              ))}
-            </div>
-
-            {/* Search Box */}
-            <div className="relative w-full md:w-auto">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                <MagnifyingGlassIcon className="size-5 text-slate-500" />
+      {/* ── LIGHT: Controls + Portfolio Grid ──────────── */}
+      <div className="slant-bottom">
+        <section className="py-6 px-8 2xl:px-60 bg-stone border-b border-amber/20">
+          <div className="container mx-auto">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              {/* Category Filters */}
+              <div className="flex flex-wrap gap-2">
+                {categories.map((category) => (
+                  <button
+                    key={category.id}
+                    type="button"
+                    onClick={() => setActiveCategory(category.id)}
+                    className={`px-4 py-2 text-sm font-medium transition duration-200 cursor-pointer border ${
+                      activeCategory === category.id
+                        ? 'bg-amber/10 border-amber text-amber font-semibold'
+                        : 'border-slate-300 text-slate-600 hover:border-amber hover:text-navy'
+                    }`}
+                  >
+                    {category.name}
+                  </button>
+                ))}
               </div>
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 pr-4 py-2 w-full md:w-64 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent"
-                placeholder="Search projects..."
-              />
+
+              {/* Search Box */}
+              <div className="relative w-full md:w-auto">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <MagnifyingGlassIcon className="size-5 text-slate-400" />
+                </div>
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-10 pr-4 py-2 w-full md:w-64 bg-white border border-slate-300 focus:outline-none focus:ring-2 focus:ring-amber focus:border-transparent text-navy"
+                  placeholder="Search projects..."
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Portfolio Grid */}
-      <section className="py-16 px-8 2xl:px-60 bg-slate-100">
-        <div className="container mx-auto">
-          {sortedProjects.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {sortedProjects.map((project) => (
-                <div key={project.id} className="bg-white shadow-md overflow-hidden group">
-                  {/* Project Image */}
-                  <div className="h-56 bg-slate-200 relative overflow-hidden">
-                    <div className="absolute inset-0 flex items-center justify-center text-slate-400">
-                      <span className="text-lg">Project Image: {project.title}</span>
-                    </div>
+        {/* Portfolio Grid */}
+        <section className="py-section px-8 2xl:px-60 bg-stone bg-dots">
+          <div className="py-block mx-auto container">
+            {sortedProjects.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {sortedProjects.map((project) => (
+                  <ScrollReveal key={project.id}>
+                    <div className="bg-white shadow-lg overflow-hidden group">
+                      {/* Project Image */}
+                      <div className="h-56 bg-slate-200 relative overflow-hidden">
+                        <div className="absolute inset-0 flex items-center justify-center text-slate-400">
+                          <span className="text-sm">Project Image: {project.title}</span>
+                        </div>
 
-                    {/* Featured badge */}
-                    {project.featured && (
-                      <div className="absolute top-0 right-0 bg-navy text-slate-300 px-3 py-1 text-sm font-semibold">
-                        Featured
+                        {project.featured && (
+                          <div className="absolute top-0 right-0 bg-amber px-3 py-1 text-sm font-semibold text-navy">
+                            Featured
+                          </div>
+                        )}
                       </div>
-                    )}
 
-                    {/* View details button */}
-                    <div className="absolute inset-0 bg-navy bg-opacity-80 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
-                      <Link
-                        to="/portfolio/$id"
-                        params={{ id: String(project.id) }}
-                        className="flex items-center text-slate-300 font-semibold px-4 py-2 border-2 border-slate-300 hover:bg-slate-300 hover:text-navy transition duration-200"
-                      >
-                        View Details
-                        <ArrowsPointingOutIcon className="size-4 ml-2" />
-                      </Link>
+                      {/* Project Info */}
+                      <div className="p-6">
+                        <div className="flex justify-between items-start mb-2">
+                          <h3 className="text-xl font-bold text-navy">{project.title}</h3>
+                          <span className="text-sm text-slate-500 shrink-0 ml-3">
+                            {project.year}
+                          </span>
+                        </div>
+                        <p className="text-slate-700 mb-4 line-clamp-2 text-sm leading-relaxed">
+                          {project.description}
+                        </p>
+                        <div className="flex justify-between items-center">
+                          <span className="flex items-center text-sm text-slate-600">
+                            <MapPinIcon className="size-4 text-amber mr-1 shrink-0" />
+                            {project.location}
+                          </span>
+                          <span className="px-3 py-1 bg-amber/10 text-amber text-xs font-medium">
+                            {categories.find((c) => c.id === project.category)?.name ??
+                              project.category}
+                          </span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  </ScrollReveal>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-16">
+                <h3 className="text-2xl font-bold text-navy mb-2">No Projects Found</h3>
+                <p className="text-slate-700 mb-6">Try adjusting your filters or search query.</p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveCategory('all')
+                    setSearchQuery('')
+                  }}
+                  className="inline-flex items-center gap-2 bg-navy px-6 py-2.5 font-semibold text-stone hover:scale-105 transition duration-200 cursor-pointer"
+                >
+                  Reset Filters
+                </button>
+              </div>
+            )}
+          </div>
+        </section>
+      </div>
 
-                  {/* Project Info */}
-                  <div className="p-6">
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="text-xl font-bold text-navy">{project.title}</h3>
-                      <span className="text-sm text-slate-500">{project.year}</span>
-                    </div>
-                    <p className="text-slate-700 mb-4 line-clamp-2">{project.description}</p>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-slate-600">
-                        <span className="font-semibold">Location:</span> {project.location}
-                      </span>
-                      <span className="px-3 py-1 bg-slate-100 text-slate-700 text-xs rounded-full">
-                        {categories.find((c) => c.id === project.category)?.name ??
-                          project.category}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-16">
-              <h3 className="text-2xl font-bold text-navy mb-2">No Projects Found</h3>
-              <p className="text-slate-700 mb-6">Try adjusting your filters or search query.</p>
-              <button
-                type="button"
-                onClick={() => {
-                  setActiveCategory('all')
-                  setSearchQuery('')
-                }}
-                className="px-4 py-2 bg-navy text-slate-300 font-medium hover:bg-opacity-90 transition duration-200"
-              >
-                Reset Filters
-              </button>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Awards */}
-      <IndustryAwards />
-
-      {/* Contact CTA */}
-      <ContactCTA />
+      {/* ── DARK: Contact CTA ──────────── */}
+      <div className="slant-top">
+        <ContactCTA />
+      </div>
     </div>
   )
 }

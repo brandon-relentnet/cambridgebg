@@ -40,7 +40,7 @@ export function Network({ showButton: _showButton = false }: NetworkProps): Reac
                 <h3 className="font-display font-bold text-navy text-2xl">Trade Partners</h3>
               </div>
 
-              <div className="bg-white shadow-lg p-6 border-amber border-l-4">
+              <div className="border-l-2 border-amber pl-6">
                 <div className="flex flex-wrap gap-2 mb-6">
                   {tradeCategories.map((category) => (
                     <button
@@ -50,7 +50,7 @@ export function Network({ showButton: _showButton = false }: NetworkProps): Reac
                       className={`px-3 py-1.5 rounded-full font-medium text-sm transition duration-200 cursor-pointer ${
                         activeCategory === category.id
                           ? 'bg-amber text-navy'
-                          : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
+                          : 'bg-slate-300/50 text-slate-700 hover:bg-slate-300'
                       }`}
                     >
                       {category.name}
@@ -93,25 +93,19 @@ export function Network({ showButton: _showButton = false }: NetworkProps): Reac
                 </h3>
               </div>
 
-              {/* Client logos */}
+              {/* Client names */}
               <div className="gap-4 grid grid-cols-2 mb-8">
                 {clients.map((client) => (
-                  <div
-                    key={`logo-${client.id}`}
-                    className="flex justify-center items-center bg-white shadow-md p-6 border border-slate-200 h-24"
-                  >
-                    <p className="font-bold text-navy text-center">{client.name}</p>
+                  <div key={`logo-${client.id}`} className="border-l-2 border-amber pl-4 py-3">
+                    <p className="font-bold text-navy">{client.name}</p>
                   </div>
                 ))}
               </div>
 
               {/* Testimonials */}
               {testimonials.map((testimonial) => (
-                <blockquote
-                  key={testimonial.id}
-                  className="bg-white shadow-lg p-6 md:p-8 border-amber border-t-4"
-                >
-                  <div className="flex gap-0.5 mb-4 text-amber">
+                <blockquote key={testimonial.id} className="border-l-2 border-amber pl-6 py-2">
+                  <div className="flex gap-0.5 mb-3 text-amber">
                     {Array.from({ length: testimonial.rating }, (_, i) => `star-${i}`).map(
                       (starKey) => (
                         <svg
@@ -127,7 +121,7 @@ export function Network({ showButton: _showButton = false }: NetworkProps): Reac
                       ),
                     )}
                   </div>
-                  <p className="mb-4 text-slate-700 text-lg leading-relaxed">
+                  <p className="mb-3 text-slate-700 text-lg leading-relaxed">
                     &ldquo;{testimonial.text}&rdquo;
                   </p>
                   <footer className="text-slate-500 text-sm">

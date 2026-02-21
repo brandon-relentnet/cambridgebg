@@ -41,23 +41,23 @@ export function MarketsWeServe({ showButton = false }: MarketsWeServeProps): Rea
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
-          <div className="gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+          <div className="gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {markets.map((market) => (
               <div
                 key={market.id}
-                className="group bg-white relative shadow-lg overflow-hidden cursor-pointer"
+                className="group border-l-2 border-amber pl-5 cursor-pointer"
                 style={{ alignSelf: 'flex-start' }}
               >
                 <button
                   type="button"
-                  className="z-10 relative p-6 w-full text-left cursor-pointer"
+                  className="w-full text-left cursor-pointer"
                   onClick={() => toggleMarket(market.id)}
                 >
                   <div className="flex justify-between items-start">
                     <h3 className="font-bold text-navy text-lg">{market.title}</h3>
-                    <div className="bg-amber px-2 py-1 font-semibold text-navy text-sm whitespace-nowrap">
-                      {market.projects} projects
-                    </div>
+                    <span className="text-amber font-semibold text-sm whitespace-nowrap ml-2">
+                      {market.projects}
+                    </span>
                   </div>
                   <div
                     className={`h-0.5 bg-amber mt-3 transition-all duration-300 ${
@@ -66,8 +66,8 @@ export function MarketsWeServe({ showButton = false }: MarketsWeServeProps): Rea
                   />
                 </button>
                 {activeMarket === market.id && (
-                  <div className="z-10 relative px-6 pb-6">
-                    <p className="text-slate-700 text-sm">{market.description}</p>
+                  <div className="pt-3">
+                    <p className="text-slate-700">{market.description}</p>
                   </div>
                 )}
               </div>

@@ -77,12 +77,9 @@ export function TrackRecord({ showButton = false }: TrackRecordProps): React.Rea
 
         {/* Stats bar */}
         <ScrollReveal delay={0.1}>
-          <div className="gap-4 md:gap-6 grid grid-cols-2 lg:grid-cols-4 mb-16 md:mb-20">
+          <div className="gap-6 md:gap-8 grid grid-cols-2 lg:grid-cols-4 mb-16 md:mb-20">
             {stats.map((stat) => (
-              <div
-                key={stat.label}
-                className="bg-white shadow-lg p-6 md:p-8 border-b-2 border-amber text-center"
-              >
+              <div key={stat.label} className="border-l-2 border-amber pl-5">
                 <p className="font-display text-amber text-4xl md:text-5xl mb-2">{stat.value}</p>
                 <p className="text-slate-600 text-sm md:text-base tracking-wide uppercase">
                   {stat.label}

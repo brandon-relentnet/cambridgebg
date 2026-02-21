@@ -280,7 +280,7 @@ export const milestones: Milestone[] = [
     title: 'Nashville Shores Project',
     description:
       "Cambridge took on a pivotal role in the expansion of Nashville Shores, constructing two major waterslides that set a new benchmark for the company's capabilities. This project became a cornerstone of Cambridge's commercial portfolio.",
-    link: '/portfolio',
+    link: '/about',
   },
   {
     id: 3,

@@ -1,12 +1,11 @@
 import { ScrollReveal } from '@/components/ScrollReveal'
 import { impactStats, initiatives } from '@/data/siteData'
-import { ChevronRightIcon, HeartIcon } from '@heroicons/react/24/solid'
-import { Link } from '@tanstack/react-router'
+import { HeartIcon } from '@heroicons/react/24/solid'
 import { useInView } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
 
 interface CommunityOutreachProps {
-  showButton?: boolean
+  variant?: 'light' | 'dark'
 }
 
 interface AnimatedStat {
@@ -16,7 +15,10 @@ interface AnimatedStat {
   label: string
 }
 
-export function CommunityOutreach({ showButton: _showButton = false }: CommunityOutreachProps) {
+export function CommunityOutreach({
+  variant = 'light',
+}: CommunityOutreachProps): React.ReactElement {
+  const isDark = variant === 'dark'
   const [stats, setStats] = useState<AnimatedStat[]>(
     impactStats.map((stat) => ({ ...stat, value: 0 })),
   )
@@ -60,81 +62,92 @@ export function CommunityOutreach({ showButton: _showButton = false }: Community
   }
 
   return (
-    <section id="community-outreach" className="relative bg-slate-100 px-8 2xl:px-60 py-section">
-      <div className="py-block mx-auto container">
+    <section
+      id="community-outreach"
+      className={`relative px-8 2xl:px-60 py-section ${
+        isDark ? 'bg-graphite bg-grid text-slate-300' : 'bg-stone bg-dots'
+      }`}
+    >
+      {isDark && <div className="absolute inset-0 bg-noise" />}
+      <div className={`py-block mx-auto container ${isDark ? 'relative' : ''}`}>
         <ScrollReveal>
-          <div className="mx-auto mb-12 w-full md:w-2/3 text-center">
-            <div className="flex justify-center items-center mb-4">
-              <HeartIcon className="mr-4 size-10 text-navy" />
-              <h2 className="font-display font-bold text-navy text-5xl">Community Impact</h2>
+          <div className="mb-12">
+            <div className="flex items-center mb-4">
+              <HeartIcon className="mr-4 size-10 text-amber" />
+              <h2
+                className={`font-display font-bold text-5xl ${isDark ? 'text-stone' : 'text-navy'}`}
+              >
+                Community Impact
+              </h2>
             </div>
-            <p className="text-slate-700 text-xl">
-              At Cambridge Building Group, we believe in building more than structures&mdash;we
-              build communities. Our commitment to social responsibility drives us to give back to
-              the communities where we live and work.
+            <p className={`text-lg max-w-2xl ${isDark ? 'text-slate-400' : 'text-slate-700'}`}>
+              At Cambridge Building Group, we believe in building more than structures &mdash; we
+              build communities. Our commitment to social responsibility drives us to give back.
             </p>
           </div>
         </ScrollReveal>
 
         {/* Impact Statistics */}
         <ScrollReveal delay={0.1}>
-          <div ref={sectionRef} className="gap-8 grid grid-cols-1 md:grid-cols-2 mb-16">
+          <div ref={sectionRef} className="gap-6 grid grid-cols-1 md:grid-cols-2 mb-12">
             {stats.map((stat) => (
               <div
                 key={stat.id}
-                className="bg-white shadow-lg p-8 border-navy border-b-4 text-center"
+                className={`shadow-lg p-8 border-amber border-b-2 text-center ${
+                  isDark ? 'bg-navy' : 'bg-white'
+                }`}
               >
-                <p className="mb-3 font-bold text-navy text-5xl">{formatValue(stat.value)}</p>
-                <p className="text-slate-700 text-xl">{stat.label}</p>
+                <p className="mb-2 font-display text-amber text-5xl">{formatValue(stat.value)}</p>
+                <p className={`text-lg ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
+                  {stat.label}
+                </p>
               </div>
             ))}
           </div>
         </ScrollReveal>
 
         {/* Community Initiatives */}
-        <h3 className="mb-8 font-bold text-navy text-3xl text-center">Our Community Initiatives</h3>
-        <div className="gap-8 grid grid-cols-1 md:grid-cols-2 mb-16">
-          {initiatives.map((initiative) => {
-            const Icon = initiative.icon
-            return (
-              <div
-                key={initiative.id}
-                className="group relative bg-white shadow-lg p-6 border-navy border-t-4 overflow-hidden"
-              >
-                {/* Icon background */}
-                <Icon className="-right-6 -bottom-6 absolute opacity-50 size-40 text-slate-200 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-500 transform" />
-
-                <div className="z-10 relative">
-                  <span className="inline-block bg-slate-200 mb-3 px-3 py-1 font-semibold text-navy text-sm">
-                    {initiative.category}
-                  </span>
-                  <h4 className="mb-3 font-bold text-navy text-2xl">{initiative.title}</h4>
-                  <p className="mb-4 text-slate-700">{initiative.description}</p>
-                  <div className="mt-4 pt-3 border-slate-200 border-t">
-                    <p className="font-semibold text-navy">Impact: {initiative.impact}</p>
+        <ScrollReveal delay={0.15}>
+          <div className="gap-6 grid grid-cols-1 md:grid-cols-2">
+            {initiatives.map((initiative) => {
+              const Icon = initiative.icon
+              return (
+                <div
+                  key={initiative.id}
+                  className={`group relative shadow-lg p-6 border-amber border-l-4 overflow-hidden ${
+                    isDark ? 'bg-navy' : 'bg-white'
+                  }`}
+                >
+                  <Icon
+                    className={`-right-6 -bottom-6 absolute opacity-50 size-32 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-500 ${
+                      isDark ? 'text-slate-700' : 'text-slate-200'
+                    }`}
+                  />
+                  <div className="z-10 relative">
+                    <span className="inline-block bg-amber/10 mb-3 px-3 py-1 font-semibold text-amber text-sm">
+                      {initiative.category}
+                    </span>
+                    <h4
+                      className={`mb-3 font-bold text-xl ${isDark ? 'text-slate-200' : 'text-navy'}`}
+                    >
+                      {initiative.title}
+                    </h4>
+                    <p className={`mb-4 text-sm ${isDark ? 'text-slate-400' : 'text-slate-700'}`}>
+                      {initiative.description}
+                    </p>
+                    <div
+                      className={`pt-3 border-t ${isDark ? 'border-slate-700' : 'border-slate-200'}`}
+                    >
+                      <p className={`font-semibold text-sm ${isDark ? 'text-amber' : 'text-navy'}`}>
+                        Impact: {initiative.impact}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )
-          })}
-        </div>
-
-        {/* Call to Action */}
-        <div className="flex md:flex-row flex-col justify-between items-center bg-white shadow-lg p-8 border-navy border-l-4">
-          <div className="mb-6 md:mb-0">
-            <h3 className="mb-2 font-bold text-navy text-2xl">Join Us in Making a Difference</h3>
-            <p className="text-slate-700 text-lg">
-              Learn more about our community initiatives and how you can get involved.
-            </p>
+              )
+            })}
           </div>
-          <Link
-            to="/about"
-            className="group flex items-center bg-navy shadow-lg px-6 py-3 border-2 border-navy font-semibold text-slate-300 hover:scale-115 transition duration-200"
-          >
-            Community Programs
-            <ChevronRightIcon className="ml-2 size-5 transition-transform group-hover:translate-x-1 duration-200" />
-          </Link>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   )
