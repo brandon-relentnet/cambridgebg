@@ -1,7 +1,7 @@
 import { ScrollReveal } from '@/components/ScrollReveal'
 import { leadershipTeam } from '@/data/siteData'
-import { ChevronRightIcon, UserCircleIcon } from '@heroicons/react/24/solid'
-import { useMemo, useState } from 'react'
+import { ChevronRightIcon } from '@heroicons/react/24/solid'
+import { useState } from 'react'
 
 interface LeadershipBiosProps {
   showButton?: boolean
@@ -10,128 +10,111 @@ interface LeadershipBiosProps {
 export function LeadershipBios({
   showButton: _showButton = false,
 }: LeadershipBiosProps): React.ReactElement {
-  const [activeLeader, setActiveLeader] = useState<number | null>(null)
+  const [activeMobile, setActiveMobile] = useState<number | null>(null)
 
-  const featuredLeaders = useMemo(() => leadershipTeam.filter((leader) => leader.featured), [])
-  const otherLeaders = useMemo(() => leadershipTeam.filter((leader) => !leader.featured), [])
-
-  function toggleLeader(id: number): void {
-    setActiveLeader(activeLeader === id ? null : id)
+  function toggleMobile(id: number): void {
+    setActiveMobile(activeMobile === id ? null : id)
   }
 
   return (
     <section id="leadership" className="relative bg-stone px-8 2xl:px-60 py-section">
       <div className="py-block mx-auto container">
         <ScrollReveal>
-          <div className="flex md:flex-row flex-col justify-between items-start md:items-end mb-12">
-            <div className="mb-6 md:mb-0 w-full md:w-1/2">
-              <div className="flex items-center mb-4">
-                <UserCircleIcon className="mr-4 text-amber size-10" />
-                <h2 className="font-display font-bold text-navy text-5xl">Our Leadership</h2>
-              </div>
-              <p className="text-slate-700 text-lg">
-                Cambridge Building Group is led by experienced industry professionals combining
-                diverse expertise and a shared commitment to excellence.
-              </p>
-            </div>
+          <div className="mb-14 max-w-2xl">
+            <h2 className="font-display font-bold text-navy text-5xl mb-4">
+              Our <span className="text-amber">Leadership</span>
+            </h2>
+            <p className="text-slate-700 text-lg">
+              Cambridge Building Group is led by experienced industry professionals combining
+              diverse expertise and a shared commitment to excellence.
+            </p>
           </div>
         </ScrollReveal>
 
-        {/* Featured Leadership (Desktop) */}
-        <ScrollReveal delay={0.1}>
-          <div className="hidden gap-10 md:grid md:grid-cols-2 mb-12">
-            {featuredLeaders.map((leader) => (
-              <div key={`desktop-${leader.id}`}>
-                <div className="bg-slate-200 h-80 mb-5 overflow-hidden">
+        {/* Desktop — each person is a self-contained column */}
+        <div className="hidden md:grid md:grid-cols-2 gap-12">
+          {leadershipTeam.map((leader, index) => (
+            <ScrollReveal key={leader.id} delay={index * 0.1}>
+              <div className="flex items-center gap-5 mb-6">
+                <div className="w-36 aspect-[4/3] overflow-hidden bg-slate-200 shrink-0">
                   <img
                     src={leader.image}
                     alt={leader.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                   />
                 </div>
-                <div className="border-l-2 border-amber pl-6">
-                  <h3 className="mb-1 font-bold text-navy text-2xl">{leader.name}</h3>
-                  <p className="mb-4 font-medium text-amber">{leader.title}</p>
-                  {/* Editorial intro — first sentence in serif */}
-                  <p className="mb-4 font-display text-navy text-lg italic leading-relaxed">
-                    {leader.bio.split('.')[0]}.
-                  </p>
-                  <p className="mb-4 text-slate-700">
-                    {leader.bio.split('.').slice(1).join('.').trim()}
-                  </p>
-                  <h4 className="mb-2 font-semibold text-navy text-lg">Education</h4>
-                  <p className="mb-4 text-slate-600">{leader.education}</p>
-                  <h4 className="mb-2 font-semibold text-navy text-lg">Experience</h4>
-                  <ul className="text-slate-600">
-                    {leader.experience.map((item) => (
-                      <li key={item} className="flex items-start mb-1">
-                        <span className="bg-amber mt-2 mr-2 rounded-full w-1.5 h-1.5 shrink-0" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+                <div>
+                  <h3 className="font-display font-bold text-navy text-4xl leading-tight">
+                    {leader.name}
+                  </h3>
+                  <p className="text-amber text-lg">{leader.title}</p>
                 </div>
               </div>
-            ))}
-          </div>
-        </ScrollReveal>
 
-        {/* Other Leadership (Desktop) */}
-        {otherLeaders.length > 0 && (
-          <div className="hidden gap-8 md:grid md:grid-cols-3">
-            {otherLeaders.map((leader) => (
-              <div key={`desktop-other-${leader.id}`} className="border-l-2 border-amber pl-5">
-                <div className="flex items-center mb-4">
-                  <div className="flex justify-center items-center bg-amber mr-4 rounded-full w-12 h-12 font-bold text-navy text-xl">
-                    {leader.name.split(' ')[0]?.charAt(0) ?? ''}
-                    {leader.name.split(' ')[1]?.charAt(0) ?? ''}
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-navy text-xl">{leader.name}</h3>
-                    <p className="text-slate-600">{leader.title}</p>
-                  </div>
-                </div>
-                <p className="mb-3 text-slate-700">{leader.bio}</p>
-                <p className="text-slate-600 italic">{leader.education}</p>
+              <div className="border-l-2 border-amber pl-6">
+                <p className="mb-4 font-display text-navy text-lg italic leading-relaxed">
+                  {leader.bio.split('.')[0]}.
+                </p>
+                <p className="mb-6 text-slate-700 leading-relaxed">
+                  {leader.bio.split('.').slice(1).join('.').trim()}
+                </p>
+
+                <h4 className="mb-2 font-semibold text-navy">Education</h4>
+                <p className="mb-5 text-slate-600">{leader.education}</p>
+
+                <h4 className="mb-2 font-semibold text-navy">Experience</h4>
+                <ul className="text-slate-600 space-y-1">
+                  {leader.experience.map((item) => (
+                    <li key={item} className="flex items-start">
+                      <span className="bg-amber mt-2 mr-2 rounded-full w-1.5 h-1.5 shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            ))}
-          </div>
-        )}
+            </ScrollReveal>
+          ))}
+        </div>
 
-        {/* Mobile View */}
-        <div className="md:hidden space-y-6">
+        {/* Mobile — compact with expandable bio */}
+        <div className="md:hidden space-y-8">
           {leadershipTeam.map((leader) => (
-            <div key={`mobile-${leader.id}`} className="border-l-2 border-amber pl-5">
+            <div key={`mobile-${leader.id}`}>
               <button
                 type="button"
-                className="flex items-center w-full text-left cursor-pointer"
-                onClick={() => toggleLeader(leader.id)}
+                className="w-full text-left cursor-pointer"
+                onClick={() => toggleMobile(leader.id)}
               >
-                <div className="flex justify-center items-center bg-amber mr-4 rounded-full w-12 h-12 font-bold text-navy text-xl">
-                  {leader.name.split(' ')[0]?.charAt(0) ?? ''}
-                  {leader.name.split(' ')[1]?.charAt(0) ?? ''}
+                <div className="flex items-center gap-4">
+                  <div className="w-20 h-16 overflow-hidden bg-slate-200 shrink-0">
+                    <img
+                      src={leader.image}
+                      alt={leader.name}
+                      className="w-full h-full object-cover object-top"
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-navy text-xl">{leader.name}</h3>
+                    <p className="text-amber">{leader.title}</p>
+                  </div>
+                  <ChevronRightIcon
+                    className={`size-5 text-navy shrink-0 transition-transform duration-200 ${
+                      activeMobile === leader.id ? 'rotate-90' : ''
+                    }`}
+                  />
                 </div>
-                <div className="flex-1">
-                  <h3 className="font-bold text-navy text-xl">{leader.name}</h3>
-                  <p className="text-slate-600">{leader.title}</p>
-                </div>
-                <ChevronRightIcon
-                  className={`size-5 text-navy transition-transform duration-200 ${
-                    activeLeader === leader.id ? 'rotate-90' : ''
-                  }`}
-                />
               </button>
-              {activeLeader === leader.id && (
-                <div className="pt-4">
-                  <p className="mb-4 text-slate-700">{leader.bio}</p>
-                  <h4 className="mb-2 font-semibold text-navy text-lg">Education</h4>
+              {activeMobile === leader.id && (
+                <div className="border-l-2 border-amber pl-5 mt-4">
+                  <p className="mb-4 text-slate-700 leading-relaxed">{leader.bio}</p>
+                  <h4 className="mb-1 font-semibold text-navy">Education</h4>
                   <p className="mb-4 text-slate-600">{leader.education}</p>
-                  <h4 className="mb-2 font-semibold text-navy text-lg">Experience</h4>
-                  <ul className="text-slate-600">
+                  <h4 className="mb-1 font-semibold text-navy">Experience</h4>
+                  <ul className="text-slate-600 space-y-1">
                     {leader.experience.map((item) => (
-                      <li key={item} className="flex items-start mb-1">
+                      <li key={item} className="flex items-start">
                         <span className="bg-amber mt-2 mr-2 rounded-full w-1.5 h-1.5 shrink-0" />
-                        {item}
+                        <span>{item}</span>
                       </li>
                     ))}
                   </ul>
