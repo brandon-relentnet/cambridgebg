@@ -90,13 +90,9 @@ export function HomeHero({ showButton: _showButton = false }: HomeHeroProps): Re
         >
           {/* Logo */}
           <motion.img
-            src="/cbg-secondary-logo.png"
+            src="/cbg-gear-logo-stone.svg"
             alt="Cambridge Building Group"
             className="mb-6 w-[220px] md:w-[300px] lg:w-[340px] opacity-80"
-            style={{
-              filter:
-                'brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(10deg) contrast(1.1)',
-            }}
             variants={itemVariants}
           />
 

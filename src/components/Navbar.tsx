@@ -59,9 +59,9 @@ export function Navbar(): React.ReactElement {
           {/* Logo */}
           <Link to="/" className="relative flex items-center" onClick={closeMobileMenu}>
             <img
-              src="/cbg-logo-transparent-inverted.png"
+              src="/cbg-text-logo-twotone.svg"
               alt="Cambridge Building Group"
-              className="h-12 w-auto"
+              className="h-10 w-auto"
             />
           </Link>
 

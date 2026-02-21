@@ -73,13 +73,9 @@ export function Footer(): React.ReactElement {
             <div className="lg:col-span-4">
               <Link to="/" className="inline-block">
                 <img
-                  src="/cbg-secondary-logo.png"
+                  src="/cbg-gear-logo-stone.svg"
                   alt="Cambridge Building Group"
-                  className="mb-6 w-[180px] opacity-80"
-                  style={{
-                    filter:
-                      'brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(10deg) contrast(1.1)',
-                  }}
+                  className="mb-6 w-[160px] opacity-80"
                 />
               </Link>
               <p className="mb-8 max-w-sm leading-relaxed text-slate-400">{companyInfo.tagline}</p>
