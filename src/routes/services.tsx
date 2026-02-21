@@ -257,22 +257,20 @@ function ServicesPage(): React.ReactElement {
             </ScrollReveal>
 
             {/* Main Services Accordion */}
-            <div className="space-y-4">
+            <div className="space-y-8">
               {services.map((service) => {
                 const Icon = service.icon
                 return (
                   <ScrollReveal key={service.id} delay={service.id * 0.05}>
-                    <div className="bg-white shadow-md overflow-hidden transition-all duration-300">
+                    <div className="border-l-2 border-amber pl-6">
                       <button
                         type="button"
-                        className="w-full p-6 cursor-pointer text-left"
+                        className="w-full cursor-pointer text-left"
                         onClick={() => toggleService(service.id)}
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center">
-                            <div className="bg-amber/10 p-2.5 rounded-full mr-4">
-                              <Icon className="size-6 text-amber" />
-                            </div>
+                            <Icon className="size-6 text-amber mr-4" />
                             <h3 className="text-xl md:text-2xl font-bold text-navy">
                               {service.title}
                             </h3>
@@ -285,23 +283,18 @@ function ServicesPage(): React.ReactElement {
                         </div>
                       </button>
                       {activeService === service.id && (
-                        <div className="px-6 pb-6 border-t border-slate-200">
-                          <p className="text-slate-700 mb-6 mt-4 leading-relaxed">
+                        <div className="pt-4">
+                          <p className="text-slate-700 mb-5 leading-relaxed">
                             {service.description}
                           </p>
-                          <div className="bg-stone p-5 border-l-4 border-amber">
-                            <h4 className="text-sm font-semibold text-navy mb-3 uppercase tracking-wide">
-                              Key Features
-                            </h4>
-                            <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                              {service.details.map((detail) => (
-                                <li key={detail} className="flex items-center">
-                                  <span className="w-2 h-2 bg-amber rounded-full mr-3 shrink-0" />
-                                  <span className="text-slate-700 text-sm">{detail}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
+                          <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                            {service.details.map((detail) => (
+                              <li key={detail} className="flex items-center">
+                                <span className="w-2 h-2 bg-amber rounded-full mr-3 shrink-0" />
+                                <span className="text-slate-700">{detail}</span>
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                       )}
                     </div>
@@ -333,7 +326,7 @@ function ServicesPage(): React.ReactElement {
                         <Icon className="size-6 text-amber" />
                       </div>
                       <h3 className="text-lg font-bold mb-2">{service.title}</h3>
-                      <p className="text-slate-400 text-sm">{service.description}</p>
+                      <p className="text-slate-400">{service.description}</p>
                     </div>
                   </ScrollReveal>
                 )
@@ -343,12 +336,18 @@ function ServicesPage(): React.ReactElement {
         </section>
       </div>
 
-      {/* ── LIGHT: Our Process ──────────── */}
+      {/* ── LIGHT: Markets We Serve ──────────── */}
       <div className="slant-both">
-        <section className="py-section px-8 2xl:px-60 bg-stone bg-dots">
-          <div className="py-block mx-auto container">
+        <MarketsWeServe />
+      </div>
+
+      {/* ── DARK: Our Process ──────────── */}
+      <div className="slant-both">
+        <section className="relative py-section px-8 2xl:px-60 bg-graphite bg-grid text-slate-300">
+          <div className="absolute inset-0 bg-noise" />
+          <div className="relative py-block mx-auto container">
             <ScrollReveal>
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-navy mb-10 text-center">
+              <h2 className="font-display text-4xl md:text-5xl font-bold mb-10 text-center">
                 Our <span className="text-amber">Process</span>
               </h2>
             </ScrollReveal>
@@ -364,8 +363,8 @@ function ServicesPage(): React.ReactElement {
                         <div className="absolute left-0 top-0 w-9 h-9 bg-amber text-navy rounded-full flex items-center justify-center font-bold text-sm">
                           {step.num}
                         </div>
-                        <h3 className="text-xl font-bold text-navy mb-2">{step.title}</h3>
-                        <p className="text-slate-700 leading-relaxed">{step.text}</p>
+                        <h3 className="text-xl font-bold mb-2">{step.title}</h3>
+                        <p className="text-slate-400 leading-relaxed">{step.text}</p>
                       </div>
                     </ScrollReveal>
                   ))}
@@ -374,11 +373,6 @@ function ServicesPage(): React.ReactElement {
             </div>
           </div>
         </section>
-      </div>
-
-      {/* ── DARK: Markets We Serve ──────────── */}
-      <div className="slant-both">
-        <MarketsWeServe />
       </div>
 
       {/* ── LIGHT: Project Promise ──────────── */}
@@ -396,14 +390,14 @@ function ServicesPage(): React.ReactElement {
                 </p>
               </div>
             </ScrollReveal>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
               {projectPromises.map((promise) => {
                 const Icon = promise.icon
                 return (
                   <ScrollReveal key={promise.title} delay={0.1}>
-                    <div className="bg-white shadow-lg p-8 border-amber border-b-2 text-center h-full">
-                      <Icon className="size-10 text-amber mx-auto mb-4" />
-                      <h3 className="text-xl font-bold text-navy mb-3">{promise.title}</h3>
+                    <div className="border-l-2 border-amber pl-6">
+                      <Icon className="size-8 text-amber mb-3" />
+                      <h3 className="text-xl font-bold text-navy mb-2">{promise.title}</h3>
                       <p className="text-slate-700">{promise.text}</p>
                     </div>
                   </ScrollReveal>

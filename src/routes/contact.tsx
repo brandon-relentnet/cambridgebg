@@ -1,5 +1,4 @@
 import { ScrollReveal } from '@/components/ScrollReveal'
-import { ContactCTA } from '@/components/sections/ContactCTA'
 import {
   ChevronDownIcon,
   ClockIcon,
@@ -205,7 +204,7 @@ function ContactPage(): React.ReactElement {
                 </div>
 
                 {/* Response promise */}
-                <div className="bg-white shadow-lg p-6 border-amber border-l-4">
+                <div className="border-l-2 border-amber pl-6">
                   <p className="text-slate-700 leading-relaxed">
                     <span className="font-semibold text-navy">24-hour response guarantee.</span>{' '}
                     Every inquiry receives a personal response from our team within one business day
@@ -216,7 +215,7 @@ function ContactPage(): React.ReactElement {
 
               {/* Contact Form */}
               <ScrollReveal delay={0.1}>
-                <div className="bg-white shadow-lg p-8 border-amber border-t-4">
+                <div className="border-l-2 border-amber pl-8">
                   <h2 className="font-display text-2xl font-bold text-navy mb-6">
                     Request a Consultation
                   </h2>
@@ -443,7 +442,7 @@ function ContactPage(): React.ReactElement {
       </div>
 
       {/* ── DARK: FAQ ──────────── */}
-      <div className="slant-both">
+      <div className="slant-top">
         <section className="relative bg-graphite bg-grid text-slate-300 px-8 2xl:px-60 py-section">
           <div className="absolute inset-0 bg-noise" />
           <div className="relative py-block mx-auto container">
@@ -484,11 +483,6 @@ function ContactPage(): React.ReactElement {
             </div>
           </div>
         </section>
-      </div>
-
-      {/* ── DARK: Contact CTA ──────────── */}
-      <div className="slant-top">
-        <ContactCTA />
       </div>
     </div>
   )
