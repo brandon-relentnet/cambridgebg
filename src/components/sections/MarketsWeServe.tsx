@@ -64,7 +64,7 @@ export function MarketsWeServe({ showButton = false }: MarketsWeServeProps): Rea
               )}
 
               {/* Expanding states */}
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {geographic.slice(1).map((market) => (
                   <div key={market.id} className="border-l-2 border-slate-300 pl-5">
                     <div className="flex items-center gap-2 mb-1">

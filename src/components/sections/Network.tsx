@@ -155,7 +155,7 @@ export function Network({ showButton: _showButton = false }: NetworkProps): Reac
                         type="button"
                         key={`nav-${category.id}`}
                         onClick={() => setActiveIndex(index)}
-                        className="relative px-3 py-1.5 rounded-full font-medium text-sm transition-colors duration-200 cursor-pointer"
+                        className="relative px-4 py-2 rounded-full font-medium text-sm transition-colors duration-200 cursor-pointer"
                       >
                         {isActive && (
                           <motion.span
@@ -223,14 +223,14 @@ export function Network({ showButton: _showButton = false }: NetworkProps): Reac
                     ))}
                 </motion.div>
 
-                <p className="mt-6 text-slate-500 text-sm">
+                <p className="mt-6 text-slate-600 text-sm">
                   * All partners undergo rigorous qualification and maintain our high standards for
                   quality and safety.
                 </p>
               </div>
 
               <div className="my-8 pl-4 border-amber border-l-2">
-                <p className="text-slate-600 italic">
+                <p className="text-slate-700 italic">
                   &ldquo;The strength of our trade partner network allows us to assemble the perfect
                   team for each project, ensuring specialized expertise and consistent
                   quality.&rdquo;
@@ -250,7 +250,7 @@ export function Network({ showButton: _showButton = false }: NetworkProps): Reac
               </div>
 
               {/* Client names */}
-              <div className="gap-4 grid grid-cols-2 mb-8">
+              <div className="gap-4 grid grid-cols-1 sm:grid-cols-2 mb-8">
                 {clients.map((client) => (
                   <div key={`logo-${client.id}`} className="border-l-2 border-amber pl-4 py-3">
                     <p className="font-bold text-navy">{client.name}</p>
@@ -280,7 +280,7 @@ export function Network({ showButton: _showButton = false }: NetworkProps): Reac
                   <p className="mb-3 text-slate-700 text-lg leading-relaxed">
                     &ldquo;{testimonial.text}&rdquo;
                   </p>
-                  <footer className="text-slate-500 text-sm">
+                  <footer className="text-slate-600 text-sm">
                     &mdash; {testimonial.author}, {testimonial.title}
                   </footer>
                 </blockquote>

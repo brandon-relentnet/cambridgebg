@@ -13,6 +13,16 @@ import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/')({
   component: HomePage,
+  head: () => ({
+    meta: [
+      { title: 'Cambridge Building Group | Nashville Commercial Construction' },
+      {
+        name: 'description',
+        content:
+          'Nashville-based commercial construction company with over a decade of excellence in hospitality, industrial, multifamily, and select residential projects.',
+      },
+    ],
+  }),
 })
 
 function HomePage(): React.ReactElement {

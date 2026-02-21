@@ -40,12 +40,12 @@ function FooterColumn({ title, links }: FooterColumnProps): React.ReactElement {
   return (
     <div>
       <h3 className="mb-6 text-xs font-bold uppercase tracking-widest text-amber">{title}</h3>
-      <ul className="space-y-3">
+      <ul className="space-y-1">
         {links.map((link) => (
           <li key={link.name}>
             <Link
               to={link.url}
-              className="relative text-slate-400 transition-colors duration-300 hover:text-stone"
+              className="relative inline-block py-1.5 text-slate-400 transition-colors duration-300 hover:text-stone"
             >
               {link.name}
             </Link>
@@ -73,7 +73,7 @@ export function Footer(): React.ReactElement {
             <div className="lg:col-span-4">
               <Link to="/" className="inline-block">
                 <img
-                  src="/cbg-gear-logo-stone.svg"
+                  src="/cbg-text-logo-twotone.svg"
                   alt="Cambridge Building Group"
                   className="mb-6 w-[160px] opacity-80"
                 />
@@ -119,7 +119,7 @@ export function Footer(): React.ReactElement {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex size-10 items-center justify-center border border-slate-700 text-slate-400 transition-all duration-300 hover:border-amber hover:text-amber"
+                      className="flex size-11 items-center justify-center border border-slate-700 text-slate-400 transition-all duration-300 hover:border-amber hover:text-amber"
                     >
                       <span className="sr-only">{social.name}</span>
                       <img
@@ -139,13 +139,13 @@ export function Footer(): React.ReactElement {
       {/* ── Bottom bar ────────────────────────────────────────── */}
       <div className="relative border-t border-slate-800 px-8 py-6 lg:px-12 2xl:px-24">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 md:flex-row">
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-slate-400">
             &copy; {currentYear} {companyInfo.name}
-            <span className="ml-2 text-slate-600">All rights reserved.</span>
+            <span className="ml-2 text-slate-400">All rights reserved.</span>
           </p>
           <Link
             to="/privacy-policy"
-            className="text-sm text-slate-500 transition-colors duration-300 hover:text-slate-300"
+            className="text-sm text-slate-400 transition-colors duration-300 hover:text-slate-300"
           >
             Privacy Policy
           </Link>

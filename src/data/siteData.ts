@@ -54,19 +54,7 @@ export interface LeadershipMember {
   position: string
   department: string
   email: string
-  phone: string
   linkedIn: string
-  twitter: string
-  facebook: string
-  instagram: string
-}
-
-export interface CaseStudy {
-  id: number
-  title: string
-  description: string
-  category: string
-  highlights: string[]
 }
 
 export interface Advantage {
@@ -332,11 +320,7 @@ export const leadershipTeam: LeadershipMember[] = [
     position: 'Founder & President',
     department: 'Executive Leadership',
     email: 'terry@cambridgebg.com',
-    phone: '(615) 555-1234',
-    linkedIn: 'https://linkedin.com/',
-    twitter: 'https://twitter.com/',
-    facebook: 'https://facebook.com/',
-    instagram: 'https://instagram.com/',
+    linkedIn: 'https://www.linkedin.com/in/terry-gilley-a59385256/',
   },
   {
     id: 2,
@@ -357,16 +341,9 @@ export const leadershipTeam: LeadershipMember[] = [
     position: 'Executive Vice President',
     department: 'Executive Leadership',
     email: 'jason@cambridgebg.com',
-    phone: '(615) 555-5678',
-    linkedIn: 'https://linkedin.com/',
-    twitter: 'https://twitter.com/',
-    facebook: 'https://facebook.com/',
-    instagram: 'https://instagram.com/',
+    linkedIn: 'https://www.linkedin.com/in/jason-hall-29998728/',
   },
 ]
-
-export const directors: LeadershipMember[] = []
-export const caseStudies: CaseStudy[] = []
 
 // ---------------------------------------------------------------------------
 // Competitive Advantages
@@ -722,8 +699,11 @@ export const footerLinks: FooterLinks = {
 }
 
 export const socialLinks: SocialLink[] = [
-  { name: 'LinkedIn', url: 'https://linkedin.com', icon: '/linkedin.svg' },
-  { name: 'Facebook', url: 'https://facebook.com', icon: '/facebook.svg' },
+  {
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/company/cambridge-building-group-llc/',
+    icon: '/linkedin.svg',
+  },
 ]
 
 export const companyInfo: CompanyInfo = {

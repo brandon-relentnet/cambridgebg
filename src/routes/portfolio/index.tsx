@@ -7,6 +7,16 @@ import { useMemo, useState } from 'react'
 
 export const Route = createFileRoute('/portfolio/')({
   component: PortfolioPage,
+  head: () => ({
+    meta: [
+      { title: 'Portfolio | Cambridge Building Group' },
+      {
+        name: 'description',
+        content:
+          'Browse our portfolio of commercial, hospitality, industrial, and multifamily construction projects completed by Cambridge Building Group in Nashville.',
+      },
+    ],
+  }),
 })
 
 function PortfolioPage(): React.ReactElement {
@@ -91,7 +101,7 @@ function PortfolioPage(): React.ReactElement {
                     key={category.id}
                     type="button"
                     onClick={() => setActiveCategory(category.id)}
-                    className={`relative px-4 py-2 text-sm font-medium transition-colors duration-200 cursor-pointer border ${
+                    className={`relative px-4 py-2.5 text-sm font-medium transition-colors duration-200 cursor-pointer border ${
                       activeCategory === category.id
                         ? 'border-amber text-amber font-semibold'
                         : 'border-slate-300 text-slate-600 hover:border-amber hover:text-navy'
@@ -118,6 +128,7 @@ function PortfolioPage(): React.ReactElement {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
+                  aria-label="Search projects"
                   className="pl-10 pr-4 py-2 w-full md:w-64 bg-white border border-slate-300 focus:outline-none focus:ring-2 focus:ring-amber focus:border-transparent text-navy"
                   placeholder="Search projects..."
                 />
@@ -164,7 +175,7 @@ function PortfolioPage(): React.ReactElement {
                             {project.year}
                           </span>
                         </div>
-                        <p className="text-slate-700 mb-4 line-clamp-2 text-sm leading-relaxed">
+                        <p className="text-slate-700 mb-4 line-clamp-2 leading-relaxed">
                           {project.description}
                         </p>
                         <div className="flex justify-between items-center">

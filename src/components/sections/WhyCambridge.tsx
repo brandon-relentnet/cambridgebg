@@ -275,7 +275,7 @@ export function WhyCambridge({ showButton = false }: WhyCambridgeProps): React.R
             <blockquote className="pl-5 border-amber border-l-2 text-slate-400 italic">
               &ldquo;Our safety record is the result of rigorous standards, continuous improvement,
               and a culture where every team member prioritizes safety above all else.&rdquo;
-              <footer className="mt-2 text-sm not-italic text-slate-500">
+              <footer className="mt-2 text-sm not-italic text-slate-400">
                 &mdash; Terry Gilley, Founder &amp; President
               </footer>
             </blockquote>

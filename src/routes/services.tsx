@@ -27,6 +27,16 @@ type HeroIcon = React.ComponentType<React.SVGProps<SVGSVGElement>>
 
 export const Route = createFileRoute('/services')({
   component: ServicesPage,
+  head: () => ({
+    meta: [
+      { title: 'Services | Cambridge Building Group' },
+      {
+        name: 'description',
+        content:
+          'Commercial, hospitality, industrial, multifamily, and select residential construction services from Cambridge Building Group in Nashville, Tennessee.',
+      },
+    ],
+  }),
 })
 
 interface ServiceItem {

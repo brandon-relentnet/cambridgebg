@@ -15,6 +15,16 @@ import { useEffect, useRef, useState } from 'react'
 
 export const Route = createFileRoute('/about')({
   component: AboutPage,
+  head: () => ({
+    meta: [
+      { title: 'About Us | Cambridge Building Group' },
+      {
+        name: 'description',
+        content:
+          'Learn about Cambridge Building Group — our mission, leadership team, core values, community impact, and over a decade of Nashville construction excellence.',
+      },
+    ],
+  }),
 })
 
 const missionVision = {
@@ -197,7 +207,7 @@ function AboutPage(): React.ReactElement {
                         <h3 className="font-bold text-navy text-lg">{pillar.title}</h3>
                       </div>
                       <p className="text-slate-700 leading-relaxed mb-2">{pillar.description}</p>
-                      <p className="text-slate-500 leading-relaxed">{pillar.detail}</p>
+                      <p className="text-slate-600 leading-relaxed">{pillar.detail}</p>
                     </div>
                   </ScrollReveal>
                 )
@@ -231,7 +241,7 @@ function AboutPage(): React.ReactElement {
                       suffix={stat.suffix}
                       duration={stat.duration}
                     />
-                    <p className="mt-2 text-slate-500 text-xs md:text-sm uppercase tracking-wide">
+                    <p className="mt-2 text-slate-400 text-xs md:text-sm uppercase tracking-wide">
                       {stat.label}
                     </p>
                   </div>

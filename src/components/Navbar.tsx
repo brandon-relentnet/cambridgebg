@@ -115,7 +115,7 @@ export function Navbar(): React.ReactElement {
           {/* ── Mobile Hamburger ─────────────────────────────── */}
           <button
             type="button"
-            className="relative z-60 lg:hidden text-stone"
+            className="relative z-60 lg:hidden text-stone p-2"
             onClick={toggleMobileMenu}
             aria-label="Toggle navigation menu"
           >

@@ -114,7 +114,7 @@ export function HomeHero({ showButton: _showButton = false }: HomeHeroProps): Re
 
           {/* Stats strip */}
           <motion.div
-            className="gap-6 md:gap-10 grid grid-cols-3 mt-10 md:mt-12"
+            className="gap-6 md:gap-10 grid grid-cols-1 sm:grid-cols-3 mt-10 md:mt-12"
             variants={itemVariants}
           >
             {stats.map((stat) => (
@@ -122,7 +122,7 @@ export function HomeHero({ showButton: _showButton = false }: HomeHeroProps): Re
                 <div className="font-display text-2xl text-amber md:text-3xl lg:text-4xl">
                   {stat.value}
                 </div>
-                <div className="mt-1 text-slate-500 text-xs md:text-sm tracking-wide uppercase">
+                <div className="mt-1 text-slate-400 text-xs md:text-sm tracking-wide uppercase">
                   {stat.label}
                 </div>
               </motion.div>
@@ -157,7 +157,7 @@ export function HomeHero({ showButton: _showButton = false }: HomeHeroProps): Re
           <button
             type="button"
             onClick={() => scrollToNextSection('who-is-cambridge-construction')}
-            className="flex flex-col items-center gap-2 text-slate-500 hover:text-amber transition-colors cursor-pointer"
+            className="flex flex-col items-center gap-2 p-2 text-slate-400 hover:text-amber transition-colors cursor-pointer"
             aria-label="Scroll to content"
           >
             <span className="text-xs tracking-[0.2em] uppercase">Scroll</span>

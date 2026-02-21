@@ -105,7 +105,7 @@ export function TrackRecord({ showButton = false }: TrackRecordProps): React.Rea
                   <div className="group-hover:border-amber/50 mt-3 lg:pe-2 mr-2 p-4 border-2 border-transparent transition duration-200">
                     <ChevronRightIcon className="top-8 lg:top-18 right-6 absolute hidden group-hover:block text-navy transition duration-200 size-5" />
                     <h4 className="font-semibold text-navy text-lg">{milestone.title}</h4>
-                    <time className="block mb-2 font-normal text-slate-500 text-md italic leading-none">
+                    <time className="block mb-2 font-normal text-slate-600 text-md italic leading-none">
                       {milestone.year}
                     </time>
                     <p className="font-normal text-slate-700 text-base">{milestone.description}</p>

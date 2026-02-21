@@ -12,6 +12,16 @@ import { useState } from 'react'
 
 export const Route = createFileRoute('/contact')({
   component: ContactPage,
+  head: () => ({
+    meta: [
+      { title: 'Contact Us | Cambridge Building Group' },
+      {
+        name: 'description',
+        content:
+          'Get in touch with Cambridge Building Group for a free consultation on your next commercial construction project in Nashville, Tennessee.',
+      },
+    ],
+  }),
 })
 
 const projectTypes = [
