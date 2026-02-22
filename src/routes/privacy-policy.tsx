@@ -11,7 +11,9 @@ export const Route = createFileRoute('/privacy-policy')({
         content:
           'Privacy policy for Cambridge Building Group — how we collect, use, and protect your personal data.',
       },
+      { property: 'og:url', content: 'https://cambridgebg.com/privacy-policy' },
     ],
+    links: [{ rel: 'canonical', href: 'https://cambridgebg.com/privacy-policy' }],
   }),
 })
 

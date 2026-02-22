@@ -29,13 +29,24 @@ export const Route = createFileRoute('/services')({
   component: ServicesPage,
   head: () => ({
     meta: [
-      { title: 'Services | Cambridge Building Group' },
+      { title: 'Construction Services | Nashville Commercial Builder - Cambridge' },
       {
         name: 'description',
         content:
           'Commercial, hospitality, industrial, multifamily, and select residential construction services from Cambridge Building Group in Nashville, Tennessee.',
       },
+      {
+        property: 'og:title',
+        content: 'Construction Services | Nashville Commercial Builder - Cambridge',
+      },
+      {
+        property: 'og:description',
+        content:
+          'Commercial, hospitality, industrial, multifamily, and select residential construction services from Cambridge Building Group in Nashville, Tennessee.',
+      },
+      { property: 'og:url', content: 'https://cambridgebg.com/services' },
     ],
+    links: [{ rel: 'canonical', href: 'https://cambridgebg.com/services' }],
   }),
 })
 

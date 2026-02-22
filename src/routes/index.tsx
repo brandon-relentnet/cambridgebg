@@ -21,7 +21,18 @@ export const Route = createFileRoute('/')({
         content:
           'Nashville-based commercial construction company with over a decade of excellence in hospitality, industrial, multifamily, and select residential projects.',
       },
+      {
+        property: 'og:title',
+        content: 'Cambridge Building Group | Nashville Commercial Construction',
+      },
+      {
+        property: 'og:description',
+        content:
+          'Nashville-based commercial construction company with over a decade of excellence in hospitality, industrial, multifamily, and select residential projects.',
+      },
+      { property: 'og:url', content: 'https://cambridgebg.com/' },
     ],
+    links: [{ rel: 'canonical', href: 'https://cambridgebg.com/' }],
   }),
 })
 

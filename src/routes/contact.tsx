@@ -14,13 +14,24 @@ export const Route = createFileRoute('/contact')({
   component: ContactPage,
   head: () => ({
     meta: [
-      { title: 'Contact Us | Cambridge Building Group' },
+      { title: 'Contact Cambridge Building Group | Free Construction Quote' },
       {
         name: 'description',
         content:
           'Get in touch with Cambridge Building Group for a free consultation on your next commercial construction project in Nashville, Tennessee.',
       },
+      {
+        property: 'og:title',
+        content: 'Contact Cambridge Building Group | Free Construction Quote',
+      },
+      {
+        property: 'og:description',
+        content:
+          'Get in touch with Cambridge Building Group for a free consultation on your next commercial construction project in Nashville, Tennessee.',
+      },
+      { property: 'og:url', content: 'https://cambridgebg.com/contact' },
     ],
+    links: [{ rel: 'canonical', href: 'https://cambridgebg.com/contact' }],
   }),
 })
 

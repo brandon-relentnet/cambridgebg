@@ -4,6 +4,8 @@ import { ChevronRightIcon } from '@heroicons/react/24/solid'
 import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
 
+import type React from 'react'
+
 interface LeadershipBiosProps {
   showButton?: boolean
 }
@@ -74,6 +76,18 @@ export function LeadershipBios({
                     </li>
                   ))}
                 </ul>
+
+                {leader.linkedIn && (
+                  <a
+                    href={leader.linkedIn}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-navy transition-colors duration-300 hover:text-amber"
+                  >
+                    <img src="/linkedin.svg" alt="" className="size-4" />
+                    Connect on LinkedIn
+                  </a>
+                )}
               </div>
             </ScrollReveal>
           ))}
@@ -130,6 +144,18 @@ export function LeadershipBios({
                           </li>
                         ))}
                       </ul>
+
+                      {leader.linkedIn && (
+                        <a
+                          href={leader.linkedIn}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 mt-4 text-sm font-semibold text-navy transition-colors duration-300 hover:text-amber"
+                        >
+                          <img src="/linkedin.svg" alt="" className="size-4" />
+                          Connect on LinkedIn
+                        </a>
+                      )}
                     </div>
                   </motion.div>
                 )}

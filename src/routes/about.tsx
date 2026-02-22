@@ -17,13 +17,24 @@ export const Route = createFileRoute('/about')({
   component: AboutPage,
   head: () => ({
     meta: [
-      { title: 'About Us | Cambridge Building Group' },
+      { title: 'About Cambridge Building Group | Nashville General Contractor' },
       {
         name: 'description',
         content:
           'Learn about Cambridge Building Group — our mission, leadership team, core values, community impact, and over a decade of Nashville construction excellence.',
       },
+      {
+        property: 'og:title',
+        content: 'About Cambridge Building Group | Nashville General Contractor',
+      },
+      {
+        property: 'og:description',
+        content:
+          'Learn about Cambridge Building Group — our mission, leadership team, core values, community impact, and over a decade of Nashville construction excellence.',
+      },
+      { property: 'og:url', content: 'https://cambridgebg.com/about' },
     ],
+    links: [{ rel: 'canonical', href: 'https://cambridgebg.com/about' }],
   }),
 })
 

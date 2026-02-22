@@ -43,6 +43,8 @@ export const Route = createRootRoute({
           'Nashville-based commercial construction company specializing in hospitality, industrial, multifamily, and select residential projects.',
       },
       { property: 'og:site_name', content: 'Cambridge Building Group' },
+      { property: 'og:image', content: 'https://cambridgebg.com/og-image.png' },
+      { property: 'og:url', content: 'https://cambridgebg.com/' },
     ],
   }),
 })

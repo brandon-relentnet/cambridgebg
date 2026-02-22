@@ -42,14 +42,10 @@ src/
     sections/                   # 16 section components (HomeHero, CoreValues, etc.)
   data/
     siteData.ts                 # All site content (arrays, objects, interfaces)
-    portfolioData.ts            # Portfolio projects + helper functions
   routes/
     __root.tsx                  # Root layout: Navbar + Outlet + Footer
     index.tsx                   # Home page — composes sections with slant classes
     about.tsx, services.tsx, contact.tsx, privacy-policy.tsx
-    portfolio/
-      index.tsx                 # Portfolio listing
-      $id.tsx                   # Dynamic route: portfolio detail
   utils/
     autoScroll.ts               # scrollToNextSection() smooth-scroll helper
 ```
@@ -126,7 +122,6 @@ function PageName(): React.ReactElement {
 }
 ```
 
-- Dynamic params: `$id.tsx` file, accessed via `Route.useParams()`
 - Navigation: `<Link to="/path">` from `@tanstack/react-router`
 
 ## Section Components (`src/components/sections/`)
@@ -170,7 +165,7 @@ When suppressing a rule, always include the reason:
 
 - `type="button"` or `type="submit"` explicitly on all `<button>` elements
 - Contact form uses simulated submission (no backend)
-- `CaseStudies` returns `null` when data is empty
+
 - No API error handling needed — site is entirely static
 
 ## Key Gotchas

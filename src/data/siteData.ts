@@ -138,7 +138,6 @@ export interface FooterLink {
 export interface FooterLinks {
   about: FooterLink[]
   services: FooterLink[]
-  projects: FooterLink[]
   connect: FooterLink[]
 }
 
@@ -686,11 +685,7 @@ export const footerLinks: FooterLinks = {
     { name: 'Select Residential', url: '/services' },
     { name: 'Construction Management', url: '/services' },
   ],
-  projects: [
-    { name: 'Portfolio', url: '/portfolio' },
-    { name: 'Testimonials', url: '/#network' },
-    { name: 'Markets We Serve', url: '/#markets-we-serve' },
-  ],
+
   connect: [
     { name: 'Contact Us', url: '/contact' },
     { name: 'Community Impact', url: '/#recognition-impact' },
