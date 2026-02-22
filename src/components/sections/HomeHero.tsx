@@ -51,7 +51,7 @@ export function HomeHero({ showButton: _showButton = false }: HomeHeroProps): Re
 
   return (
     <section>
-      <div className="relative flex justify-center items-center h-[calc(100dvh-5rem)] text-stone">
+      <div className="relative flex justify-center items-center min-h-[calc(100dvh-5rem)] text-stone">
         {/* Dark background — constrained to the hero area */}
         <div className="absolute inset-0 bg-graphite bg-grid overflow-hidden">
           <div className="absolute inset-0 bg-noise" />
@@ -83,7 +83,7 @@ export function HomeHero({ showButton: _showButton = false }: HomeHeroProps): Re
 
         {/* Main content */}
         <motion.div
-          className="z-10 relative flex flex-col items-center pb-32 md:pb-40 text-center"
+          className="z-10 relative flex flex-col items-center pt-6 pb-20 md:pb-28 text-center"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -92,7 +92,7 @@ export function HomeHero({ showButton: _showButton = false }: HomeHeroProps): Re
           <motion.img
             src="/cbg-gear-logo-stone.svg"
             alt="Cambridge Building Group"
-            className="mb-6 w-[220px] md:w-[300px] lg:w-[340px] opacity-80"
+            className="mb-4 md:mb-6 w-[160px] sm:w-[200px] md:w-[280px] lg:w-[340px] opacity-80"
             variants={itemVariants}
           />
 
@@ -114,7 +114,7 @@ export function HomeHero({ showButton: _showButton = false }: HomeHeroProps): Re
 
           {/* Stats strip */}
           <motion.div
-            className="gap-6 md:gap-10 grid grid-cols-1 sm:grid-cols-3 mt-10 md:mt-12"
+            className="gap-4 md:gap-10 grid grid-cols-3 mt-8 md:mt-12"
             variants={itemVariants}
           >
             {stats.map((stat) => (
@@ -131,7 +131,7 @@ export function HomeHero({ showButton: _showButton = false }: HomeHeroProps): Re
 
           {/* CTAs */}
           <motion.div
-            className="flex flex-col gap-4 sm:flex-row mt-10 md:mt-12"
+            className="flex flex-col gap-4 sm:flex-row mt-8 md:mt-12"
             variants={itemVariants}
           >
             <button
